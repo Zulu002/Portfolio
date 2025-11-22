@@ -1,8 +1,32 @@
 <script>
 export default {
   name: 'Skills',
-  data () { return {skills:["Веб-дизайн","Графический дизайн","Frontend","UI/UX","Адаптивная верстка","JavaScript","Vue.js","CSS","HTML","Godot 4","Python","GDScript","Aseprite","Adobe Photoshop"]}}
+  data () { 
+        return {
+            skills: [
+            "Adobe Illustrator",
+            "Vue.js",
+            "Графический дизайн",
+            "Trello",
+            "CSS",
+            "Godot 4",
+            "Адаптивная верстка",
+            "Python",
+            "Figma",
+            "JavaScript",
+            "CorelDraw",
+            "Frontend",
+            "Aseprite",
+            "HTML",
+            "Веб-дизайн",
+            "UI/UX",
+            "GDScript",
+            "Adobe Photoshop"
+            ]
+        }
+    }
 }
+
 </script>
 
 <template>

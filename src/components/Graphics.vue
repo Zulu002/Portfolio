@@ -1,4 +1,9 @@
 <script>
+import logoImage1 from '../assets/logo1.svg'
+import logoImage2 from '../assets/logo2.svg'
+import logoImage3 from '../assets/logo3.svg'
+import logoImage4 from '../assets/logo4.svg'
+
 export default {
   name: 'ProjectsGrid',
   data() {
@@ -7,42 +12,22 @@ export default {
         {
           id: 1,
           link: '#',
-          logo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=300&fit=crop&crop=center'
+          logo: logoImage1
         },
         {
           id: 2,
           link: '#',
-          logo: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=300&fit=crop&crop=center'
+          logo: logoImage2
         },
         {
           id: 3,
           link: '#',
-          logo: 'https://images.unsplash.com/photo-1610465299993-e95f6caa7c8c?w=300&h=300&fit=crop&crop=center'
+          logo: logoImage3
         },
         {
           id: 4,
           link: '#',
-          logo: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=300&fit=crop&crop=center'
-        },
-        {
-          id: 5,
-          link: '#',
-          logo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=300&fit=crop&crop=center'
-        },
-        {
-          id: 6,
-          link: '#',
-          logo: 'https://images.unsplash.com/photo-1610465299993-e95f6caa7c8c?w=300&h=300&fit=crop&crop=center'
-        },
-        {
-          id: 7,
-          link: '#',
-          logo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=300&fit=crop&crop=center'
-        },
-        {
-          id: 8,
-          link: '#',
-          logo: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=300&fit=crop&crop=center'
+          logo: logoImage4
         }
       ]
     }
@@ -115,32 +100,23 @@ export default {
   position: relative;
 }
 
-.slide-item:hover {
-  border-color: #68c8ff;
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-.slide-item:hover::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 192, 244, 0.2), transparent);
-  pointer-events: none;
-}
-
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Изменил с cover на contain */
+  padding: 20px; /* Добавил отступы */
   transition: transform 0.3s ease;
+  box-sizing: border-box;
 }
 
 .slide-item:hover .project-image {
   transform: scale(1.05);
+}
+
+/* Альтернативный вариант - если нужно заполнить всю область */
+.project-image.fill {
+  object-fit: cover;
+  padding: 0;
 }
 
 /* Адаптивность для 640px */
@@ -178,8 +154,7 @@ export default {
   }
   
   .project-image {
-    object-fit: cover;
+    padding: 15px; /* Уменьшил отступы для мобильных */
   }
 }
-
 </style>
