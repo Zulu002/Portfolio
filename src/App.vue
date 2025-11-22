@@ -36,9 +36,13 @@ import Contacts from './components/Contacts.vue';
 }
 
 .section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  position: relative;
-  overflow: hidden;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Фоны для секций */

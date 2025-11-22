@@ -53,11 +53,9 @@ export default {
 <style scoped>
 .projects {
   font-family: 'OpenSansRegular';
-  padding: 40px 20px;
 }
 
 .header-container {
-  max-width: 1000px;
   margin: 0 auto 30px auto;
 }
 

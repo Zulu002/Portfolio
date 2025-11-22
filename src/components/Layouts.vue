@@ -50,7 +50,6 @@ export default {
   font-family: 'OpenSansRegular';
   padding: 40px 20px;
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
 }
 

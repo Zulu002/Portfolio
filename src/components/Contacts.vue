@@ -30,14 +30,14 @@ const smoothScroll = (event) => {
 <style scoped>
 .vertical-menu {
   font-family: 'OpenSansBold';
-  margin-top: 100px;
   padding: 40px 20px;
   width: 100%;
+  min-height: 100;
   text-align: left;
 }
 
 .menu-content {
-  max-width: 1000px;
+  min-height: 60vh;
   margin: 0 auto;
 }
 

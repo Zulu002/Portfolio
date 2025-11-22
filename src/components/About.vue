@@ -1,162 +1,156 @@
 <script setup>
+const sections = [
+  { id: 'skills', label: 'Навыки' },
+  { id: 'projects', label: 'Проекты' },
+  { id: 'graphics', label: 'Графика' },
+  { id: 'layouts', label: 'Макеты' },
+  { id: 'contacts', label: 'Контакты', isContact: true }
+];
+
 const scrollToSection = (sectionId) => {
   const targetElement = document.getElementById(sectionId);
-  
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
+  targetElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 </script>
 
 <template>
-    <div class="Container">
-        <div class="developer-section">
-            <img src="../assets/logo.svg" alt="Логотип">
-            <h1>О РАЗРАБОТЧИКЕ</h1>
-            <p>Меня зовут Гаджи Зулумханов. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
-            <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: 
-                в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
-            <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript 
-                и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и 
-                функциональные цифровые продукты.</p>
-        </div>
-        <hr>
-    </div>
-    <div class="ButtonBar">
-        <button class="Button_Specifications" @click="scrollToSection('skills')">НАВЫКИ</button>
-        <button class="Button_Specifications" @click="scrollToSection('projects')">ПРОЕКТЫ</button>
-        <button class="Button_Specifications" @click="scrollToSection('graphics')">ГРАФИКА</button>
-        <button class="Button_Specifications" @click="scrollToSection('layouts')">МАКЕТЫ</button>
-        <button class="Button_Сontacts" @click="scrollToSection('contacts')">КОНТАКТЫ</button>
-    </div>
+  <main class="container">
+    <section class="developer-section">
+      <img src="../assets/logo.svg" alt="Логотип разработчика" width="410" height="auto">
+      <h1>О разработчике</h1>
+      <p>Меня зовут Гаджи Зулумханов. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
+      <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
+      <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.</p>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <nav class="navigation" aria-label="Основные разделы">
+      <button
+        v-for="section in sections"
+        :key="section.id"
+        class="nav-button"
+        :class="{ 'nav-button--contact': section.isContact }"
+        @click="scrollToSection(section.id)"
+      >
+        {{ section.label }}
+      </button>
+    </nav>
+  </main>
 </template>
 
 <style scoped>
-    .Container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0 15px;
-    }
-    
-    img {
-        width: 410px;
-        margin-top: 15px;
-        max-width: 100%;
-        height: auto;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Предотвращает горизонтальный скроллинг */
+}
 
-    .developer-section {
-        color: #FFFFFF;
-        width: 1100px;
-        max-width: 100%;
-    }
+.developer-section {
+  color: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
-    h1 {
-        font-size: 45px;
-        font-family: 'OpenSansBold';
-        margin-top: 0px;
-        margin-bottom: 20px;
-    }
+.developer-section img {
+  width: min(410px, 100%);
+  margin-top: 15px;
+  height: auto;
+  max-width: 100%;
+}
 
-    p {
-        margin-top: 0px;
-        margin-bottom: 15px;
-        font-family: 'OpenSansRegular';
-        font-size: 22px;
-        line-height: 1.4;
-    }
+h1 {
+  font-size: clamp(28px, 4vw, 45px);
+  font-family: 'OpenSansBold';
+  margin: 0 0 20px 0;
+}
 
-    hr {
-        width: 1100px;
-        max-width: 100%;
-        height: 5px;
-        background: linear-gradient(to right, #66C0F4, #2161CD);
-        border: none;
-        margin-bottom: 10px;
-    }
+p {
+  margin: 0 0 15px 0;
+  font-family: 'OpenSansRegular';
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.4;
+  text-align: justify;
+  max-width: 100%;
+}
 
-    .ButtonBar {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        padding: 0 15px;
-    }
+.divider {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #66C0F4, #2161CD);
+  margin: 20px 0px 10px 0px;
+  max-width: 100%;
+}
 
-    .Button_Specifications,
-    .Button_Сontacts {
-        width: 214px;
-        height: 60px;
-        font-family: 'OpenSansBold';
-        font-size: 20px;
-        border-radius: 2px;
-        border: none;
-        transition: all 0.5s ease;
-        cursor: pointer;
-    }
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
-    .Button_Specifications {
-        background-color: #5daddc;
-        color: white;
-    }
+.nav-button {
+  width: 214px;
+  height: 60px;
+  font-family: 'OpenSansBold';
+  font-size: 20px;
+  border-radius: 2px;
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: #5daddc;
+  color: white;
+  flex: 1;
+  min-width: 0; /* Позволяет кнопкам сжиматься */
+  max-width: 214px; /* Максимальная ширина как у оригинальных кнопок */
+}
 
-    .Button_Specifications:hover {
-        background-color: #85cdf8;
-        color: white;
-    }
+.nav-button:hover {
+  background-color: #85cdf8;
+}
 
-    .Button_Сontacts {
-        background-color: #699E46;
-        color: white;
-    }
+.nav-button--contact {
+  background-color: #699E46;
+}
 
-    .Button_Сontacts:hover {
-        background-color: #8ece61;
-        color: white;
-    }
+.nav-button--contact:hover {
+  background-color: #8ece61;
+}
 
-    /* Средние мобильные */
-    @media (max-width: 640px) {
-        .ButtonBar {
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .Button_Specifications,
-        .Button_Сontacts {
-            text-align: left;
-            width: 100%;
-            max-width: 480px;
-            height: 50px;
-        }
-        
-        img {
-            width: 280px;
-        }
-        
-        h1 {
-            font-size: 28px;
-        }
-        
-        p {
-            text-align: justify;
-            font-size: 16px;
-        }
+/* Адаптивность */
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .nav-button {
+    width: 100%;
+    max-width: 480px;
+    height: 50px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+}
 
-        .Button_Specifications:active {
-            background-color: #85cdf8;
-            color: white;
-        }
-
-        .Button_Сontacts:active {
-            background-color: #8ece61;
-            color: white;
-        }
-    }
-
+@media (max-width: 640px) {
+  
+  .navigation {
+    gap: 6px;
+  }
+}
 </style>

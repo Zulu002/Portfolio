@@ -72,7 +72,6 @@ export default {
 
 <style scoped>
 .projects-slider {
-  min-height: 100vh;
   font-family: 'OpenSansRegular';
 }
 
