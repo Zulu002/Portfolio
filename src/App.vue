@@ -52,18 +52,25 @@ import Contacts from './components/Contacts.vue';
   background-image: 
     linear-gradient(#3d5b81 2px, transparent 1px),
     linear-gradient(90deg, #3d5b81 2px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: 0 0;
+  background-size: 60px 60px;
+  background-position: center;
 }
-.section-3 { background-image: linear-gradient(0deg, rgb(26, 159, 255) 0%, rgb(26, 159, 255) 100%);}
+.section-3 {
+  background-color: rgb(26, 159, 255);
+  background-image: 
+      linear-gradient(#EDEDED 2px, transparent 1px),
+      linear-gradient(90deg, #EDEDED 2px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center;
+}
 .section-4 { background-color: #EDEDED; }
 .section-5 { 
   background-color: #EDEDED;
   background-image: 
     linear-gradient(#b0b0b0 2px, transparent 1px),
     linear-gradient(90deg, #b0b0b0 2px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: 0 0;
+  background-size: 100px 100px;
+  background-position: center;
 }
 .section-6 { background-color: #1B2838; }
 </style>

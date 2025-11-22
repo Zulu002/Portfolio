@@ -10,20 +10,6 @@ export default {
           description: 'Приключение в открытом мире будущего с продвинутыми технологиями.',
           link: 'https://figma.com/your-link-1',
           logo: '🚀'
-        },
-        {
-          id: 2,
-          title: 'Dota 2',
-          description: 'Командная стратегическая игра с множеством героев.',
-          link: 'https://figma.com/your-link-2',
-          logo: '⚔️'
-        },
-        {
-          id: 3,
-          title: 'CS:GO',
-          description: 'Тактический шутер от первого лица с упором на командную игру.',
-          link: 'https://figma.com/your-link-3',
-          logo: '🎯'
         }
       ]
     }
@@ -34,8 +20,7 @@ export default {
 <template>
   <div class="projects">
     <div class="header-container">
-      <h1 class="title">Проекты</h1>
-      <hr>
+      <h1 class="title">ПРОЕКТЫ</h1>
     </div>
     <div class="cards">
       <div class="card" v-for="project in projects" :key="project.id">
@@ -55,42 +40,31 @@ export default {
   font-family: 'OpenSansRegular';
 }
 
-.header-container {
-  margin: 0 auto 30px auto;
-}
-
 .title {
   text-align: left;
-  color: #EDEDED;
+  color: white;
   font-size: 2.5rem;
-  margin-bottom: 10px;
   font-family: 'OpenSansBold';
-}
-
-hr {
-  width: 100%;
-  height: 5px;
-  background-color: #000000;
-  border: none;
-  margin: 0;
+  margin: 10px 0;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .card {
-  background: #EDEDED;
+  background: white;
   padding: 25px;
   display: flex;
   flex-direction: column;
   border: 1px solid transparent;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .card:hover {

@@ -45,11 +45,10 @@ const scrollToSection = (sectionId) => {
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
-  max-width: 1100px;
+  max-width: 80%;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden; /* Предотвращает горизонтальный скроллинг */
 }
 
 .developer-section {
@@ -66,7 +65,7 @@ const scrollToSection = (sectionId) => {
 }
 
 h1 {
-  font-size: clamp(28px, 4vw, 45px);
+  font-size: 45px;
   font-family: 'OpenSansBold';
   margin: 0 0 20px 0;
 }
@@ -74,17 +73,16 @@ h1 {
 p {
   margin: 0 0 15px 0;
   font-family: 'OpenSansRegular';
-  font-size: clamp(16px, 2vw, 22px);
-  line-height: 1.4;
-  text-align: justify;
+  font-size: 1.5vw;
+  text-align: left;
   max-width: 100%;
 }
 
 .divider {
   width: 100%;
   height: 5px;
-  background: linear-gradient(to right, #66C0F4, #2161CD);
-  margin: 20px 0px 10px 0px;
+  background-color: #5daddc;
+  margin: 5px 0px 10px 0px;
   max-width: 100%;
 }
 
@@ -101,9 +99,9 @@ p {
 
 .nav-button {
   width: 214px;
-  height: 60px;
+  height: 70px;
   font-family: 'OpenSansBold';
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 2px;
   border: none;
   transition: all 0.3s ease;
@@ -111,8 +109,6 @@ p {
   background-color: #5daddc;
   color: white;
   flex: 1;
-  min-width: 0; /* Позволяет кнопкам сжиматься */
-  max-width: 214px; /* Максимальная ширина как у оригинальных кнопок */
 }
 
 .nav-button:hover {
@@ -129,6 +125,14 @@ p {
 
 /* Адаптивность */
 @media (max-width: 768px) {
+  h1 {
+    font-size: 2.4em;
+  }
+
+  p{
+    font-size: 18px;
+  }
+
   .navigation {
     flex-direction: column;
     align-items: center;
@@ -137,7 +141,7 @@ p {
   
   .nav-button {
     width: 100%;
-    max-width: 480px;
+    max-width: 100%;
     height: 50px;
   }
   
