@@ -50,8 +50,8 @@ import Contacts from './components/Contacts.vue';
 .section-2 { 
   background-color: #1B2838;
   background-image: 
-    linear-gradient(#3d5b81 1px, transparent 1px),
-    linear-gradient(90deg, #3d5b81 1px, transparent 1px);
+    linear-gradient(#3d5b81 2px, transparent 1px),
+    linear-gradient(90deg, #3d5b81 2px, transparent 1px);
   background-size: 50px 50px;
   background-position: 0 0;
 }
@@ -60,8 +60,8 @@ import Contacts from './components/Contacts.vue';
 .section-5 { 
   background-color: #EDEDED;
   background-image: 
-    linear-gradient(#b0b0b0 1px, transparent 1px),
-    linear-gradient(90deg, #b0b0b0 1px, transparent 1px);
+    linear-gradient(#b0b0b0 2px, transparent 1px),
+    linear-gradient(90deg, #b0b0b0 2px, transparent 1px);
   background-size: 50px 50px;
   background-position: 0 0;
 }
