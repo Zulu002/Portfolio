@@ -1,10 +1,10 @@
 <script setup>
 const sections = [
-  { id: 'skills', label: 'Навыки' },
-  { id: 'projects', label: 'Проекты' },
-  { id: 'graphics', label: 'Графика' },
-  { id: 'layouts', label: 'Макеты' },
-  { id: 'contacts', label: 'Контакты', isContact: true }
+  { id: 'skills', label: 'НАВЫКИ' },
+  { id: 'projects', label: 'ПРОЕКТЫ' },
+  { id: 'graphics', label: 'ГРАФИКА' },
+  { id: 'layouts', label: 'МАКЕТЫ' },
+  { id: 'contacts', label: 'КОНТАКТЫ', isContact: true }
 ];
 
 const scrollToSection = (sectionId) => {
@@ -17,7 +17,7 @@ const scrollToSection = (sectionId) => {
   <main class="container">
     <section class="developer-section">
       <img src="../assets/logo.svg" alt="Логотип разработчика" width="410" height="auto">
-      <h1>О разработчике</h1>
+      <h1>О РАЗРАБОТЧИКЕ</h1>
       <p>Меня зовут Гаджи Зулумханов. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
       <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
       <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.</p>
@@ -61,7 +61,6 @@ const scrollToSection = (sectionId) => {
 
 .developer-section img {
   width: min(410px, 100%);
-  margin-top: 15px;
   height: auto;
   max-width: 100%;
 }

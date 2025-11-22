@@ -56,6 +56,7 @@ export default {
         font-family: 'OpenSansBold';
         color: white;
         font-size: 3.5rem;
+        margin-top: 0;
     }
 
     .skills-container {

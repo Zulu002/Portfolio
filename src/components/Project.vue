@@ -61,7 +61,7 @@ export default {
 
 .title {
   text-align: left;
-  color: #000000;
+  color: #EDEDED;
   font-size: 2.5rem;
   margin-bottom: 10px;
   font-family: 'OpenSansBold';
@@ -84,7 +84,7 @@ hr {
 }
 
 .card {
-  background: #ffffff;
+  background: #EDEDED;
   padding: 25px;
   display: flex;
   flex-direction: column;

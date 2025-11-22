@@ -1,5 +1,5 @@
 <script setup>
-import About from './components/about.vue';
+import About from './components/About.vue';
 import Skills from './components/Skills.vue';
 import Project from './components/Project.vue';
 import Graphics from './components/Graphics.vue';
@@ -55,7 +55,7 @@ import Contacts from './components/Contacts.vue';
   background-size: 50px 50px;
   background-position: 0 0;
 }
-.section-3 { background-color: #EDEDED; }
+.section-3 { background-image: linear-gradient(0deg, rgb(26, 159, 255) 0%, rgb(26, 159, 255) 100%);}
 .section-4 { background-color: #EDEDED; }
 .section-5 { 
   background-color: #EDEDED;

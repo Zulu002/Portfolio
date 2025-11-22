@@ -80,6 +80,7 @@ export default {
   color: #000000;
   font-size: 2.5rem;
   font-family: 'OpenSansBold';
+  margin-top: 0;
 }
 
 .slider-container {
