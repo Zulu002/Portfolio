@@ -14,29 +14,31 @@ const scrollToSection = (sectionId) => {
 </script>
 
 <template>
-  <main class="container">
-    <section class="developer-section">
-      <img src="../assets/logo.svg" alt="Логотип разработчика" width="410" height="auto">
-      <h1>О РАЗРАБОТЧИКЕ</h1>
-      <p>Меня зовут Гаджи Зулумханов. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
-      <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
-      <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.</p>
-    </section>
-    
-    <div class="divider"></div>
-    
-    <nav class="navigation" aria-label="Основные разделы">
-      <button
-        v-for="section in sections"
-        :key="section.id"
-        class="nav-button"
-        :class="{ 'nav-button--contact': section.isContact }"
-        @click="scrollToSection(section.id)"
-      >
-        {{ section.label }}
-      </button>
-    </nav>
-  </main>
+  <section>
+    <main class="container">
+      <section class="developer-section">
+        <img src="../assets/logo.svg" alt="Логотип разработчика" width="410" height="auto">
+        <h1>О РАЗРАБОТЧИКЕ</h1>
+        <p>Меня зовут Гаджи Зулумханов. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
+        <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
+        <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.</p>
+      </section>
+      
+      <div class="divider"></div>
+      
+      <nav class="navigation" aria-label="Основные разделы">
+        <button
+          v-for="section in sections"
+          :key="section.id"
+          class="nav-button"
+          :class="{ 'nav-button--contact': section.isContact }"
+          @click="scrollToSection(section.id)"
+        >
+          {{ section.label }}
+        </button>
+      </nav>
+    </main>
+  </section>
 </template>
 
 <style scoped>
@@ -68,7 +70,7 @@ const scrollToSection = (sectionId) => {
 h1 {
   font-size: 45px;
   font-family: 'OpenSansBold';
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
 }
 
 p {

@@ -29,20 +29,22 @@ export default {
 </script>
 
 <template>
-  <div class="projects">
-    <div class="content-wrapper">
-      <div class="header-container">
-        <h1 class="title">Макеты</h1>
-      </div>
-      <div class="cards">
-        <div class="card" v-for="project in projects" :key="project.id">
-          <h3 class="name">{{ project.title }}</h3>
-          <p class="description">{{ project.description }}</p>
-          <a :href="project.link" class="btn" target="_blank">Посмотреть макет</a>
+  <section>
+    <div class="projects">
+      <div class="content-wrapper">
+        <div class="header-container">
+          <h1 class="title">Макеты</h1>
+        </div>
+        <div class="cards">
+          <div class="card" v-for="project in projects" :key="project.id">
+            <h3 class="name">{{ project.title }}</h3>
+            <p class="description">{{ project.description }}</p>
+            <a :href="project.link" class="btn" target="_blank">Посмотреть макет</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

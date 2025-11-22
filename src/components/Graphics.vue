@@ -51,28 +51,31 @@ export default {
 </script>
 
 <template>
-  <div class="projects-slider">
-    <h1 class="title">Графика</h1>
-    <div class="slider-container">
-      <div class="slides-wrapper">
-        <div class="slides-track">
-          <a 
-            v-for="project in projects" 
-            :key="project.id" 
-            :href="project.link" 
-            class="slide-item"
-          >
-            <img :src="project.logo" :alt="'Project ' + project.id" class="project-image" />
-          </a>
+  <section>
+    <div class="projects-slider">
+      <h1 class="title">Графика</h1>
+      <div class="slider-container">
+        <div class="slides-wrapper">
+          <div class="slides-track">
+            <a 
+              v-for="project in projects" 
+              :key="project.id" 
+              :href="project.link" 
+              class="slide-item"
+            >
+              <img :src="project.logo" :alt="'Project ' + project.id" class="project-image" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .projects-slider {
   font-family: 'OpenSansRegular';
+  width: 100%;
 }
 
 .title {
@@ -84,7 +87,7 @@ export default {
 }
 
 .slider-container {
-  max-width: 1200px;
+  max-width: 85%;
   margin: 0 auto;
   padding: 0 20px;
 }

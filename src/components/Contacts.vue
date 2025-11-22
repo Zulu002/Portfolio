@@ -1,15 +1,17 @@
 <template>
-  <div class="vertical-menu">
-    <div class="menu-content">
-      <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
-      <ul class="menu-list">
-        <li><a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a></li>
-        <li><a href="https://t.me/Ignidra" class="menu-link" target="_blank">TELEGRAM</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" class="menu-link" target="_blank">GMAIL</a></li>
-        <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
-      </ul>
+  <section>
+    <div class="vertical-menu">
+      <div class="menu-content">
+        <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
+        <ul class="menu-list">
+          <li><a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a></li>
+          <li><a href="https://t.me/Ignidra" class="menu-link" target="_blank">TELEGRAM</a></li>
+          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" class="menu-link" target="_blank">GMAIL</a></li>
+          <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

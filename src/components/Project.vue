@@ -6,11 +6,12 @@ export default {
       projects: [
         {
           id: 1,
-          title: 'Киберпанк 2077',
-          description: 'Приключение в открытом мире будущего с продвинутыми технологиями.',
-          link: 'https://figma.com/your-link-1',
-          logo: '🚀'
-        }
+          title: 'Калькулятор накладных',
+          description: 'Приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.',
+          link: 'https://zulu002.github.io/invoice/',
+          logo: 'https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg'
+        },
+
       ]
     }
   }
@@ -18,21 +19,23 @@ export default {
 </script>
 
 <template>
-  <div class="projects">
-    <div class="header-container">
-      <h1 class="title">ПРОЕКТЫ</h1>
-    </div>
-    <div class="cards">
-      <div class="card" v-for="project in projects" :key="project.id">
-        <div class="card-header">
-          <span class="logo">{{ project.logo }}</span>
-          <h3 class="name">{{ project.title }}</h3>
+  <section>
+    <div class="projects">
+      <div class="header-container">
+        <h1 class="title">ПРОЕКТЫ</h1>
+      </div>
+      <div class="cards">
+        <div class="card" v-for="project in projects" :key="project.id">
+          <div class="card-header">
+            <img :src="project.logo" :alt="project.title" class="logo" />
+            <h3 class="name">{{ project.title }}</h3>
+          </div>
+          <p class="description">{{ project.description }}</p>
+          <a :href="project.link" class="btn" target="_blank">Посмотреть проект</a>
         </div>
-        <p class="description">{{ project.description }}</p>
-        <a :href="project.link" class="btn" target="_blank">Посмотреть макет</a>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

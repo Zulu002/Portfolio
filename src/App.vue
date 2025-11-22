@@ -9,28 +9,19 @@ import Contacts from './components/Contacts.vue';
 
 <template>
   <div class="container">
-    <section id="about" class="section section-1">
-      <About />
-    </section>
-    <section id="skills" class="section section-2">
-      <Skills />
-    </section>
-    <section id="projects" class="section section-3">
-      <Project />
-    </section>
-    <section id="graphics" class="section section-4">
-      <Graphics />
-    </section>
-    <section id="layouts" class="section section-5">
-      <Layouts />
-    </section>
-    <section id="contacts" class="section section-6">
-      <Contacts />
-    </section>
+      <About id="about" class="section section-1"/>
+      <Skills id="skills" class="section section-2"/>
+      <Project id="projects" class="section section-3"/>
+      <Graphics id="graphics" class="section section-4"/>
+      <Layouts id="layouts" class="section section-5"/>
+      <Contacts id="contacts" class="section section-6"/>  
   </div>
 </template>
 
 <style scoped>
+#graphics{
+  width: 100%;
+}
 .container {
   overflow-y: auto;
 }
@@ -63,7 +54,7 @@ import Contacts from './components/Contacts.vue';
   background-size: 60px 60px;
   background-position: center;
 }
-.section-4 { background-color: #EDEDED; }
+.section-4 { background-color: #EDEDED;}
 .section-5 { 
   background-color: #EDEDED;
   background-image: 

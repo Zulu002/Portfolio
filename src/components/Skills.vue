@@ -1,40 +1,21 @@
 <script>
 export default {
-  name: 'Skills'
+  name: 'Skills',
+  data () { return {skills:["Веб-дизайн","Графический дизайн","Frontend","UI/UX","Адаптивная верстка","JavaScript","Vue.js","CSS3","HTML5"]}}
 }
 </script>
 
 <template>
-    <div class="skills-wrapper">
-        <div class="skills-content">
-            <h1>Навыки</h1>
-            <div class="skills-container">
-                <span class="skill-tag">Веб-дизайн</span>
-                <span class="skill-tag">Графический дизайн</span>
-                <span class="skill-tag">Frontend</span>
-                <span class="skill-tag">UI/UX</span>
-                <span class="skill-tag">Адаптивная верстка</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Adobe Photoshop</span>
-                <span class="skill-tag">Illustrator</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">SASS/SCSS</span>
-                <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">Tailwind CSS</span>
-                <span class="skill-tag">Webpack</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">REST API</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">MySQL</span>
+    <section>
+        <div class="skills-wrapper">
+            <div class="skills-content">
+                <h1>Навыки</h1>
+                <div class="skills-container">
+                    <span class="skill-tag" v-for="skill in skills">{{ skill }}</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>    
 </template>
 
 <style scoped>    
@@ -49,7 +30,7 @@ export default {
     .skills-content {
         text-align: center;
         width: 100%;
-        max-width: 1300px;
+        max-width: 85%;
     }
 
     h1 {
