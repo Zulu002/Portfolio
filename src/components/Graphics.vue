@@ -115,7 +115,7 @@ export default {
 }
 
 .slide-item:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Альтернативный вариант - если нужно заполнить всю область */
