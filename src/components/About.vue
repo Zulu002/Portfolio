@@ -47,7 +47,6 @@ const scrollToSection = (sectionId) => {
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
-  max-width: 80%;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
