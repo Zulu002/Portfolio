@@ -108,20 +108,14 @@ export default {
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Изменил с cover на contain */
-  padding: 20px; /* Добавил отступы */
+  object-fit: contain; 
+  padding: 20px; 
   transition: transform 0.3s ease;
   box-sizing: border-box;
 }
 
 .slide-item:hover .project-image {
   transform: scale(1.1);
-}
-
-/* Альтернативный вариант - если нужно заполнить всю область */
-.project-image.fill {
-  object-fit: cover;
-  padding: 0;
 }
 
 /* Адаптивность для 640px */
@@ -159,7 +153,7 @@ export default {
   }
   
   .project-image {
-    padding: 15px; /* Уменьшил отступы для мобильных */
+    padding: 5px; 
   }
 }
 </style>
