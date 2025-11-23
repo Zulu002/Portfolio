@@ -58,9 +58,9 @@ import Contacts from './components/Contacts.vue';
 .section-5 { 
   background-color: #EDEDED;
   background-image: 
-    linear-gradient(#b0b0b0 2px, transparent 1px),
-    linear-gradient(90deg, #b0b0b0 2px, transparent 1px);
-  background-size: 100px 100px;
+    linear-gradient(rgb(26, 159, 255) 2px, transparent 1px),
+    linear-gradient(90deg, rgb(26, 159, 255) 2px, transparent 1px);
+  background-size: 240px 240px;
   background-position: center;
 }
 .section-6 { background-color: #1B2838; }
