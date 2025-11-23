@@ -33,6 +33,11 @@ export default {
           id: 6,
           link: 'https://pin.it/6jYmg8GZU',
           logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo6.svg'
+        },
+        {
+          id: 7,
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo7.svg'
         }
       ]
     }
