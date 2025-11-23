@@ -47,6 +47,7 @@ const scrollToSection = (sectionId) => {
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
+  max-width: 80%;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -127,6 +128,10 @@ p {
 
 /* Адаптивность */
 @media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+
   h1 {
     font-size: 2.4em;
   }
