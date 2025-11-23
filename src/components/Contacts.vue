@@ -8,6 +8,7 @@
           <li><a href="https://t.me/Ignidra" class="menu-link" target="_blank">TELEGRAM</a></li>
           <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" class="menu-link" target="_blank">GMAIL</a></li>
           <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
+          <li><a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank">PINTEREST</a></li>
         </ul>
       </div>
     </div>

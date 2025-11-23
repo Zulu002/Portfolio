@@ -1,9 +1,4 @@
 <script>
-import logoImage1 from '../assets/logo1.svg'
-import logoImage2 from '../assets/logo2.svg'
-import logoImage3 from '../assets/logo3.svg'
-import logoImage4 from '../assets/logo4.svg'
-
 export default {
   name: 'ProjectsGrid',
   data() {
@@ -11,23 +6,23 @@ export default {
       projects: [
         {
           id: 1,
-          link: '#',
-          logo: logoImage1
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo1.svg?token=GHSAT0AAAAAADNWWMKAV5FE5UB5U25TNU3U2JCYORQ'
         },
         {
           id: 2,
-          link: '#',
-          logo: logoImage2
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo2.svg?token=GHSAT0AAAAAADNWWMKAWGQ2UM2Y43B433CW2JCYQFA'
         },
         {
           id: 3,
-          link: '#',
-          logo: logoImage3
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo3.svg?token=GHSAT0AAAAAADNWWMKA2XF4EUCE3JGKT6A62JCYQPQ'
         },
         {
           id: 4,
-          link: '#',
-          logo: logoImage4
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo4.svg?token=GHSAT0AAAAAADNWWMKBUU335G6G5VWTT72O2JCYQ3Q'
         }
       ]
     }
