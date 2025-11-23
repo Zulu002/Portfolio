@@ -2,7 +2,7 @@
 const sections = [
   { id: 'skills', label: 'НАВЫКИ' },
   { id: 'projects', label: 'ПРОЕКТЫ' },
-  { id: 'graphics', label: 'ГРАФИКА' },
+  { id: 'graphics', label: 'ВИТРИНА' },
   { id: 'layouts', label: 'МАКЕТЫ' },
   { id: 'contacts', label: 'КОНТАКТЫ', isContact: true }
 ];

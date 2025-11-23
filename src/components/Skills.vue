@@ -33,7 +33,7 @@ export default {
     <section>
         <div class="skills-wrapper">
             <div class="skills-content">
-                <h1>Навыки</h1>
+                <h1>НАВЫКИ</h1>
                 <div class="skills-container">
                     <span class="skill-tag" v-for="skill in skills">{{ skill }}</span>
                 </div>

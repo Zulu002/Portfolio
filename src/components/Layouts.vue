@@ -33,7 +33,7 @@ export default {
     <div class="projects">
       <div class="content-wrapper">
         <div class="header-container">
-          <h1 class="title">Макеты</h1>
+          <h1 class="title">МАКЕТЫ</h1>
         </div>
         <div class="cards">
           <div class="card" v-for="project in projects" :key="project.id">

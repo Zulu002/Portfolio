@@ -7,22 +7,32 @@ export default {
         {
           id: 1,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo1.svg?token=GHSAT0AAAAAADNWWMKAV5FE5UB5U25TNU3U2JCYORQ'
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo1.svg'
         },
         {
           id: 2,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo2.svg?token=GHSAT0AAAAAADNWWMKAWGQ2UM2Y43B433CW2JCYQFA'
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo2.svg'
         },
         {
           id: 3,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo3.svg?token=GHSAT0AAAAAADNWWMKA2XF4EUCE3JGKT6A62JCYQPQ'
+          logo: 'http://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo3.svg'
         },
         {
           id: 4,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo4.svg?token=GHSAT0AAAAAADNWWMKBUU335G6G5VWTT72O2JCYQ3Q'
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo4.svg'
+        },
+        {
+          id: 5,
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo5.svg'
+        },
+        {
+          id: 6,
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo6.svg'
         }
       ]
     }
@@ -33,7 +43,7 @@ export default {
 <template>
   <section>
     <div class="projects-slider">
-      <h1 class="title">Графика</h1>
+      <h1 class="title">ВИТРИНА</h1>
       <div class="slider-container">
         <div class="slides-wrapper">
           <div class="slides-track">
