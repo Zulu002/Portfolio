@@ -17,7 +17,7 @@ const scrollToSection = (sectionId) => {
   <section>
     <main class="container">
       <section class="developer-section">
-        <img src="../assets/logo.svg" alt="Логотип разработчика" width="410" height="auto">
+        <img src="../assets/logo.svg" alt="Логотип разработчика">
         <h1>О РАЗРАБОТЧИКЕ</h1>
         <p>Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
         <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
@@ -42,6 +42,7 @@ const scrollToSection = (sectionId) => {
 </template>
 
 <style scoped>
+
 .container {
   display: flex;
   flex-direction: column;

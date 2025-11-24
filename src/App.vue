@@ -37,7 +37,17 @@ import Contacts from './components/Contacts.vue';
 }
 
 /* Фоны для секций */
-.section-1 { background-color: #1B2838; }
+.section-1 {
+    background: 
+        linear-gradient(
+            135deg, 
+            #1B2838 0%, 
+            #2A475E 50%, 
+            #1B2838 100%
+        ),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="a"><feTurbulence baseFrequency="0.75" numOctaves="3"/></filter><rect width="100%25" height="100%25" filter="url(%23a)" opacity="0.1"/></svg>'); /* Лёгкий шум */
+    background-blend-mode: overlay;
+}
 .section-2 { 
   background-color: #1B2838;
   background-image: 
@@ -63,5 +73,12 @@ import Contacts from './components/Contacts.vue';
   background-size: 240px 240px;
   background-position: center;
 }
-.section-6 { background-color: #1B2838; }
+.section-6 {
+    background-color: #1B2838;
+    background-image: 
+        radial-gradient(rgba(26, 159, 255, 0.15) 2px, transparent 1px),
+        radial-gradient(rgba(26, 159, 255, 0.1) 2px, transparent 1px);
+    background-size: 40px 40px, 80px 80px; /* Две сетки разного размера */
+    background-position: 0 0, 20px 20px; /* Смещаем вторую сетку для объема */
+}
 </style>

@@ -54,7 +54,7 @@ export default {
     .skills-content {
         text-align: center;
         width: 100%;
-        max-width: 85%;
+        max-width: 50%;
     }
 
     h1 {
@@ -74,22 +74,21 @@ export default {
 
     .skill-tag {
         display: inline-block;
-        background-color: #5daddc;
+        background: rgba(93, 173, 220, 0.1);
         color: white;
         padding: 18px 32px;
-        border-radius: 3px;
+        border-radius: 50px;
         font-family: 'OpenSansRegular';
         font-size: 1.4rem;
-        transition: all 0.4s ease;
+        transition: all 0.6s ease;
         white-space: nowrap;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
         cursor: pointer;
     }
 
     .skill-tag:hover {
-        background: #81cffd;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-        transform:  scale(1.08);
+        background: rgb(26, 159, 255);
+        transform:  scale(1.09);
     }
 
     /* Адаптивность для 640px */
