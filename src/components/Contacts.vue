@@ -10,6 +10,7 @@
           <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
           <li><a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank">PINTEREST</a></li>
         </ul>
+        <img src="../assets/logo2.svg" alt="Логотип разработчика" width="400px">
       </div>
     </div>
   </section>
@@ -79,6 +80,10 @@ const smoothScroll = (event) => {
 
 .menu-link:last-child {
   border-bottom: none;
+}
+
+img{
+  color: black;
 }
 
 @media (max-width: 640px) {
