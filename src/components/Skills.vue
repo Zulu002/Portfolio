@@ -119,6 +119,11 @@ export default {
             padding: 12px 20px;
             font-size: 1.1rem;
         }
+
+         .skill-tag:active {
+            background: rgb(26, 159, 255);
+            transform:  scale(1.09);
+        }
     }
 
     

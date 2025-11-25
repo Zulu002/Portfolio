@@ -182,5 +182,11 @@ export default {
     font-size: 0.95rem;
     text-align: center;
   }
+
+  .btn:active {
+    color: #000000;
+    background: #ffffff;
+    border: 1px solid #000000;
+  }
 }
 </style>

@@ -156,6 +156,14 @@ p {
   .container {
     padding: 0 10px;
   }
+
+  .nav-button:active {
+    background-color: #85cdf8;
+  }
+
+.nav-button--contact:active {
+    background-color: #8ece61;
+  }
 }
 
 @media (max-width: 640px) {
