@@ -12,15 +12,15 @@ export default {
         },
         {
           id: 2,
-          title: 'Ведем технические работы',
-          description: 'Ведем технические работы',
-          link: '#нет тут ничего'
+          title: 'Бенто макет',
+          description: 'Эксперимент с бенто-дизайном: всё необходимое на одной странице. Акцентные цвета + плотная компоновка = необычно и стильно!',
+          link: 'https://www.figma.com/design/Y4P6BtdC8d6ITSBwj9Wnur/%D0%BC%D0%B0%D0%BA%D0%B5%D1%82-%D0%B2-%D0%B1%D0%B5%D0%BD%D1%82%D0%BE-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B5?node-id=0-1&t=Mo1wuCXLwIbheDag-1'
         },
         {
           id: 3,
-          title: 'Ведем технические работы',
-          description: 'Ведем технические работы',
-          link: '#нет тут ничего'
+          title: 'Портфолио с горизонтальным скроллом',
+          description: 'Создал макет портфолио с горизонтальной навигацией, где каждый проект раскрывается как кадр в кинопленке. Необычный UX, который запоминается надолго.',
+          link: 'https://www.figma.com/design/1jP2qDFoRsi99QGCCNxSwH/%D0%A1%D0%B0%D0%B9%D1%82-%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE?t=gr8gmKldxKNq3qmR-1'
         }
       ]
     }
