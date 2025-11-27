@@ -40,7 +40,6 @@ import Contacts from './components/Contacts.vue';
 .section-1 {
     background: 
         linear-gradient(
-            135deg, 
             #1B2838 0%, 
             #2A475E 50%, 
             #1B2838 100%
@@ -49,12 +48,12 @@ import Contacts from './components/Contacts.vue';
     background-blend-mode: overlay;
 }
 .section-2 { 
-  background-color: #1B2838;
-  background-image: 
-    linear-gradient(#3d5b81 2px, transparent 1px),
-    linear-gradient(90deg, #3d5b81 2px, transparent 1px);
-  background-size: 60px 60px;
-  background-position: center;
+   background-color: #1B2838;
+    background-image: 
+        radial-gradient(rgba(26, 159, 255, 0.15) 2px, transparent 1px),
+        radial-gradient(rgba(26, 159, 255, 0.1) 2px, transparent 1px);
+    background-size: 40px 40px, 80px 80px;
+    background-position: 0 0, 20px 20px; 
 }
 .section-3 {
   background-color: rgb(26, 159, 255);

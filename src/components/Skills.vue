@@ -46,15 +46,15 @@ export default {
     .skills-wrapper {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: left;
         width: 100%;
         box-sizing: border-box;
+        padding: 40px 20px;
     }
 
     .skills-content {
-        text-align: center;
         width: 100%;
-        max-width: 50%;
+        max-width: 60%;
     }
 
     h1 {
@@ -67,7 +67,7 @@ export default {
     .skills-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: left;
         gap: 10px;
         margin: 0 auto;
     }
@@ -82,7 +82,7 @@ export default {
         font-size: 1.4rem;
         transition: all 0.6s ease;
         white-space: nowrap;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(2px);
         cursor: pointer;
     }
 
