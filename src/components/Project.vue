@@ -10,20 +10,6 @@ export default {
           description: 'Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.',
           link: 'https://zulu002.github.io/invoice/',
           logo: 'https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg'
-        },
-        {
-          id: 2,
-          title: 'Калькулятор накладных',
-          description: 'Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.',
-          link: 'https://zulu002.github.io/invoice/',
-          logo: 'https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg'
-        },
-        {
-          id: 3,
-          title: 'Калькулятор накладных',
-          description: 'Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.',
-          link: 'https://zulu002.github.io/invoice/',
-          logo: 'https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg'
         }
       ]
     }
