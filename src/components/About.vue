@@ -3,7 +3,6 @@ const sections = [
   { id: 'skills', label: 'НАВЫКИ' },
   { id: 'projects', label: 'ПРОЕКТЫ' },
   { id: 'graphics', label: 'ВИТРИНА' },
-  { id: 'layouts', label: 'МАКЕТЫ' },
   { id: 'contacts', label: 'КОНТАКТЫ', isContact: true }
 ];
 
@@ -42,7 +41,6 @@ const scrollToSection = (sectionId) => {
 </template>
 
 <style scoped>
-
 .container {
   display: flex;
   flex-direction: column;
@@ -112,7 +110,7 @@ p {
   cursor: pointer;
   background-color: #5daddc;
   color: white;
-  flex: 1;
+  flex: 1 1 0;
 }
 
 .nav-button:hover {
@@ -121,6 +119,7 @@ p {
 
 .nav-button--contact {
   background-color: #699E46;
+  flex: 2 1 0;
 }
 
 .nav-button--contact:hover {
@@ -137,7 +136,7 @@ p {
     font-size: 2.4em;
   }
 
-  p{
+  p {
     font-size: 18px;
   }
 
@@ -151,6 +150,7 @@ p {
     width: 100%;
     max-width: 100%;
     height: 50px;
+    flex: 1 1 auto; 
   }
   
   .container {
@@ -161,13 +161,12 @@ p {
     background-color: #85cdf8;
   }
 
-.nav-button--contact:active {
+  .nav-button--contact:active {
     background-color: #8ece61;
   }
 }
 
 @media (max-width: 640px) {
-  
   .navigation {
     gap: 6px;
   }

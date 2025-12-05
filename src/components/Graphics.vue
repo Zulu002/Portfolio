@@ -38,6 +38,11 @@ export default {
           id: 7,
           link: 'https://pin.it/6jYmg8GZU',
           logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo7.svg'
+        },
+        {
+          id: 8,
+          link: 'https://pin.it/6jYmg8GZU',
+          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo8.svg'
         }
       ]
     }
