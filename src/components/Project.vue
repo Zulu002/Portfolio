@@ -27,7 +27,6 @@ export default {
 
         <div class="cards">
           <div class="card" v-for="project in projects" :key="project.id">
-            <!-- ЛОГОТИП СЛЕВА, ЗАГОЛОВОК СПРАВА В ОДНУ ЛИНИЮ -->
             <div class="card-header">
               <img :src="project.logo" :alt="project.title" class="logo" />
               <h3 class="name">{{ project.title }}</h3>

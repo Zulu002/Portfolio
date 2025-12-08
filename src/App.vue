@@ -35,16 +35,7 @@ import Contacts from './components/Contacts.vue';
 }
 
 /* Фоны для секций */
-.section-1 {
-    background: 
-        linear-gradient(
-            #1B2838 0%, 
-            #2A475E 50%, 
-            #1B2838 100%
-        ),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="a"><feTurbulence baseFrequency="0.75" numOctaves="3"/></filter><rect width="100%25" height="100%25" filter="url(%23a)" opacity="0.1"/></svg>'); /* Лёгкий шум */
-    background-blend-mode: overlay;
-}
+.section-1 { background-color: #EDEDED;}
 .section-2 { 
    background-color: #1B2838;
     background-image: 

@@ -54,7 +54,7 @@ const scrollToSection = (sectionId) => {
 }
 
 .developer-section {
-  color: #ffffff;
+  color: #1F1E1C;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -83,7 +83,7 @@ p {
 .divider {
   width: 100%;
   height: 5px;
-  background-color: #5daddc;
+  background-color: #1F1E1C;
   margin: 5px 0px 10px 0px;
   max-width: 100%;
 }
@@ -108,17 +108,17 @@ p {
   border: none;
   transition: all 0.3s ease;
   cursor: pointer;
-  background-color: #5daddc;
+  background-color: #1F1E1C;
   color: white;
   flex: 1 1 0;
 }
 
 .nav-button:hover {
-  background-color: #85cdf8;
+  background-color: #5daddc;
 }
 
 .nav-button--contact {
-  background-color: #699E46;
+  background-color: #1F1E1C;
   flex: 2 1 0;
 }
 
