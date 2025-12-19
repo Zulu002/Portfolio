@@ -43,20 +43,21 @@ export default {
 </template>
 
 <style scoped>    
-    .skills-wrapper {
+   
+    .skills-wrapper{
         display: flex;
-        align-items: center;
-        justify-content: left;
+        justify-content: center;
         width: 100%;
+        padding: 0 15px;
         box-sizing: border-box;
-        padding: 40px 20px;
     }
 
-    .skills-content {
+    .skills-content{
         width: 100%;
-        max-width: 60%;
+        max-width: 80%;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
-
     h1 {
         font-family: 'OpenSansBold';
         color: white;
@@ -64,12 +65,12 @@ export default {
         margin-top: 0;
     }
 
-    .skills-container {
+    .skills-container{
         display: flex;
         flex-wrap: wrap;
-        justify-content: left;
+        justify-content: flex-start; 
         gap: 10px;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .skill-tag {
@@ -95,23 +96,23 @@ export default {
     @media (max-width: 640px) {
         .skills-wrapper {
             padding: 15px;
-            justify-content: flex-start; /* Выравнивание по левому краю */
+            justify-content: flex-start; 
         }
         
         .skills-content {
-            text-align: left; /* Текст по левому краю */
+            text-align: left; 
             max-width: 100%;
         }
         
         h1 {
             font-size: 2.2rem;
             margin-bottom: 25px;
-            text-align: left; /* Заголовок по левому краю */
+            text-align: left; 
         }
         
         .skills-container {
-            justify-content: flex-start; /* Элементы по левому краю */
-            margin: 0; /* Убираем авто-отступы */
+            justify-content: flex-start; 
+            margin: 0; 
             gap: 8px;
         }
         
