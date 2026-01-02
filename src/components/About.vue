@@ -134,13 +134,14 @@ p {
   background-color: #a69c78;
 }
 
-/* ✅ текст + постоянное место под квадратик (ничего не двигается) */
+/* ✅ текст всегда визуально по центру */
 .nav-label {
   position: relative;
   padding-left: 18px;
+  padding-right: 18px;
 }
 
-/* ✅ квадратик появляется при наведении */
+/* квадратик */
 .nav-label::before {
   content: "";
   position: absolute;
@@ -156,6 +157,7 @@ p {
 .nav-button:hover .nav-label::before {
   opacity: 1;
 }
+
 
 .nav-button--contact {
   background-color: #DED0A1;
