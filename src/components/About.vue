@@ -133,7 +133,7 @@ p {
   }
 
   h1 {
-    font-size: 2.2em;
+    font-size: 2em;
   }
 
   p {
