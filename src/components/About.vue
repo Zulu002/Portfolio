@@ -1,13 +1,13 @@
 <script setup>
 const sections = [
-  { id: 'projects', label: 'ПРОЕКТЫ' },
-  { id: 'graphics', label: 'ВИТРИНА' },
-  { id: 'contacts', label: 'КОНТАКТЫ', isContact: true }
+  { id: "projects", label: "ПРОЕКТЫ" },
+  { id: "graphics", label: "ВИТРИНА" },
+  { id: "contacts", label: "КОНТАКТЫ", isContact: true },
 ];
 
 const scrollToSection = (sectionId) => {
   const targetElement = document.getElementById(sectionId);
-  targetElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  targetElement?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 </script>
 
@@ -15,24 +15,37 @@ const scrollToSection = (sectionId) => {
   <section>
     <main class="container">
       <section class="developer-section">
-        <img src="../assets/logo.svg" alt="Логотип разработчика">
+        <img src="../assets/logo.svg" alt="Логотип разработчика" />
         <h1>О РАЗРАБОТЧИКЕ</h1>
-        <p>Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).</p>
-        <p>С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.</p>
-        <p>Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.</p>
+        <p>
+          Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также
+          интересуюсь разработкой игр (геймдевом).
+        </p>
+        <p>
+          С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в
+          желание понимать и создавать их самому. Это побудило меня развивать навыки
+          дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов
+          для веб-сайтов.
+        </p>
+        <p>
+          Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая
+          JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально
+          привлекательные, но и функциональные цифровые продукты.
+        </p>
       </section>
-      
+
       <div class="divider"></div>
-      
+
       <nav class="navigation" aria-label="Основные разделы">
         <button
           v-for="section in sections"
           :key="section.id"
           class="nav-button"
           :class="{ 'nav-button--contact': section.isContact }"
+          type="button"
           @click="scrollToSection(section.id)"
         >
-          {{ section.label }}
+          <span class="nav-label">{{ section.label }}</span>
         </button>
       </nav>
     </main>
@@ -67,13 +80,13 @@ const scrollToSection = (sectionId) => {
 
 h1 {
   font-size: 45px;
-  font-family: 'OpenSansBold';
+  font-family: "OpenSansBold";
   margin: 0 0 15px 0;
 }
 
 p {
   margin: 0 0 15px 0;
-  font-family: 'OpenSansRegular';
+  font-family: "OpenSansRegular";
   font-size: 1.5vw;
   text-align: left;
   max-width: 100%;
@@ -101,19 +114,47 @@ p {
 .nav-button {
   width: 214px;
   height: 70px;
-  font-family: 'OpenSansBold';
+  font-family: "OpenSansBold";
   font-size: 25px;
   border-radius: 2px;
   border: none;
-  transition: all 0.3s ease;
   cursor: pointer;
   background-color: #DED0A1;
   color: #1E1C17;
   flex: 1 1 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
   background-color: #a69c78;
+}
+
+/* ✅ текст + постоянное место под квадратик (ничего не двигается) */
+.nav-label {
+  position: relative;
+  padding-left: 18px;
+}
+
+/* ✅ квадратик появляется при наведении */
+.nav-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  background: #1E1C17;
+  opacity: 0;
+}
+
+.nav-button:hover .nav-label::before {
+  opacity: 1;
 }
 
 .nav-button--contact {
@@ -123,7 +164,7 @@ p {
 }
 
 .nav-button--contact:hover {
-  background-color: #a69c78
+  background-color: #a69c78;
 }
 
 /* Адаптивность */
@@ -145,14 +186,14 @@ p {
     align-items: center;
     padding: 0;
   }
-  
+
   .nav-button {
     width: 100%;
     max-width: 100%;
     height: 50px;
-    flex: 1 1 auto; 
+    flex: 1 1 auto;
   }
-  
+
   .container {
     padding: 0 10px;
   }

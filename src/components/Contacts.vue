@@ -1,31 +1,57 @@
 <template>
-  <section>
-    <div class="vertical-menu">
-      <div class="menu-content">
-        <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
-        <ul class="menu-list">
-          <li><a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a></li>
-          <li><a href="https://t.me/Ignidra" class="menu-link" target="_blank">TELEGRAM</a></li>
-          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" class="menu-link" target="_blank">GMAIL</a></li>
-          <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
-          <li><a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank">PINTEREST</a></li>
-        </ul>
-        <img src="../assets/logo.svg" alt="Логотип разработчика">
-      </div>
+  <footer class="vertical-menu">
+    <div class="menu-content">
+      <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
+
+      <ul class="menu-list">
+        <li>
+          <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
+        </li>
+        <li>
+          <a href="https://t.me/Ignidra" class="menu-link" target="_blank" rel="noopener">
+            TELEGRAM
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!"
+            class="menu-link"
+            target="_blank"
+            rel="noopener"
+          >
+            GMAIL
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Zulu002" class="menu-link" target="_blank" rel="noopener">
+            GITHUB
+          </a>
+        </li>
+        <li>
+          <a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank" rel="noopener">
+            PINTEREST
+          </a>
+        </li>
+      </ul>
+
+      <img src="../assets/logo.svg" alt="Логотип разработчика" class="brand-logo" />
     </div>
-  </section>
+  </footer>
 </template>
 
 <script setup>
 const smoothScroll = (event) => {
   event.preventDefault();
-  const targetId = event.target.getAttribute('href').substring(1);
+  const href = event.currentTarget.getAttribute("href");
+  if (!href || !href.startsWith("#")) return;
+
+  const targetId = href.slice(1);
   const targetElement = document.getElementById(targetId);
-  
+
   if (targetElement) {
     targetElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+      behavior: "smooth",
+      block: "start",
     });
   }
 };
@@ -33,30 +59,36 @@ const smoothScroll = (event) => {
 
 <style scoped>
 .vertical-menu {
-  font-family: 'OpenSansBold';
-  padding: 40px 20px;
+  font-family: "OpenSansBold";
   width: 100%;
-  min-height: 100;
+  padding: 40px 20px;
   text-align: left;
+
+  border-top: 1px solid rgba(220, 220, 220, 0.18);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .menu-content {
-  min-height: 60vh;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* Заголовок — равен пунктам, не меньше */
 .menu-title {
+  margin: 0 0 12px;
   font-size: 2.5rem;
+  line-height: 1.05;
   color: #dcdcdc;
-  margin: 0;
-  padding: 0;
+  letter-spacing: 0.04em;
 }
 
 .menu-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
+
+  display: grid;
+  gap: 8px;
 }
 
 .menu-link {
@@ -64,50 +96,69 @@ const smoothScroll = (event) => {
   text-decoration: none;
   color: #dcdcdc;
   font-size: 2.5rem;
-  font-family: 'OpenSansBold';
-  transition: all 0.3s ease;
+  line-height: 1.05;
+
   cursor: pointer;
-  border: none;
-  background: none;
-  text-align: left;
   width: 100%;
+  text-align: left;
+
+  /* место под квадратик + стартовая позиция */
+  padding: 4px 0 4px 18px;
+  position: relative;
+
+  /* живость */
+  transition: color 0.18s ease, transform 0.18s ease;
 }
 
+/* квадратик-курсор */
+.menu-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  opacity: 0;
+  background: #ded0a1;
+}
+
+/* ✅ мягкий сдвиг вправо + цвет */
 .menu-link:hover {
-  color: #DED0A1;
-  padding-left: 10px;
+  color: #ded0a1;
+  transform: translateX(4px); /* ВАЖНО: маленькое значение */
 }
 
-.menu-link:last-child {
-  border-bottom: none;
+.menu-link:hover::before {
+  opacity: 1;
 }
 
-img{
+.menu-link:focus-visible {
+  outline: 2px solid rgba(222, 208, 161, 0.75);
+  outline-offset: 4px;
+}
+
+/* логотип */
+.brand-logo {
   width: 400px;
+  max-width: 80%;
+  margin-top: 18px;
+  display: block;
+  opacity: 0.95;
 }
 
 @media (max-width: 640px) {
   .vertical-menu {
     padding: 30px 20px;
   }
-  
-  .menu-title {
+
+  .menu-title,
+  .menu-link {
     font-size: 2rem;
   }
-  
-  .menu-link {
-    font-size: 2rem; /* Увеличил для мобильных */
-  }
 
-  .menu-link:active {
-    color: #66c0f4;
-    padding-left: 10px;
-  }
-
-  img{
+  .brand-logo {
     width: 75%;
   }
-
 }
-
 </style>
