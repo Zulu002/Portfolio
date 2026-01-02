@@ -54,7 +54,7 @@ const scrollToSection = (sectionId) => {
 }
 
 .developer-section {
-  color: #1F1E1C;
+  color: #dcdcdc;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -83,7 +83,7 @@ p {
 .divider {
   width: 100%;
   height: 5px;
-  background-color: #1F1E1C;
+  background-color: #DED0A1;
   margin: 5px 0px 10px 0px;
   max-width: 100%;
 }
@@ -108,22 +108,23 @@ p {
   border: none;
   transition: all 0.3s ease;
   cursor: pointer;
-  background-color: #1F1E1C;
-  color: white;
+  background-color: #DED0A1;
+  color: #1E1C17;
   flex: 1 1 0;
 }
 
 .nav-button:hover {
-  background-color: #5daddc;
+  background-color: #a69c78;
 }
 
 .nav-button--contact {
-  background-color: #1F1E1C;
+  background-color: #DED0A1;
+  color: #1E1C17;
   flex: 2 1 0;
 }
 
 .nav-button--contact:hover {
-  background-color: #8ece61;
+  background-color: #a69c78
 }
 
 /* Адаптивность */

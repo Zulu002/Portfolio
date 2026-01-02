@@ -10,7 +10,7 @@
           <li><a href="https://github.com/Zulu002" class="menu-link" target="_blank">GITHUB</a></li>
           <li><a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank">PINTEREST</a></li>
         </ul>
-        <img src="../assets/logofooter.svg" alt="Логотип разработчика">
+        <img src="../assets/logo.svg" alt="Логотип разработчика">
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@ const smoothScroll = (event) => {
 
 .menu-title {
   font-size: 2.5rem;
-  color: white;
+  color: #dcdcdc;
   margin: 0;
   padding: 0;
 }
@@ -62,7 +62,7 @@ const smoothScroll = (event) => {
 .menu-link {
   display: block;
   text-decoration: none;
-  color: #ffffff;
+  color: #dcdcdc;
   font-size: 2.5rem;
   font-family: 'OpenSansBold';
   transition: all 0.3s ease;
@@ -74,7 +74,7 @@ const smoothScroll = (event) => {
 }
 
 .menu-link:hover {
-  color: #66c0f4;
+  color: #DED0A1;
   padding-left: 10px;
 }
 

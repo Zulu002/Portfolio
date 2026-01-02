@@ -1,6 +1,5 @@
 <script setup>
 import About from './components/About.vue';
-import Skills from './components/Skills.vue';
 import Project from './components/Project.vue';
 import Graphics from './components/Graphics.vue';
 import Contacts from './components/Contacts.vue';
@@ -9,7 +8,6 @@ import Contacts from './components/Contacts.vue';
 <template>
   <div class="container">
       <About id="about" class="section section-1"/>
-      <Skills id="skills" class="section section-2"/>
       <Project id="projects" class="section section-3"/>
       <Graphics id="graphics" class="section section-4"/>
       <Contacts id="contacts" class="section section-5"/>  
@@ -35,30 +33,18 @@ import Contacts from './components/Contacts.vue';
 }
 
 /* Фоны для секций */
-.section-1 { background-color: #EDEDED;}
-.section-2 { 
-   background-color: #1B2838;
+.section-1 { background-color: #1E1C17;}
+.section-3 {background-color: #1E1C17;
     background-image: 
-        radial-gradient(rgba(26, 159, 255, 0.15) 2px, transparent 1px),
-        radial-gradient(rgba(26, 159, 255, 0.1) 2px, transparent 1px);
+        radial-gradient(rgba(222, 208, 161, 0.15) 2px, transparent 1px),
+        radial-gradient(rgba(222, 208, 161, 0.1) 2px, transparent 1px);
     background-size: 40px 40px, 80px 80px;
-    background-position: 0 0, 20px 20px; 
-}
-.section-3 {
-  background-color: rgb(26, 159, 255);
-  background-image: 
-      linear-gradient(#EDEDED 2px, transparent 1px),
-      linear-gradient(90deg, #EDEDED 2px, transparent 1px);
-  background-size: 60px 60px;
-  background-position: center;
-}
-.section-4 { background-color: #EDEDED;}
-.section-5 {
-    background-color: #1B2838;
+    background-position: 0 0, 20px 20px; }
+.section-4 { background-color: #dcdcdc}
+.section-5 {background-color: #1E1C17;
     background-image: 
-        radial-gradient(rgba(26, 159, 255, 0.15) 2px, transparent 1px),
-        radial-gradient(rgba(26, 159, 255, 0.1) 2px, transparent 1px);
-    background-size: 40px 40px, 80px 80px; /* Две сетки разного размера */
-    background-position: 0 0, 20px 20px; /* Смещаем вторую сетку для объема */
-}
+        radial-gradient(rgba(222, 208, 161, 0.15) 2px, transparent 1px),
+        radial-gradient(rgba(222, 208, 161, 0.1) 2px, transparent 1px);
+    background-size: 40px 40px, 80px 80px;
+    background-position: 0 0, 20px 20px; }
 </style>

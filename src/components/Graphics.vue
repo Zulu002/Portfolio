@@ -7,42 +7,42 @@ export default {
         {
           id: 1,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo1.svg'
+          logo: 'src/assets/storage/logo1.svg'
         },
         {
           id: 2,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo2.svg'
+          logo: 'src/assets/storage/logo2.svg'
         },
         {
           id: 3,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'http://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo3.svg'
+          logo: 'src/assets/storage/logo3.svg'
         },
         {
           id: 4,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo4.svg'
+          logo: 'src/assets/storage/logo4.svg'
         },
         {
           id: 5,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo5.svg'
+          logo: 'src/assets/storage/logo5.svg'
         },
         {
           id: 6,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo6.svg'
+          logo: 'src/assets/storage/logo6.svg'
         },
         {
           id: 7,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo7.svg'
+          logo: 'src/assets/storage/logo7.svg'
         },
         {
           id: 8,
           link: 'https://pin.it/6jYmg8GZU',
-          logo: 'https://raw.githubusercontent.com/Zulu002/Storage/refs/heads/main/logo8.svg'
+          logo: 'src/assets/storage/logo8.svg'
         }
       ]
     }

@@ -8,6 +8,7 @@ export default {
           id: 1,
           title: 'Калькулятор накладных',
           description: 'Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.',
+          stack: ['HTML5', 'CSS3', 'JavaScript', 'illustrator'],
           link: 'https://zulu002.github.io/invoice/',
           logo: 'https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg'
         }
@@ -21,20 +22,47 @@ export default {
   <section>
     <div class="projects">
       <div class="content-wrapper">
+
         <div class="header-container">
           <h1 class="title">ПРОЕКТЫ</h1>
         </div>
 
         <div class="cards">
-          <div class="card" v-for="project in projects" :key="project.id">
+          <div
+            class="card"
+            v-for="project in projects"
+            :key="project.id"
+          >
             <div class="card-header">
-              <img :src="project.logo" :alt="project.title" class="logo" />
+              <img
+                :src="project.logo"
+                :alt="project.title"
+                class="logo"
+              />
               <h3 class="name">{{ project.title }}</h3>
             </div>
 
-            <p class="description">{{ project.description }}</p>
+            <p class="description">
+              {{ project.description }}
+            </p>
 
-            <a :href="project.link" class="btn" target="_blank">
+            <!-- Стек технологий -->
+            <div class="stack">
+              <span
+                class="stack-item"
+                v-for="tech in project.stack"
+                :key="tech"
+              >
+                {{ tech }}
+              </span>
+            </div>
+
+            <a
+              :href="project.link"
+              class="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Посмотреть проект
             </a>
           </div>
@@ -49,28 +77,20 @@ export default {
 .projects {
   font-family: 'OpenSansRegular';
   padding: 40px 20px;
-  position: relative;
-}
-
-.content-wrapper {
-  position: relative;
-  z-index: 1;
 }
 
 .header-container {
   max-width: 1000px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
 }
 
 .title {
-  text-align: left;
-  color: #ffffff; /* если фон тёмный — оставляй белый */
+  color: #dcdcdc;
   font-size: 2.5rem;
-  margin-bottom: 0;
   font-family: 'OpenSansBold';
 }
 
-/* Сетка и карточки как у макетов */
+/* Сетка */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -79,14 +99,13 @@ export default {
   margin: 0 auto;
 }
 
+/* Карточка */
 .card {
-  background: #ffffff;
+  background: #dcdcdc;
   padding: 25px;
   display: flex;
   flex-direction: column;
-  border: 1px solid transparent;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .card:hover {
@@ -94,7 +113,7 @@ export default {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* ВАЖНО: логотип слева, заголовок справа, по центру по вертикали */
+/* Хедер карточки */
 .card-header {
   display: flex;
   align-items: center;
@@ -106,69 +125,68 @@ export default {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .name {
-  color: #000000;
+  color: #000;
   font-size: 1.4rem;
-  margin: 0;
   font-family: 'OpenSansBold';
+  margin: 0;
 }
 
+/* Описание */
 .description {
-  color: #585758;
+  color: #4c4c4c;
   font-size: 0.95rem;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-grow: 1;
 }
 
+/* Стек */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.stack-item {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-family: 'OpenSansBold';
+  color: #2b2b2b;
+
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  user-select: none;
+}
+
+/* Кнопка */
 .btn {
-  display: inline-block;
-  background-color: #000000;
-  color: white;
+  background: #000;
+  color: #dcdcdc;
   text-decoration: none;
   padding: 12px 24px;
-  font-size: 1rem;
   font-family: 'OpenSansBold';
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
+  text-align: center;
+  transition: 0.3s ease;
 }
 
 .btn:hover {
-  background: #ffffff;
-  border-color: #000000;
-  color: #000000;
+  background: #dcdcdc;
+  color: #000;
+  border: 1px solid #000;
 }
 
-/* Мобильная версия */
+/* Мобилка */
 @media (max-width: 640px) {
-  .projects {
-    padding: 30px 15px;
-  }
-
   .title {
     font-size: 2rem;
   }
 
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .card {
     padding: 20px;
-  }
-
-  .logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .name {
-    font-size: 1.3rem;
   }
 }
 </style>
