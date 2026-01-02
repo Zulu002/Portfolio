@@ -1,6 +1,5 @@
 <script setup>
 const sections = [
-  { id: 'skills', label: 'НАВЫКИ' },
   { id: 'projects', label: 'ПРОЕКТЫ' },
   { id: 'graphics', label: 'ВИТРИНА' },
   { id: 'contacts', label: 'КОНТАКТЫ', isContact: true }
@@ -134,7 +133,7 @@ p {
   }
 
   h1 {
-    font-size: 2.4em;
+    font-size: 2.2em;
   }
 
   p {
