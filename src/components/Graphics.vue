@@ -1,49 +1,26 @@
 <script>
+import logo1 from '../assets/storage/logo1.svg'
+import logo2 from '../assets/storage/logo2.svg'
+import logo3 from '../assets/storage/logo3.svg'
+import logo4 from '../assets/storage/logo4.svg'
+import logo5 from '../assets/storage/logo5.svg'
+import logo6 from '../assets/storage/logo6.svg'
+import logo7 from '../assets/storage/logo7.svg'
+import logo8 from '../assets/storage/logo8.svg'
+
 export default {
   name: 'ProjectsGrid',
   data() {
     return {
       projects: [
-        {
-          id: 1,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo1.svg'
-        },
-        {
-          id: 2,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo2.svg'
-        },
-        {
-          id: 3,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo3.svg'
-        },
-        {
-          id: 4,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo4.svg'
-        },
-        {
-          id: 5,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo5.svg'
-        },
-        {
-          id: 6,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo6.svg'
-        },
-        {
-          id: 7,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo7.svg'
-        },
-        {
-          id: 8,
-          link: 'https://pin.it/6jYmg8GZU',
-          logo: 'src/assets/storage/logo8.svg'
-        }
+        { id: 1, link: 'https://pin.it/6jYmg8GZU', logo: logo1 },
+        { id: 2, link: 'https://pin.it/6jYmg8GZU', logo: logo2 },
+        { id: 3, link: 'https://pin.it/6jYmg8GZU', logo: logo3 },
+        { id: 4, link: 'https://pin.it/6jYmg8GZU', logo: logo4 },
+        { id: 5, link: 'https://pin.it/6jYmg8GZU', logo: logo5 },
+        { id: 6, link: 'https://pin.it/6jYmg8GZU', logo: logo6 },
+        { id: 7, link: 'https://pin.it/6jYmg8GZU', logo: logo7 },
+        { id: 8, link: 'https://pin.it/6jYmg8GZU', logo: logo8 }
       ]
     }
   }
@@ -54,20 +31,29 @@ export default {
   <section>
     <div class="projects-slider">
       <h1 class="title">ВИТРИНА</h1>
+
       <div class="slider-container">
         <div class="slides-wrapper">
           <div class="slides-track">
-            <a 
-              v-for="project in projects" 
-              :key="project.id" 
-              :href="project.link" 
+            <a
+              v-for="project in projects"
+              :key="project.id"
+              :href="project.link"
               class="slide-item"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <img :src="project.logo" :alt="'Project ' + project.id" class="project-image" />
+              <img
+                :src="project.logo"
+                :alt="'Project ' + project.id"
+                class="project-image"
+                loading="lazy"
+              />
             </a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 </template>
@@ -118,8 +104,8 @@ export default {
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
-  padding: 20px; 
+  object-fit: contain;
+  padding: 20px;
   transition: transform 0.3s ease;
   box-sizing: border-box;
 }
@@ -134,36 +120,36 @@ export default {
     min-height: auto;
     padding: 30px 0;
   }
-  
+
   .title {
     font-size: 2rem;
     text-align: left;
     padding: 0 15px;
     margin-bottom: 20px;
   }
-  
+
   .slider-container {
     padding: 0 15px;
     max-width: 100%;
   }
-  
+
   .slides-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin: 0;
   }
-  
+
   .slide-item {
     border-width: 2px;
   }
-  
+
   .slide-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
-  
+
   .project-image {
-    padding: 5px; 
+    padding: 5px;
   }
 }
 </style>
