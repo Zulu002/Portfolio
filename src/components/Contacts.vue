@@ -1,3 +1,16 @@
+<script setup>
+const smoothScroll = (event) => {
+  const href = event.currentTarget.getAttribute("href");
+  if (!href?.startsWith("#")) return;
+
+  event.preventDefault();
+  document.getElementById(href.slice(1))?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+</script>
+
 <template>
   <footer class="vertical-menu">
     <div class="menu-content">
@@ -8,7 +21,12 @@
           <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
         </li>
         <li>
-          <a href="https://t.me/Ignidra" class="menu-link" target="_blank" rel="noopener">
+          <a
+            href="https://t.me/Ignidra"
+            class="menu-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             TELEGRAM
           </a>
         </li>
@@ -17,18 +35,28 @@
             href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!"
             class="menu-link"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             GMAIL
           </a>
         </li>
         <li>
-          <a href="https://github.com/Zulu002" class="menu-link" target="_blank" rel="noopener">
+          <a
+            href="https://github.com/Zulu002"
+            class="menu-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GITHUB
           </a>
         </li>
         <li>
-          <a href="https://pin.it/2EtxOo6aR" class="menu-link" target="_blank" rel="noopener">
+          <a
+            href="https://pin.it/2EtxOo6aR"
+            class="menu-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             PINTEREST
           </a>
         </li>
@@ -39,31 +67,12 @@
   </footer>
 </template>
 
-<script setup>
-const smoothScroll = (event) => {
-  event.preventDefault();
-  const href = event.currentTarget.getAttribute("href");
-  if (!href || !href.startsWith("#")) return;
-
-  const targetId = href.slice(1);
-  const targetElement = document.getElementById(targetId);
-
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
-</script>
-
 <style scoped>
 .vertical-menu {
-  font-family: "OpenSansBold";
   width: 100%;
   padding: 40px 20px;
   text-align: left;
-
+  font-family: "OpenSansBold";
   border-top: 1px solid rgba(220, 220, 220, 0.18);
   background: rgba(0, 0, 0, 0.1);
 }
@@ -73,7 +82,6 @@ const smoothScroll = (event) => {
   margin: 0 auto;
 }
 
-/* Заголовок — равен пунктам, не меньше */
 .menu-title {
   margin: 0 0 12px;
   font-size: 2.5rem;
@@ -83,34 +91,30 @@ const smoothScroll = (event) => {
 }
 
 .menu-list {
+  display: grid;
+  gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
-
-  display: grid;
-  gap: 8px;
 }
 
 .menu-link {
   display: block;
+  width: 100%;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
+
   color: #dcdcdc;
   font-size: 2.5rem;
   line-height: 1.05;
 
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-
-  /* место под квадратик + стартовая позиция */
-  padding: 4px 0 4px 18px;
   position: relative;
+  padding: 4px 0 4px 18px;
 
-  /* живость */
   transition: color 0.18s ease, transform 0.18s ease;
 }
 
-/* квадратик-курсор */
 .menu-link::before {
   content: "";
   position: absolute;
@@ -123,10 +127,9 @@ const smoothScroll = (event) => {
   background: #ded0a1;
 }
 
-/* ✅ мягкий сдвиг вправо + цвет */
 .menu-link:hover {
   color: #ded0a1;
-  transform: translateX(4px); /* ВАЖНО: маленькое значение */
+  transform: translateX(4px);
 }
 
 .menu-link:hover::before {
@@ -138,12 +141,11 @@ const smoothScroll = (event) => {
   outline-offset: 4px;
 }
 
-/* логотип */
 .brand-logo {
+  display: block;
   width: 400px;
   max-width: 80%;
   margin-top: 18px;
-  display: block;
   opacity: 0.95;
 }
 

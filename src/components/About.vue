@@ -6,8 +6,10 @@ const sections = [
 ];
 
 const scrollToSection = (sectionId) => {
-  const targetElement = document.getElementById(sectionId);
-  targetElement?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById(sectionId)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 };
 </script>
 
@@ -57,75 +59,73 @@ const scrollToSection = (sectionId) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 15px;
+  width: 100%;
   max-width: 80%;
   margin: 0 auto;
-  width: 100%;
+  padding: 0 15px;
   box-sizing: border-box;
   overflow-x: hidden;
 }
 
 .developer-section {
-  color: #dcdcdc;
   width: 100%;
-  max-width: 100%;
+  color: #dcdcdc;
   box-sizing: border-box;
 }
 
 .developer-section img {
   width: min(410px, 100%);
   height: auto;
-  max-width: 100%;
 }
 
 h1 {
-  font-size: 45px;
+  margin: 0 0 15px;
   font-family: "OpenSansBold";
-  margin: 0 0 15px 0;
+  font-size: 45px;
 }
 
 p {
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
   font-family: "OpenSansRegular";
   font-size: 1.5vw;
   text-align: left;
-  max-width: 100%;
 }
 
 .divider {
   width: 100%;
   height: 5px;
-  background-color: #DED0A1;
-  margin: 5px 0px 10px 0px;
-  max-width: 100%;
+  margin: 5px 0 10px;
+  background-color: #ded0a1;
 }
 
 .navigation {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  flex-wrap: wrap;
-  padding: 0;
   width: 100%;
-  max-width: 100%;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .nav-button {
-  width: 214px;
-  height: 70px;
-  font-family: "OpenSansBold";
-  font-size: 25px;
-  border-radius: 2px;
-  border: none;
-  cursor: pointer;
-  background-color: #DED0A1;
-  color: #1E1C17;
-  flex: 1 1 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 214px;
+  height: 70px;
+  flex: 1 1 0;
+
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+
+  font-family: "OpenSansBold";
+  font-size: 25px;
+
+  background-color: #ded0a1;
+  color: #1e1c17;
 
   transition: background-color 0.3s ease;
 }
@@ -134,14 +134,15 @@ p {
   background-color: #a69c78;
 }
 
-/* ✅ текст всегда визуально по центру */
-.nav-label {
-  position: relative;
-  padding-left: 18px;
-  padding-right: 18px;
+.nav-button--contact {
+  flex: 2 1 0;
 }
 
-/* квадратик */
+.nav-label {
+  position: relative;
+  padding: 0 18px;
+}
+
 .nav-label::before {
   content: "";
   position: absolute;
@@ -150,7 +151,7 @@ p {
   width: 10px;
   height: 10px;
   transform: translateY(-50%);
-  background: #1E1C17;
+  background: #1e1c17;
   opacity: 0;
 }
 
@@ -158,21 +159,10 @@ p {
   opacity: 1;
 }
 
-
-.nav-button--contact {
-  background-color: #DED0A1;
-  color: #1E1C17;
-  flex: 2 1 0;
-}
-
-.nav-button--contact:hover {
-  background-color: #a69c78;
-}
-
-/* Адаптивность */
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
+    padding: 0 10px;
   }
 
   h1 {
@@ -186,26 +176,12 @@ p {
   .navigation {
     flex-direction: column;
     align-items: center;
-    padding: 0;
   }
 
   .nav-button {
     width: 100%;
-    max-width: 100%;
     height: 50px;
     flex: 1 1 auto;
-  }
-
-  .container {
-    padding: 0 10px;
-  }
-
-  .nav-button:active {
-    background-color: #85cdf8;
-  }
-
-  .nav-button--contact:active {
-    background-color: #8ece61;
   }
 }
 

@@ -1,154 +1,134 @@
 <script>
-import logo1 from '../assets/storage/logo1.svg'
-import logo2 from '../assets/storage/logo2.svg'
-import logo3 from '../assets/storage/logo3.svg'
-import logo4 from '../assets/storage/logo4.svg'
-import logo5 from '../assets/storage/logo5.svg'
-import logo6 from '../assets/storage/logo6.svg'
-import logo7 from '../assets/storage/logo7.svg'
-import logo8 from '../assets/storage/logo8.svg'
+import logo1 from "../assets/storage/logo1.svg";
+import logo2 from "../assets/storage/logo2.svg";
+import logo3 from "../assets/storage/logo3.svg";
+import logo4 from "../assets/storage/logo4.svg";
+import logo5 from "../assets/storage/logo5.svg";
+import logo6 from "../assets/storage/logo6.svg";
+import logo7 from "../assets/storage/logo7.svg";
+import logo8 from "../assets/storage/logo8.svg";
 
 export default {
-  name: 'ProjectsGrid',
   data() {
     return {
       projects: [
-        { id: 1, link: 'https://pin.it/6jYmg8GZU', logo: logo1 },
-        { id: 2, link: 'https://pin.it/6jYmg8GZU', logo: logo2 },
-        { id: 3, link: 'https://pin.it/6jYmg8GZU', logo: logo3 },
-        { id: 4, link: 'https://pin.it/6jYmg8GZU', logo: logo4 },
-        { id: 5, link: 'https://pin.it/6jYmg8GZU', logo: logo5 },
-        { id: 6, link: 'https://pin.it/6jYmg8GZU', logo: logo6 },
-        { id: 7, link: 'https://pin.it/6jYmg8GZU', logo: logo7 },
-        { id: 8, link: 'https://pin.it/6jYmg8GZU', logo: logo8 }
-      ]
-    }
-  }
-}
+        { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
+        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
+        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
+        { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
+        { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
+        { id: 6, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
+        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo7 },
+        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
+      ],
+    };
+  },
+};
 </script>
 
 <template>
-  <section>
-    <div class="projects-slider">
+  <section class="projects-showcase">
+    <div class="showcase-wrapper">
       <h1 class="title">ВИТРИНА</h1>
 
-      <div class="slider-container">
-        <div class="slides-wrapper">
-          <div class="slides-track">
-            <a
-              v-for="project in projects"
-              :key="project.id"
-              :href="project.link"
-              class="slide-item"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                :src="project.logo"
-                :alt="'Project ' + project.id"
-                class="project-image"
-                loading="lazy"
-              />
-            </a>
-          </div>
-        </div>
+      <div class="grid">
+        <a
+          v-for="project in projects"
+          :key="project.id"
+          :href="project.link"
+          class="tile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            :src="project.logo"
+            :alt="`Project ${project.id}`"
+            class="image"
+            loading="lazy"
+          />
+        </a>
       </div>
-
     </div>
   </section>
 </template>
 
 <style scoped>
-.projects-slider {
-  font-family: 'OpenSansRegular';
+.projects-showcase {
   width: 100%;
+  font-family: "OpenSansRegular";
 }
 
-.title {
-  text-align: center;
-  color: #000000;
-  font-size: 2.5rem;
-  font-family: 'OpenSansBold';
-  margin-top: 0;
-}
-
-.slider-container {
+.showcase-wrapper {
   max-width: 85%;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.slides-wrapper {
-  overflow: hidden;
-  position: relative;
-}
-
-.slides-track {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  justify-content: center;
-}
-
-.slide-item {
-  background: #2a475e;
-  border: 1px solid #3c5a78;
-  aspect-ratio: 1;
-  display: flex;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  position: relative;
-}
-
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  transition: transform 0.3s ease;
   box-sizing: border-box;
 }
 
-.slide-item:hover .project-image {
+.title {
+  margin: 0 0 20px;
+  color: #000;
+  font-size: 2.5rem;
+  font-family: "OpenSansBold";
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1;
+  overflow: hidden;
+  text-decoration: none;
+  background: #2a475e;
+  border: 1px solid #3c5a78;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.tile:hover .image {
   transform: scale(1.1);
 }
 
-/* Адаптивность для 640px */
 @media (max-width: 640px) {
-  .projects-slider {
-    min-height: auto;
-    padding: 30px 0;
+  .showcase-wrapper {
+    max-width: 100%;
+    padding: 0 15px;
   }
 
   .title {
-    font-size: 2rem;
     text-align: left;
-    padding: 0 15px;
-    margin-bottom: 20px;
+    font-size: 2rem;
   }
 
-  .slider-container {
-    padding: 0 15px;
-    max-width: 100%;
-  }
-
-  .slides-track {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin: 0;
   }
 
-  .slide-item {
+  .tile {
     border-width: 2px;
   }
 
-  .slide-item:hover {
+  .tile:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
-  .project-image {
+  .image {
     padding: 5px;
   }
 }
