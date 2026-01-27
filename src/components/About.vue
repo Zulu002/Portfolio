@@ -111,7 +111,9 @@ p {
   margin: 0 0 15px;
   font-family: "OpenSansRegular";
   font-size: 1.5vw;
-  text-align: justify;
+  text-align: left;
+  line-height: 1.5;
+  hyphens: auto;
   width: 100%;
 }
 
