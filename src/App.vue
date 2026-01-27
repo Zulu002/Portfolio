@@ -80,20 +80,6 @@ const setLanguage = (nextLanguage) => {
   border-color: transparent;
 }
 
-@media (max-width: 640px) {
-  .language-switcher {
-    top: 12px;
-    right: 12px;
-    padding: 4px;
-    gap: 4px;
-  }
-
-  .language-button {
-    padding: 4px 10px;
-    font-size: 0.7rem;
-  }
-}
-
 .section {
   display: flex;
   justify-content: center;
