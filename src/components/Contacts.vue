@@ -62,7 +62,11 @@ const smoothScroll = (event) => {
         </li>
       </ul>
 
-      <img src="../assets/logo.svg" alt="Логотип разработчика" class="brand-logo" />
+      <img
+        src="../assets/logo.svg"
+        alt="Логотип разработчика"
+        class="brand-logo"
+      />
     </div>
   </footer>
 </template>
@@ -124,11 +128,11 @@ const smoothScroll = (event) => {
   height: 10px;
   transform: translateY(-50%);
   opacity: 0;
-  background: #ded0a1;
+  background: #a5d3c6;
 }
 
 .menu-link:hover {
-  color: #ded0a1;
+  color: #a5d3c6;
   transform: translateX(4px);
 }
 
@@ -136,17 +140,13 @@ const smoothScroll = (event) => {
   opacity: 1;
 }
 
-.menu-link:focus-visible {
-  outline: 2px solid rgba(222, 208, 161, 0.75);
-  outline-offset: 4px;
-}
-
+/* ✅ маленький центрированный логотип */
 .brand-logo {
   display: block;
-  width: 400px;
-  max-width: 80%;
-  margin-top: 18px;
-  opacity: 0.95;
+  width: 110px;        /* ключевое изменение */
+  height: auto;
+  margin: 56px auto 0; /* центр + отступ сверху */
+  opacity: 0.9;
 }
 
 @media (max-width: 640px) {
@@ -160,7 +160,8 @@ const smoothScroll = (event) => {
   }
 
   .brand-logo {
-    width: 75%;
+    width: 90px;
+    margin-top: 24px;
   }
 }
 </style>

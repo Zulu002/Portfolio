@@ -37,13 +37,13 @@ import Contacts from "./components/Contacts.vue";
 .section-5 {
   background-color: #1e1c17;
   background-image:
-    radial-gradient(rgba(222, 208, 161, 0.15) 2px, transparent 1px),
-    radial-gradient(rgba(222, 208, 161, 0.1) 2px, transparent 1px);
+    radial-gradient(rgba(165, 211, 198, 0.1) 2px, transparent 1px),
+    radial-gradient(rgba(165, 211, 198, 0.1) 2px, transparent 1px);
   background-size: 40px 40px, 80px 80px;
   background-position: 0 0, 20px 20px;
 }
 
 .section-4 {
-  background-color: #dcdcdc;
+  background-color: #EEE6DB;
 }
 </style>

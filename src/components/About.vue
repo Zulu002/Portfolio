@@ -18,7 +18,7 @@ const scrollToSection = (sectionId) => {
     <main class="container">
       <section class="developer-section">
         <img src="../assets/logo.svg" alt="Логотип разработчика" />
-        <h1>О РАЗРАБОТЧИКЕ</h1>
+
         <p>
           Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также
           интересуюсь разработкой игр (геймдевом).
@@ -71,31 +71,31 @@ const scrollToSection = (sectionId) => {
   width: 100%;
   color: #dcdcdc;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .developer-section img {
-  width: min(410px, 100%);
+  width: 120px;
   height: auto;
-}
-
-h1 {
-  margin: 0 0 15px;
-  font-family: "OpenSansBold";
-  font-size: 45px;
+  margin-bottom: 25px;
 }
 
 p {
   margin: 0 0 15px;
   font-family: "OpenSansRegular";
   font-size: 1.5vw;
-  text-align: left;
+  text-align: justify;
+  width: 100%;
 }
 
 .divider {
   width: 100%;
-  height: 5px;
+  height: 3px;
   margin: 5px 0 10px;
-  background-color: #ded0a1;
+  background-color: #a5d3c6;
 }
 
 .navigation {
@@ -124,14 +124,14 @@ p {
   font-family: "OpenSansBold";
   font-size: 25px;
 
-  background-color: #ded0a1;
+  background-color: #a5d3c6; 
   color: #1e1c17;
 
   transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #a69c78;
+  background-color: #7fb8a7;
 }
 
 .nav-button--contact {
@@ -165,10 +165,6 @@ p {
     padding: 0 10px;
   }
 
-  h1 {
-    font-size: 2em;
-  }
-
   p {
     font-size: 18px;
   }
@@ -182,6 +178,11 @@ p {
     width: 100%;
     height: 50px;
     flex: 1 1 auto;
+  }
+
+  .developer-section img {
+    width: 90px;
+    margin-bottom: 18px;
   }
 }
 
