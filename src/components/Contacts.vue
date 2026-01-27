@@ -1,4 +1,32 @@
 <script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  language: {
+    type: String,
+    default: "ru",
+  },
+});
+
+const translations = {
+  ru: {
+    title: "КОНТАКТЫ И ДРУГОЕ",
+    about: "ОБО МНЕ",
+    logoAlt: "Логотип разработчика",
+    emailHref:
+      "https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!",
+  },
+  en: {
+    title: "CONTACTS & LINKS",
+    about: "ABOUT ME",
+    logoAlt: "Developer logo",
+    emailHref:
+      "https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Portfolio&body=Hello!",
+  },
+};
+
+const content = computed(() => translations[props.language] ?? translations.ru);
+
 const smoothScroll = (event) => {
   const href = event.currentTarget.getAttribute("href");
   if (!href?.startsWith("#")) return;
@@ -14,11 +42,13 @@ const smoothScroll = (event) => {
 <template>
   <footer class="vertical-menu">
     <div class="menu-content">
-      <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
+      <p class="menu-title">{{ content.title }}</p>
 
       <ul class="menu-list">
         <li>
-          <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
+          <a href="#about" class="menu-link" @click="smoothScroll">
+            {{ content.about }}
+          </a>
         </li>
         <li>
           <a
@@ -32,7 +62,7 @@ const smoothScroll = (event) => {
         </li>
         <li>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!"
+            :href="content.emailHref"
             class="menu-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -64,7 +94,7 @@ const smoothScroll = (event) => {
 
       <img
         src="../assets/logo.svg"
-        alt="Логотип разработчика"
+        :alt="content.logoAlt"
         class="brand-logo"
       />
     </div>
