@@ -80,34 +80,6 @@ const setLanguage = (nextLanguage) => {
   border-color: transparent;
 }
 
-@media (max-width: 640px) {
-  .language-switcher {
-    top: 10px;
-    right: 10px;
-    padding: 2px;
-    gap: 2px;
-  }
-
-  .language-button {
-    padding: 3px 8px;
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .language-switcher {
-    top: 8px;
-    right: 8px;
-    padding: 2px;
-    gap: 2px;
-  }
-
-  .language-button {
-    padding: 2px 6px;
-    font-size: 0.6rem;
-  }
-}
-
 .section {
   display: flex;
   justify-content: center;
