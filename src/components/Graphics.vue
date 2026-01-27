@@ -9,6 +9,12 @@ import logo7 from "../assets/storage/logo7.svg";
 import logo8 from "../assets/storage/logo8.svg";
 
 export default {
+  props: {
+    language: {
+      type: String,
+      default: "ru",
+    },
+  },
   data() {
     return {
       projects: [
@@ -23,13 +29,18 @@ export default {
       ],
     };
   },
+  computed: {
+    title() {
+      return this.language === "en" ? "SHOWCASE" : "ВИТРИНА";
+    },
+  },
 };
 </script>
 
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <h1 class="title">ВИТРИНА</h1>
+      <h1 class="title">{{ title }}</h1>
 
       <div class="grid">
         <a
