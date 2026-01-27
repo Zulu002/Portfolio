@@ -75,37 +75,39 @@ const smoothScroll = (event) => {
 .vertical-menu {
   width: 100%;
   padding: 40px 20px;
-  text-align: left;
   font-family: "OpenSansBold";
   border-top: 1px solid rgba(220, 220, 220, 0.18);
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* центрируем всё содержимое */
 .menu-content {
   max-width: 900px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .menu-title {
-  margin: 0 0 12px;
+  margin: 0 0 18px;
   font-size: 2.5rem;
   line-height: 1.05;
   color: #dcdcdc;
   letter-spacing: 0.04em;
 }
 
+/* список по центру */
 .menu-list {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-items: center;
 }
 
+/* ссылки */
 .menu-link {
-  display: block;
-  width: 100%;
-  text-align: left;
+  position: relative;
   text-decoration: none;
   cursor: pointer;
 
@@ -113,39 +115,49 @@ const smoothScroll = (event) => {
   font-size: 2.5rem;
   line-height: 1.05;
 
-  position: relative;
-  padding: 4px 0 4px 18px;
-
-  transition: color 0.18s ease, transform 0.18s ease;
+  padding: 6px 28px;
+  transition: color 0.2s ease;
 }
 
-.menu-link::before {
+/* квадраты слева и справа */
+.menu-link::before,
+.menu-link::after {
   content: "";
   position: absolute;
-  left: 0;
   top: 50%;
   width: 10px;
   height: 10px;
-  transform: translateY(-50%);
-  opacity: 0;
   background: #a5d3c6;
+  transform: translateY(-50%) scale(0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.menu-link::before {
+  left: 0;
+}
+
+.menu-link::after {
+  right: 0;
+}
+
+/* hover-эффект */
 .menu-link:hover {
   color: #a5d3c6;
-  transform: translateX(4px);
 }
 
-.menu-link:hover::before {
+.menu-link:hover::before,
+.menu-link:hover::after {
   opacity: 1;
+  transform: translateY(-50%) scale(1);
 }
 
-/* ✅ маленький центрированный логотип */
+/* логотип */
 .brand-logo {
   display: block;
-  width: 110px;        /* ключевое изменение */
+  width: 110px;
   height: auto;
-  margin: 56px auto 0; /* центр + отступ сверху */
+  margin: 64px auto 0;
   opacity: 0.9;
 }
 
@@ -161,7 +173,7 @@ const smoothScroll = (event) => {
 
   .brand-logo {
     width: 90px;
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 </style>
