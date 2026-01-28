@@ -1,32 +1,4 @@
 <script setup>
-import { computed } from "vue";
-
-const props = defineProps({
-  language: {
-    type: String,
-    default: "ru",
-  },
-});
-
-const content = computed(() =>
-  props.language === "en"
-    ? {
-        alt: "Developer logo",
-        paragraphs: [
-          "My name is Gadzhi. I am a designer focused on graphic and web design, and I am also interested in game development.",
-          "Since childhood, I have been fascinated by video games, and over time that fascination grew into a desire to understand and create them myself. This motivated me to develop my design skills: in college I started with logos, brand identities, and website layouts.",
-          "I am now actively growing in web development, diving deeper into JavaScript and front-end frameworks to create digital products that are not only visually appealing but also functional.",
-        ],
-      }
-    : {
-        alt: "Логотип разработчика",
-        paragraphs: [
-          "Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также интересуюсь разработкой игр (геймдевом).",
-          "С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в желание понимать и создавать их самому. Это побудило меня развивать навыки дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов для веб-сайтов.",
-          "Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально привлекательные, но и функциональные цифровые продукты.",
-        ],
-      }
-);
 </script>
 
 <template>
