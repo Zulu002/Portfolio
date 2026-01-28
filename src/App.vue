@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
@@ -7,71 +7,31 @@ import Contacts from "./components/Contacts.vue";
 
 const language = ref("ru");
 
-const navContent = computed(() =>
-  language.value === "en"
-    ? {
-        ariaLabel: "Main sections",
-        sections: [
-          { id: "projects", label: "PROJECTS" },
-          { id: "graphics", label: "SHOWCASE" },
-          { id: "contacts", label: "CONTACTS" },
-        ],
-      }
-    : {
-        ariaLabel: "Основные разделы",
-        sections: [
-          { id: "projects", label: "ПРОЕКТЫ" },
-          { id: "graphics", label: "ВИТРИНА" },
-          { id: "contacts", label: "КОНТАКТЫ" },
-        ],
-      }
-);
-
 const setLanguage = (nextLanguage) => {
   language.value = nextLanguage;
-};
-
-const scrollToSection = (sectionId) => {
-  document.getElementById(sectionId)?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
 };
 </script>
 
 <template>
   <div class="container">
-    <header class="site-header">
-      <nav class="site-navigation" :aria-label="navContent.ariaLabel">
-        <button
-          v-for="section in navContent.sections"
-          :key="section.id"
-          class="site-nav-button"
-          type="button"
-          @click="scrollToSection(section.id)"
-        >
-          {{ section.label }}
-        </button>
-      </nav>
-      <div class="language-switcher" role="group" aria-label="Language switcher">
-        <button
-          class="language-button"
-          :class="{ active: language === 'ru' }"
-          type="button"
-          @click="setLanguage('ru')"
-        >
-          RU
-        </button>
-        <button
-          class="language-button"
-          :class="{ active: language === 'en' }"
-          type="button"
-          @click="setLanguage('en')"
-        >
-          EN
-        </button>
-      </div>
-    </header>
+    <div class="language-switcher" role="group" aria-label="Language switcher">
+      <button
+        class="language-button"
+        :class="{ active: language === 'ru' }"
+        type="button"
+        @click="setLanguage('ru')"
+      >
+        RU
+      </button>
+      <button
+        class="language-button"
+        :class="{ active: language === 'en' }"
+        type="button"
+        @click="setLanguage('en')"
+      >
+        EN
+      </button>
+    </div>
 
     <About id="about" class="section section-1" :language="language" />
     <Project id="projects" class="section section-3" :language="language" />
@@ -85,52 +45,10 @@ const scrollToSection = (sectionId) => {
   min-height: 100%;
 }
 
-.site-header {
+.language-switcher {
   position: fixed;
   top: 20px;
-  left: 20px;
   right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  z-index: 10;
-}
-
-.site-navigation {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
-}
-
-.site-nav-button {
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 6px 16px;
-  font-family: "OpenSansBold";
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-  color: #dcdcdc;
-  background: transparent;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.site-nav-button:hover {
-  border-color: rgba(165, 211, 198, 0.8);
-}
-
-.site-nav-button:focus-visible {
-  outline: 2px solid #a5d3c6;
-  outline-offset: 2px;
-}
-
-.language-switcher {
   display: inline-flex;
   gap: 6px;
   padding: 6px;
@@ -197,24 +115,9 @@ const scrollToSection = (sectionId) => {
 }
 
 @media (max-width: 768px) {
-  .site-header {
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .site-navigation {
-    justify-content: center;
-  }
-
-  .site-nav-button {
-    padding: 4px 12px;
-    font-size: 0.75rem;
-  }
-
   .language-switcher {
+    top: 12px;
+    right: 12px;
     padding: 4px;
   }
 
