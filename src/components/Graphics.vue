@@ -9,12 +9,6 @@ import logo7 from "../assets/storage/logo7.svg";
 import logo8 from "../assets/storage/logo8.svg";
 
 export default {
-  props: {
-    language: {
-      type: String,
-      default: "ru",
-    },
-  },
   data() {
     return {
       projects: [
@@ -28,11 +22,6 @@ export default {
         { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
       ],
     };
-  },
-  computed: {
-    heading() {
-      return this.language === "en" ? "SHOWCASE" : "ВИТРИНА";
-    },
   },
 };
 </script>
