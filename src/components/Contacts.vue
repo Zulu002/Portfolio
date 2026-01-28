@@ -176,12 +176,6 @@ const smoothScroll = (event) => {
   color: #a5d3c6;
 }
 
-.menu-link:focus-visible {
-  outline: 2px solid #a5d3c6;
-  outline-offset: 6px;
-  border-radius: 4px;
-}
-
 .menu-link:hover::before,
 .menu-link:hover::after {
   opacity: 1;

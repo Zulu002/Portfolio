@@ -92,7 +92,6 @@ const scrollToSection = (sectionId) => {
 
 .developer-section {
   width: 100%;
-  max-width: 760px;
   color: #dcdcdc;
   box-sizing: border-box;
 
@@ -115,7 +114,6 @@ p {
   line-height: 1.5;
   hyphens: auto;
   width: 100%;
-  max-width: 700px;
 }
 
 .divider {
@@ -159,11 +157,6 @@ p {
 
 .nav-button:hover {
   background-color: #7fb8a7;
-}
-
-.nav-button:focus-visible {
-  outline: 2px solid #1e1c17;
-  outline-offset: 3px;
 }
 
 .nav-button--contact {
