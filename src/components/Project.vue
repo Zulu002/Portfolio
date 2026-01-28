@@ -178,6 +178,11 @@ export default {
   border-color: #000;
 }
 
+.btn:focus-visible {
+  outline: 2px solid #a5d3c6;
+  outline-offset: 3px;
+}
+
 @media (max-width: 640px) {
   .title {
     font-size: 2rem;
