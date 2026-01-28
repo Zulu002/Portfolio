@@ -42,7 +42,7 @@ const setLanguage = (nextLanguage) => {
 
 <style scoped>
 .container {
-  min-height: 100%;
+  overflow-y: auto;
 }
 
 .language-switcher {
@@ -106,22 +106,5 @@ const setLanguage = (nextLanguage) => {
 
 .section-4 {
   background-color: #EEE6DB;
-}
-
-@media (max-width: 768px) {
-  .language-switcher {
-    top: 12px;
-    right: 12px;
-    padding: 4px;
-  }
-
-  .language-button {
-    padding: 4px 12px;
-    font-size: 0.75rem;
-  }
-
-  .section {
-    padding: 16px;
-  }
 }
 </style>
