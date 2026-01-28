@@ -8,10 +8,6 @@
   src: url('../src/assets/OpenSans-Bold.ttf') format('truetype');
 }
 
-html {
-  scroll-padding-top: 80px;
-}
-
 body {
   margin: 0;
 }

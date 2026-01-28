@@ -114,11 +114,6 @@ export default {
   transform: scale(1.1);
 }
 
-.tile:focus-visible {
-  outline: 3px solid #a5d3c6;
-  outline-offset: 3px;
-}
-
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
