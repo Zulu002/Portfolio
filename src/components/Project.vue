@@ -92,13 +92,13 @@ export default {
 .title {
   margin-bottom: 30px;
   color: #EEE6DB;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 1.4vw + 1.3rem, 2.6rem);
   font-family: "OpenSansBold";
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
 }
 
@@ -176,6 +176,11 @@ export default {
   background: #dcdcdc;
   color: #000;
   border-color: #000;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #a5d3c6;
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {

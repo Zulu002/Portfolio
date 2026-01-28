@@ -84,15 +84,15 @@ const scrollToSection = (sectionId) => {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 80%;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 .developer-section {
   width: 100%;
+  max-width: 760px;
   color: #dcdcdc;
   box-sizing: border-box;
 
@@ -110,11 +110,12 @@ const scrollToSection = (sectionId) => {
 p {
   margin: 0 0 15px;
   font-family: "OpenSansRegular";
-  font-size: 1.5vw;
+  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.25rem);
   text-align: left;
   line-height: 1.5;
   hyphens: auto;
   width: 100%;
+  max-width: 700px;
 }
 
 .divider {
@@ -139,16 +140,16 @@ p {
   align-items: center;
   justify-content: center;
 
-  width: 214px;
-  height: 70px;
-  flex: 1 1 0;
+  min-width: 180px;
+  height: 64px;
+  flex: 1 1 180px;
 
   border: none;
   border-radius: 2px;
   cursor: pointer;
 
   font-family: "OpenSansBold";
-  font-size: 25px;
+  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.4rem);
 
   background-color: #a5d3c6; 
   color: #1e1c17;
@@ -160,8 +161,13 @@ p {
   background-color: #7fb8a7;
 }
 
+.nav-button:focus-visible {
+  outline: 2px solid #1e1c17;
+  outline-offset: 3px;
+}
+
 .nav-button--contact {
-  flex: 2 1 0;
+  flex: 1.4 1 220px;
 }
 
 .nav-label {
@@ -188,11 +194,11 @@ p {
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding: 0 10px;
+    padding: 0 12px;
   }
 
   p {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .navigation {
@@ -202,7 +208,8 @@ p {
 
   .nav-button {
     width: 100%;
-    height: 50px;
+    min-width: 0;
+    height: 52px;
     flex: 1 1 auto;
   }
 

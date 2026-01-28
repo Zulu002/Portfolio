@@ -70,7 +70,7 @@ export default {
 }
 
 .showcase-wrapper {
-  max-width: 85%;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -114,6 +114,23 @@ export default {
   transform: scale(1.1);
 }
 
+.tile:focus-visible {
+  outline: 3px solid #a5d3c6;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
   .showcase-wrapper {
     max-width: 100%;
@@ -126,7 +143,6 @@ export default {
   }
 
   .grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
@@ -141,6 +157,12 @@ export default {
 
   .image {
     padding: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

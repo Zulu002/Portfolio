@@ -42,7 +42,7 @@ const setLanguage = (nextLanguage) => {
 
 <style scoped>
 .container {
-  overflow-y: auto;
+  min-height: 100%;
 }
 
 .language-switcher {
@@ -74,6 +74,11 @@ const setLanguage = (nextLanguage) => {
   border-color: rgba(165, 211, 198, 0.8);
 }
 
+.language-button:focus-visible {
+  outline: 2px solid #a5d3c6;
+  outline-offset: 2px;
+}
+
 .language-button.active {
   background: #a5d3c6;
   color: #1e1c17;
@@ -84,10 +89,11 @@ const setLanguage = (nextLanguage) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+  scroll-margin-top: 80px;
 }
 
 .section-1 {
@@ -106,5 +112,22 @@ const setLanguage = (nextLanguage) => {
 
 .section-4 {
   background-color: #EEE6DB;
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    top: 12px;
+    right: 12px;
+    padding: 4px;
+  }
+
+  .language-button {
+    padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+
+  .section {
+    padding: 16px;
+  }
 }
 </style>
