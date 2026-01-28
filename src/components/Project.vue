@@ -1,24 +1,13 @@
 <script>
 export default {
-  props: {
-    language: {
-      type: String,
-      default: "ru",
-    },
-  },
   data() {
     return {
       projects: [
         {
           id: 1,
-          title: {
-            ru: "Калькулятор накладных",
-            en: "Invoice Calculator",
-          },
-          description: {
-            ru: "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
-            en: "A web app that simplifies calculation work when filling out physical invoices.",
-          },
+          title: "Калькулятор накладных",
+          description:
+            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
           stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
@@ -26,31 +15,16 @@ export default {
       ],
     };
   },
-  computed: {
-    title() {
-      return this.language === "en" ? "PROJECTS" : "ПРОЕКТЫ";
-    },
-    buttonLabel() {
-      return this.language === "en" ? "View project" : "Посмотреть проект";
-    },
-    localizedProjects() {
-      return this.projects.map((project) => ({
-        ...project,
-        title: project.title[this.language] ?? project.title.ru,
-        description: project.description[this.language] ?? project.description.ru,
-      }));
-    },
-  },
 };
 </script>
 
 <template>
   <section class="projects">
     <div class="projects-wrapper">
-      <h1 class="title">{{ title }}</h1>
+      <h1 class="title">ПРОЕКТЫ</h1>
 
       <div class="cards">
-        <article v-for="project in localizedProjects" :key="project.id" class="card">
+        <article v-for="project in projects" :key="project.id" class="card">
           <header class="card-header">
             <img :src="project.logo" :alt="project.title" class="logo" />
             <h3 class="name">{{ project.title }}</h3>
@@ -70,7 +44,7 @@ export default {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {{ buttonLabel }}
+            Посмотреть проект
           </a>
         </article>
       </div>
