@@ -1,4 +1,36 @@
 <script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  language: {
+    type: String,
+    default: "ru",
+  },
+});
+
+const content = computed(() =>
+  props.language === "en"
+    ? {
+        title: "CONTACTS & MORE",
+        aboutLabel: "ABOUT ME",
+        mailSubject: "Portfolio",
+        mailBody: "Hello!",
+        logoAlt: "Developer logo",
+      }
+    : {
+        title: "КОНТАКТЫ И ДРУГОЕ",
+        aboutLabel: "ОБО МНЕ",
+        mailSubject: "Портфолио",
+        mailBody: "Здравствуйте!",
+        logoAlt: "Логотип разработчика",
+      }
+);
+
+const mailtoLink = computed(() => {
+  const subject = encodeURIComponent(content.value.mailSubject);
+  const body = encodeURIComponent(content.value.mailBody);
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=${subject}&body=${body}`;
+});
 const smoothScroll = (event) => {
   const href = event.currentTarget.getAttribute("href");
   if (!href?.startsWith("#")) return;
@@ -14,11 +46,13 @@ const smoothScroll = (event) => {
 <template>
   <footer class="vertical-menu">
     <div class="menu-content">
-      <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
+      <p class="menu-title">{{ content.title }}</p>
 
       <ul class="menu-list">
         <li>
-          <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
+          <a href="#about" class="menu-link" @click="smoothScroll">
+            {{ content.aboutLabel }}
+          </a>
         </li>
         <li>
           <a
@@ -32,7 +66,7 @@ const smoothScroll = (event) => {
         </li>
         <li>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!"
+            :href="mailtoLink"
             class="menu-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -64,7 +98,7 @@ const smoothScroll = (event) => {
 
       <img
         src="../assets/logo.svg"
-        alt="Логотип разработчика"
+        :alt="content.logoAlt"
         class="brand-logo"
       />
     </div>
@@ -80,7 +114,7 @@ const smoothScroll = (event) => {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* центрируем всё содержимое */
+/* center all content */
 .menu-content {
   max-width: 900px;
   margin: 0 auto;
@@ -95,7 +129,7 @@ const smoothScroll = (event) => {
   letter-spacing: 0.04em;
 }
 
-/* список по центру */
+/* list centered */
 .menu-list {
   display: grid;
   gap: 10px;
@@ -105,7 +139,7 @@ const smoothScroll = (event) => {
   justify-items: center;
 }
 
-/* ссылки */
+/* links */
 .menu-link {
   position: relative;
   text-decoration: none;
@@ -119,7 +153,7 @@ const smoothScroll = (event) => {
   transition: color 0.2s ease;
 }
 
-/* квадраты слева и справа */
+/* squares on the left and right */
 .menu-link::before,
 .menu-link::after {
   content: "";
@@ -141,7 +175,7 @@ const smoothScroll = (event) => {
   right: 0;
 }
 
-/* hover-эффект */
+/* hover effect */
 .menu-link:hover {
   color: #a5d3c6;
 }
@@ -152,7 +186,7 @@ const smoothScroll = (event) => {
   transform: translateY(-50%) scale(1);
 }
 
-/* логотип */
+/* logo */
 .brand-logo {
   display: block;
   width: 110px;

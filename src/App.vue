@@ -98,7 +98,7 @@ const scrollToSection = (sectionId) => {
   z-index: 10;
 }
 
-/* Общий вид плашек меню и переключателя языка */
+/* Shared styling for the menu pills and language switcher */
 .site-navigation,
 .language-switcher {
   display: inline-flex;
@@ -110,13 +110,13 @@ const scrollToSection = (sectionId) => {
   backdrop-filter: blur(6px);
 }
 
-/* Унификация размера кнопок */
+/* Unified button sizing */
 .site-nav-button,
 .language-button {
   border: 1px solid transparent;
   border-radius: 999px;
 
-  height: 34px; /* фикс высота => не прыгают */
+  height: 34px; /* fixed height to avoid jitter */
   padding: 0 16px;
   display: inline-flex;
   align-items: center;
@@ -134,15 +134,15 @@ const scrollToSection = (sectionId) => {
   white-space: nowrap;
 }
 
-/* RU/EN одинаковой ширины */
+/* RU/EN same width */
 .language-button {
   min-width: 52px;
   padding: 0 14px;
 }
 
-/* Пункты меню одинаковой ширины */
+/* Menu items same width */
 .site-nav-button {
-  min-width: 120px; /* можно 110-140 под вкус */
+  min-width: 120px; /* tweak between 110-140 if needed */
 }
 
 .site-nav-button:hover,
@@ -194,38 +194,38 @@ const scrollToSection = (sectionId) => {
 
 @media (max-width: 768px) {
 
-  /* Шапка вниз экрана */
+  /* Header moves to the bottom */
   .site-header {
     top: auto;
     bottom: 12px;
     left: 12px;
     right: 12px;
 
-    flex-direction: column; /* язык сверху меню */
-    align-items: flex-start; /* слева */
+    flex-direction: column; /* language above menu */
+    align-items: flex-start; /* align left */
     gap: 8px;
   }
 
   .language-switcher {
-    order: 0; /* сверху */
+    order: 0; /* on top */
     padding: 6px;
   }
 
   .site-navigation {
     order: 1;
 
-    /* вместо width:100% — контролируем реальные края */
-    width: calc(100% - 24px);   /* 12px слева + 12px справа как у header */
+    /* instead of width:100%, control the actual edges */
+    width: calc(100% - 24px);   /* 12px left + 12px right like the header */
     margin: 0 auto;
 
     display: flex;
     align-items: center;
-    justify-content: center;    /* кнопки по центру */
+    justify-content: center;    /* center buttons */
     gap: 6px;
 
     flex-wrap: nowrap;
 
-    padding: 6px 12px;          /* симметричные внутренние отступы */
+    padding: 6px 12px;          /* symmetric inner padding */
 
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
