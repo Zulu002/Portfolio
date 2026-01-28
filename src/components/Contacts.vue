@@ -119,7 +119,7 @@ const smoothScroll = (event) => {
 
 .menu-title {
   margin: 0 0 18px;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 1.4vw + 1.3rem, 2.5rem);
   line-height: 1.05;
   color: #dcdcdc;
   letter-spacing: 0.04em;
@@ -142,7 +142,7 @@ const smoothScroll = (event) => {
   cursor: pointer;
 
   color: #dcdcdc;
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 1.2vw + 1.1rem, 2.4rem);
   line-height: 1.05;
 
   padding: 6px 28px;
@@ -198,7 +198,7 @@ const smoothScroll = (event) => {
 
   .menu-title,
   .menu-link {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .brand-logo {

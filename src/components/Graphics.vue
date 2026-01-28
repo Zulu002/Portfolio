@@ -114,6 +114,18 @@ export default {
   transform: scale(1.1);
 }
 
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
   .showcase-wrapper {
     max-width: 100%;
@@ -126,7 +138,6 @@ export default {
   }
 
   .grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
@@ -141,6 +152,12 @@ export default {
 
   .image {
     padding: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
