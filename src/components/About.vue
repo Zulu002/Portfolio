@@ -4,9 +4,10 @@
 <template>
   <section>
     <main class="container">
+    
       <section class="developer-section">
         <img src="../assets/logo.svg" alt="Логотип разработчика" />
-
+        
         <p>
           Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также
           интересуюсь разработкой игр (геймдевом).
@@ -35,7 +36,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 80%;
+  max-width: 60%;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
@@ -68,7 +69,7 @@ p {
 
 .divider {
   width: 100%;
-  height: 3px;
+  height: 5px;
   margin: 5px 0 10px;
   background-color: #a5d3c6;
 }

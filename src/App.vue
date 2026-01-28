@@ -8,13 +8,14 @@ import Contacts from "./components/Contacts.vue";
 const navContent = {
   ariaLabel: "Основные разделы",
   sections: [
+    { id: "about", label: "ОБО МНЕ" },
     { id: "projects", label: "ПРОЕКТЫ" },
     { id: "graphics", label: "ВИТРИНА" },
     { id: "contacts", label: "КОНТАКТЫ" },
   ],
 };
 
-const activeSection = ref("projects");
+const activeSection = ref("about");
 
 const scrollToSection = (sectionId) => {
   activeSection.value = sectionId;
@@ -55,12 +56,12 @@ const scrollToSection = (sectionId) => {
   min-height: 100%;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (ПК: слева) ===== */
 .site-header {
   position: fixed;
   top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 18px;              /* ✅ слева на ПК */
+  transform: none;         /* ✅ убрали центрирование */
   z-index: 10;
 }
 
@@ -82,7 +83,7 @@ const scrollToSection = (sectionId) => {
 
 /* ===== BUTTONS ===== */
 .site-nav-button {
-  border: none; /* ❌ нет бордера */
+  border: none;
   border-radius: 999px;
 
   height: 36px;
@@ -105,18 +106,15 @@ const scrollToSection = (sectionId) => {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* hover — лёгкий намёк */
 .site-nav-button:hover {
   background: rgba(165, 211, 198, 0.15);
 }
 
-/* ✅ АКТИВНАЯ */
 .site-nav-button.active {
-  background: #a5d3c6; /* цвет бывшего бордера */
+  background: #a5d3c6;
   color: #1e1c17;
 }
 
-/* focus */
 .site-nav-button:focus-visible {
   outline: 2px solid #a5d3c6;
   outline-offset: 2px;
@@ -151,10 +149,13 @@ const scrollToSection = (sectionId) => {
   background-color: #eee6db;
 }
 
+/* ===== MOBILE (меню снизу) ===== */
 @media (max-width: 768px) {
   .site-header {
     top: auto;
     bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%); /* ✅ на мобилке по центру снизу */
   }
 
   .site-navigation {

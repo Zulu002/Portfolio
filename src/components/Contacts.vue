@@ -18,9 +18,6 @@ const smoothScroll = (event) => {
 
       <ul class="menu-list">
         <li>
-          <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
-        </li>
-        <li>
           <a
             href="https://t.me/Ignidra"
             class="menu-link"
@@ -88,10 +85,10 @@ const smoothScroll = (event) => {
 }
 
 .menu-title {
-  margin: 0 0 18px;
+  margin: 0 0 50px;
   font-size: 2.5rem;
   line-height: 1.05;
-  color: #dcdcdc;
+  color: #a5d3c6;
   letter-spacing: 0.04em;
 }
 

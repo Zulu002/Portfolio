@@ -80,7 +80,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  background: #dcdcdc;
+  background: #eee6db;
   transition: 0.3s ease;
 }
 
