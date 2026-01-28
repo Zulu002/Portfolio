@@ -70,7 +70,7 @@ export default {
 }
 
 .showcase-wrapper {
-  max-width: 1100px;
+  max-width: 85%;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
