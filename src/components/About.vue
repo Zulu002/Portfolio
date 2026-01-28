@@ -84,10 +84,11 @@ const scrollToSection = (sectionId) => {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 980px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .developer-section {
@@ -109,7 +110,7 @@ const scrollToSection = (sectionId) => {
 p {
   margin: 0 0 15px;
   font-family: "OpenSansRegular";
-  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.25rem);
+  font-size: 1.5vw;
   text-align: left;
   line-height: 1.5;
   hyphens: auto;
@@ -138,16 +139,16 @@ p {
   align-items: center;
   justify-content: center;
 
-  min-width: 180px;
-  height: 64px;
-  flex: 1 1 180px;
+  width: 214px;
+  height: 70px;
+  flex: 1 1 0;
 
   border: none;
   border-radius: 2px;
   cursor: pointer;
 
   font-family: "OpenSansBold";
-  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.4rem);
+  font-size: 25px;
 
   background-color: #a5d3c6; 
   color: #1e1c17;
@@ -160,7 +161,7 @@ p {
 }
 
 .nav-button--contact {
-  flex: 1.4 1 220px;
+  flex: 2 1 0;
 }
 
 .nav-label {
@@ -187,11 +188,11 @@ p {
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding: 0 12px;
+    padding: 0 10px;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 18px;
   }
 
   .navigation {
@@ -201,8 +202,7 @@ p {
 
   .nav-button {
     width: 100%;
-    min-width: 0;
-    height: 52px;
+    height: 50px;
     flex: 1 1 auto;
   }
 

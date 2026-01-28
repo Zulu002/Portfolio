@@ -8,10 +8,18 @@
   src: url('../src/assets/OpenSans-Bold.ttf') format('truetype');
 }
 
-body {
+@font-face {
+  font-family: 'Alagard';
+  src: url('../src/assets/alagard-12px-unicode.ttf') format('truetype');
+}
+
+body{
   margin: 0;
+  
+  
 }
 
 img {
   pointer-events: none;
 }
+
