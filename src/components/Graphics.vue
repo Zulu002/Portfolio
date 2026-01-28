@@ -29,7 +29,7 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <h1 class="title">SHOWCASE</h1>
+      <h1 class="title">ВИТРИНА</h1>
 
       <div class="grid">
         <a

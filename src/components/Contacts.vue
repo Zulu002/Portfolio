@@ -14,11 +14,11 @@ const smoothScroll = (event) => {
 <template>
   <footer class="vertical-menu">
     <div class="menu-content">
-      <p class="menu-title">CONTACTS & MORE</p>
+      <p class="menu-title">КОНТАКТЫ И ДРУГОЕ</p>
 
       <ul class="menu-list">
         <li>
-          <a href="#about" class="menu-link" @click="smoothScroll">ABOUT ME</a>
+          <a href="#about" class="menu-link" @click="smoothScroll">ОБО МНЕ</a>
         </li>
         <li>
           <a
@@ -32,7 +32,7 @@ const smoothScroll = (event) => {
         </li>
         <li>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Portfolio&body=Hello!"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!"
             class="menu-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -64,7 +64,7 @@ const smoothScroll = (event) => {
 
       <img
         src="../assets/logo.svg"
-        alt="Developer logo"
+        alt="Логотип разработчика"
         class="brand-logo"
       />
     </div>
@@ -80,7 +80,7 @@ const smoothScroll = (event) => {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* center all content */
+/* центрируем всё содержимое */
 .menu-content {
   max-width: 900px;
   margin: 0 auto;
@@ -95,7 +95,7 @@ const smoothScroll = (event) => {
   letter-spacing: 0.04em;
 }
 
-/* list centered */
+/* список по центру */
 .menu-list {
   display: grid;
   gap: 10px;
@@ -105,7 +105,7 @@ const smoothScroll = (event) => {
   justify-items: center;
 }
 
-/* links */
+/* ссылки */
 .menu-link {
   position: relative;
   text-decoration: none;
@@ -119,7 +119,7 @@ const smoothScroll = (event) => {
   transition: color 0.2s ease;
 }
 
-/* squares on the left and right */
+/* квадраты слева и справа */
 .menu-link::before,
 .menu-link::after {
   content: "";
@@ -141,7 +141,7 @@ const smoothScroll = (event) => {
   right: 0;
 }
 
-/* hover effect */
+/* hover-эффект */
 .menu-link:hover {
   color: #a5d3c6;
 }
@@ -152,7 +152,7 @@ const smoothScroll = (event) => {
   transform: translateY(-50%) scale(1);
 }
 
-/* logo */
+/* логотип */
 .brand-logo {
   display: block;
   width: 110px;

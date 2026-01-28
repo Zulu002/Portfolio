@@ -5,7 +5,7 @@ import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 
-const language = ref("en");
+const language = ref("ru");
 
 const navContent = computed(() =>
   language.value === "en"
@@ -18,11 +18,11 @@ const navContent = computed(() =>
         ],
       }
     : {
-        ariaLabel: "Main sections",
+        ariaLabel: "Основные разделы",
         sections: [
-          { id: "projects", label: "PROJECTS" },
-          { id: "graphics", label: "SHOWCASE" },
-          { id: "contacts", label: "CONTACTS" },
+          { id: "projects", label: "ПРОЕКТЫ" },
+          { id: "graphics", label: "ВИТРИНА" },
+          { id: "contacts", label: "КОНТАКТЫ" },
         ],
       }
 );
@@ -98,7 +98,7 @@ const scrollToSection = (sectionId) => {
   z-index: 10;
 }
 
-/* Shared styling for the menu pills and language switcher */
+/* Общий вид плашек меню и переключателя языка */
 .site-navigation,
 .language-switcher {
   display: inline-flex;
@@ -110,13 +110,13 @@ const scrollToSection = (sectionId) => {
   backdrop-filter: blur(6px);
 }
 
-/* Unified button sizing */
+/* Унификация размера кнопок */
 .site-nav-button,
 .language-button {
   border: 1px solid transparent;
   border-radius: 999px;
 
-  height: 34px; /* fixed height to avoid jitter */
+  height: 34px; /* фикс высота => не прыгают */
   padding: 0 16px;
   display: inline-flex;
   align-items: center;
@@ -134,15 +134,15 @@ const scrollToSection = (sectionId) => {
   white-space: nowrap;
 }
 
-/* RU/EN same width */
+/* RU/EN одинаковой ширины */
 .language-button {
   min-width: 52px;
   padding: 0 14px;
 }
 
-/* Menu items same width */
+/* Пункты меню одинаковой ширины */
 .site-nav-button {
-  min-width: 120px; /* tweak between 110-140 if needed */
+  min-width: 120px; /* можно 110-140 под вкус */
 }
 
 .site-nav-button:hover,
@@ -194,38 +194,38 @@ const scrollToSection = (sectionId) => {
 
 @media (max-width: 768px) {
 
-  /* Header moves to the bottom */
+  /* Шапка вниз экрана */
   .site-header {
     top: auto;
     bottom: 12px;
     left: 12px;
     right: 12px;
 
-    flex-direction: column; /* language above menu */
-    align-items: flex-start; /* align left */
+    flex-direction: column; /* язык сверху меню */
+    align-items: flex-start; /* слева */
     gap: 8px;
   }
 
   .language-switcher {
-    order: 0; /* on top */
+    order: 0; /* сверху */
     padding: 6px;
   }
 
   .site-navigation {
     order: 1;
 
-    /* instead of width:100%, control the actual edges */
-    width: calc(100% - 24px);   /* 12px left + 12px right like the header */
+    /* вместо width:100% — контролируем реальные края */
+    width: calc(100% - 24px);   /* 12px слева + 12px справа как у header */
     margin: 0 auto;
 
     display: flex;
     align-items: center;
-    justify-content: center;    /* center buttons */
+    justify-content: center;    /* кнопки по центру */
     gap: 6px;
 
     flex-wrap: nowrap;
 
-    padding: 6px 12px;          /* symmetric inner padding */
+    padding: 6px 12px;          /* симметричные внутренние отступы */
 
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

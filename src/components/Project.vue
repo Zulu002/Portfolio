@@ -5,9 +5,9 @@ export default {
       projects: [
         {
           id: 1,
-          title: "Invoice Calculator",
+          title: "Калькулятор накладных",
           description:
-            "A web application that simplifies calculations when filling out physical invoices.",
+            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
           stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
@@ -21,7 +21,7 @@ export default {
 <template>
   <section class="projects">
     <div class="projects-wrapper">
-      <h1 class="title">PROJECTS</h1>
+      <h1 class="title">ПРОЕКТЫ</h1>
 
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
@@ -44,7 +44,7 @@ export default {
             target="_blank"
             rel="noopener noreferrer"
           >
-            View project
+            Посмотреть проект
           </a>
         </article>
       </div>
