@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
@@ -27,9 +27,6 @@ const navContent = computed(() =>
       }
 );
 
-const sectionIds = ["projects", "graphics", "contacts"];
-const activeSection = ref(sectionIds[0]);
-
 const setLanguage = (nextLanguage) => {
   language.value = nextLanguage;
 };
@@ -39,34 +36,7 @@ const scrollToSection = (sectionId) => {
     behavior: "smooth",
     block: "start",
   });
-  activeSection.value = sectionId;
 };
-
-const updateActiveSection = () => {
-  const offset = 120;
-  for (const id of sectionIds) {
-    const section = document.getElementById(id);
-    if (!section) {
-      continue;
-    }
-    const rect = section.getBoundingClientRect();
-    if (rect.top - offset <= 0 && rect.bottom - offset > 0) {
-      activeSection.value = id;
-      return;
-    }
-  }
-};
-
-onMounted(() => {
-  updateActiveSection();
-  window.addEventListener("scroll", updateActiveSection, { passive: true });
-  window.addEventListener("resize", updateActiveSection);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", updateActiveSection);
-  window.removeEventListener("resize", updateActiveSection);
-});
 </script>
 
 <template>
@@ -77,7 +47,6 @@ onBeforeUnmount(() => {
           v-for="section in navContent.sections"
           :key="section.id"
           class="site-nav-button"
-          :class="{ 'site-nav-button--active': activeSection === section.id }"
           type="button"
           @click="scrollToSection(section.id)"
         >
@@ -141,9 +110,9 @@ onBeforeUnmount(() => {
 .site-nav-button {
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 8px 20px;
+  padding: 6px 16px;
   font-family: "OpenSansBold";
-  font-size: clamp(1rem, 0.8vw + 0.7rem, 1.2rem);
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
   color: #dcdcdc;
   background: transparent;
@@ -159,12 +128,6 @@ onBeforeUnmount(() => {
 .site-nav-button:focus-visible {
   outline: 2px solid #a5d3c6;
   outline-offset: 2px;
-}
-
-.site-nav-button--active {
-  background: #a5d3c6;
-  color: #1e1c17;
-  border-color: transparent;
 }
 
 .language-switcher {
@@ -247,8 +210,8 @@ onBeforeUnmount(() => {
   }
 
   .site-nav-button {
-    padding: 6px 16px;
-    font-size: 0.9rem;
+    padding: 4px 12px;
+    font-size: 0.75rem;
   }
 
   .language-switcher {

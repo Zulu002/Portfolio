@@ -60,7 +60,7 @@ const content = computed(() => translations[props.language] ?? translations.ru);
 
 .developer-section {
   width: 100%;
-  max-width: 880px;
+  max-width: 900px;
   color: #dcdcdc;
   box-sizing: border-box;
 
