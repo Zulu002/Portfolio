@@ -1,4 +1,36 @@
 <script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  language: {
+    type: String,
+    default: "ru",
+  },
+});
+
+const content = computed(() =>
+  props.language === "en"
+    ? {
+        title: "CONTACTS & MORE",
+        aboutLabel: "ABOUT ME",
+        mailSubject: "Portfolio",
+        mailBody: "Hello!",
+        logoAlt: "Developer logo",
+      }
+    : {
+        title: "КОНТАКТЫ И ДРУГОЕ",
+        aboutLabel: "ОБО МНЕ",
+        mailSubject: "Портфолио",
+        mailBody: "Здравствуйте!",
+        logoAlt: "Логотип разработчика",
+      }
+);
+
+const mailtoLink = computed(() => {
+  const subject = encodeURIComponent(content.value.mailSubject);
+  const body = encodeURIComponent(content.value.mailBody);
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=${subject}&body=${body}`;
+});
 const smoothScroll = (event) => {
   const href = event.currentTarget.getAttribute("href");
   if (!href?.startsWith("#")) return;

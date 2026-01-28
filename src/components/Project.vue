@@ -1,5 +1,11 @@
 <script>
 export default {
+  props: {
+    language: {
+      type: String,
+      default: "ru",
+    },
+  },
   data() {
     return {
       projects: [
@@ -15,6 +21,21 @@ export default {
       ],
     };
   },
+  computed: {
+    localizedProjects() {
+      return this.projects.map((project) => ({
+        ...project,
+        title: project.title[this.language] ?? project.title.ru,
+        description: project.description[this.language] ?? project.description.ru,
+      }));
+    },
+    heading() {
+      return this.language === "en" ? "PROJECTS" : "ПРОЕКТЫ";
+    },
+    ctaLabel() {
+      return this.language === "en" ? "View project" : "Посмотреть проект";
+    },
+  },
 };
 </script>
 
@@ -24,7 +45,11 @@ export default {
       <h1 class="title">PROJECTS</h1>
 
       <div class="cards">
-        <article v-for="project in projects" :key="project.id" class="card">
+        <article
+          v-for="project in localizedProjects"
+          :key="project.id"
+          class="card"
+        >
           <header class="card-header">
             <img :src="project.logo" :alt="project.title" class="logo" />
             <h3 class="name">{{ project.title }}</h3>
