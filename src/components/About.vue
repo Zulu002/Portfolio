@@ -5,22 +5,22 @@
   <section>
     <main class="container">
       <section class="developer-section">
-        <img src="../assets/logo.svg" alt="Логотип разработчика" />
+        <img src="../assets/logo.svg" alt="Developer logo" />
 
         <p>
-          Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также
-          интересуюсь разработкой игр (геймдевом).
+          My name is Gadzhi. I am a designer focused on graphic and web design, and I am
+          also interested in game development.
         </p>
         <p>
-          С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в
-          желание понимать и создавать их самому. Это побудило меня развивать навыки
-          дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов
-          для веб-сайтов.
+          Since childhood, I have been fascinated by video games, and over time that
+          fascination grew into a desire to understand and create them myself. This
+          motivated me to develop my design skills: in college I started with logos,
+          brand identities, and website layouts.
         </p>
         <p>
-          Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая
-          JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально
-          привлекательные, но и функциональные цифровые продукты.
+          I am now actively growing in web development, diving deeper into JavaScript and
+          front-end frameworks to create digital products that are not only visually
+          appealing but also functional.
         </p>
       </section>
 
@@ -86,4 +86,3 @@ p {
   }
 }
 </style>
-
