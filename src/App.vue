@@ -1,37 +1,24 @@
 <script setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 
-const language = ref("ru");
-
-const navContent = computed(() =>
-  language.value === "en"
-    ? {
-        ariaLabel: "Main sections",
-        sections: [
-          { id: "projects", label: "PROJECTS" },
-          { id: "graphics", label: "SHOWCASE" },
-          { id: "contacts", label: "CONTACTS" },
-        ],
-      }
-    : {
-        ariaLabel: "Основные разделы",
-        sections: [
-          { id: "projects", label: "ПРОЕКТЫ" },
-          { id: "graphics", label: "ВИТРИНА" },
-          { id: "contacts", label: "КОНТАКТЫ" },
-        ],
-      }
-);
-
-const setLanguage = (nextLanguage) => {
-  language.value = nextLanguage;
+const navContent = {
+  ariaLabel: "Основные разделы",
+  sections: [
+    { id: "projects", label: "ПРОЕКТЫ" },
+    { id: "graphics", label: "ВИТРИНА" },
+    { id: "contacts", label: "КОНТАКТЫ" },
+  ],
 };
 
+const activeSection = ref("projects");
+
 const scrollToSection = (sectionId) => {
+  activeSection.value = sectionId;
+
   document.getElementById(sectionId)?.scrollIntoView({
     behavior: "smooth",
     block: "start",
@@ -47,37 +34,19 @@ const scrollToSection = (sectionId) => {
           v-for="section in navContent.sections"
           :key="section.id"
           class="site-nav-button"
+          :class="{ active: activeSection === section.id }"
           type="button"
           @click="scrollToSection(section.id)"
         >
           {{ section.label }}
         </button>
       </nav>
-
-      <div class="language-switcher" role="group" aria-label="Language switcher">
-        <button
-          class="language-button"
-          :class="{ active: language === 'ru' }"
-          type="button"
-          @click="setLanguage('ru')"
-        >
-          RU
-        </button>
-        <button
-          class="language-button"
-          :class="{ active: language === 'en' }"
-          type="button"
-          @click="setLanguage('en')"
-        >
-          EN
-        </button>
-      </div>
     </header>
 
-    <About id="about" class="section section-1" :language="language" />
-    <Project id="projects" class="section section-3" :language="language" />
-    <Graphics id="graphics" class="section section-4" :language="language" />
-    <Contacts id="contacts" class="section section-5" :language="language" />
+    <About id="about" class="section section-1" />
+    <Project id="projects" class="section section-3" />
+    <Graphics id="graphics" class="section section-4" />
+    <Contacts id="contacts" class="section section-5" />
   </div>
 </template>
 
@@ -86,82 +55,74 @@ const scrollToSection = (sectionId) => {
   min-height: 100%;
 }
 
+/* ===== HEADER ===== */
 .site-header {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 }
 
-/* Общий вид плашек меню и переключателя языка */
-.site-navigation,
-.language-switcher {
+/* ===== NAV PANEL ===== */
+.site-navigation {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 8px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+
+  overflow: hidden;
 }
 
-/* Унификация размера кнопок */
-.site-nav-button,
-.language-button {
-  border: 1px solid transparent;
+/* ===== BUTTONS ===== */
+.site-nav-button {
+  border: none; /* ❌ нет бордера */
   border-radius: 999px;
 
-  height: 34px; /* фикс высота => не прыгают */
+  height: 36px;
   padding: 0 16px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  line-height: 1;
   font-family: "OpenSansBold";
   font-size: 0.85rem;
   letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+
   color: #dcdcdc;
   background: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
-  white-space: nowrap;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* RU/EN одинаковой ширины */
-.language-button {
-  min-width: 52px;
-  padding: 0 14px;
+/* hover — лёгкий намёк */
+.site-nav-button:hover {
+  background: rgba(165, 211, 198, 0.15);
 }
 
-/* Пункты меню одинаковой ширины */
-.site-nav-button {
-  min-width: 120px; /* можно 110-140 под вкус */
+/* ✅ АКТИВНАЯ */
+.site-nav-button.active {
+  background: #a5d3c6; /* цвет бывшего бордера */
+  color: #1e1c17;
 }
 
-.site-nav-button:hover,
-.language-button:hover {
-  border-color: rgba(165, 211, 198, 0.8);
-}
-
-.site-nav-button:focus-visible,
-.language-button:focus-visible {
+/* focus */
+.site-nav-button:focus-visible {
   outline: 2px solid #a5d3c6;
   outline-offset: 2px;
 }
 
-.language-button.active {
-  background: #a5d3c6;
-  color: #1e1c17;
-  border-color: transparent;
-}
-
+/* ===== SECTIONS ===== */
 .section {
   display: flex;
   justify-content: center;
@@ -170,8 +131,6 @@ const scrollToSection = (sectionId) => {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  scroll-margin-top: 0px;
-  scroll-margin-bottom: 0px;
 }
 
 .section-1 {
@@ -189,66 +148,33 @@ const scrollToSection = (sectionId) => {
 }
 
 .section-4 {
-  background-color: #EEE6DB;
+  background-color: #eee6db;
 }
 
 @media (max-width: 768px) {
-
-  /* Шапка вниз экрана */
   .site-header {
     top: auto;
     bottom: 12px;
-    left: 12px;
-    right: 12px;
-
-    flex-direction: column; /* язык сверху меню */
-    align-items: flex-start; /* слева */
-    gap: 8px;
-  }
-
-  .language-switcher {
-    order: 0; /* сверху */
-    padding: 6px;
   }
 
   .site-navigation {
-    order: 1;
-
-    /* вместо width:100% — контролируем реальные края */
-    width: calc(100% - 24px);   /* 12px слева + 12px справа как у header */
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;    /* кнопки по центру */
+    max-width: calc(100vw - 24px);
+    padding: 8px 10px;
     gap: 6px;
-
-    flex-wrap: nowrap;
-
-    padding: 6px 12px;          /* симметричные внутренние отступы */
 
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-
-    border-radius: 999px;
   }
 
   .site-navigation::-webkit-scrollbar {
     display: none;
   }
 
-
-
-  .site-nav-button,
-  .language-button {
-    height: 32px;
+  .site-nav-button {
+    height: 34px;
     padding: 0 14px;
     font-size: 0.78rem;
-  }
-
-  .site-nav-button {
-    min-width: 110px;
   }
 
   .section {
