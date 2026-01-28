@@ -46,13 +46,11 @@ const smoothScroll = (event) => {
 <template>
   <footer class="vertical-menu">
     <div class="menu-content">
-      <p class="menu-title">{{ content.title }}</p>
+      <p class="menu-title">CONTACTS & MORE</p>
 
       <ul class="menu-list">
         <li>
-          <a href="#about" class="menu-link" @click="smoothScroll">
-            {{ content.aboutLabel }}
-          </a>
+          <a href="#about" class="menu-link" @click="smoothScroll">ABOUT ME</a>
         </li>
         <li>
           <a
@@ -66,7 +64,7 @@ const smoothScroll = (event) => {
         </li>
         <li>
           <a
-            :href="mailtoLink"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Portfolio&body=Hello!"
             class="menu-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -98,7 +96,7 @@ const smoothScroll = (event) => {
 
       <img
         src="../assets/logo.svg"
-        :alt="content.logoAlt"
+        alt="Developer logo"
         class="brand-logo"
       />
     </div>

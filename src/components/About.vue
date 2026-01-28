@@ -33,10 +33,22 @@ const content = computed(() =>
   <section>
     <main class="container">
       <section class="developer-section">
-        <img src="../assets/logo.svg" :alt="content.alt" />
+        <img src="../assets/logo.svg" alt="Developer logo" />
 
-        <p v-for="(paragraph, index) in content.paragraphs" :key="index">
-          {{ paragraph }}
+        <p>
+          My name is Gadzhi. I am a designer focused on graphic and web design, and I am
+          also interested in game development.
+        </p>
+        <p>
+          Since childhood, I have been fascinated by video games, and over time that
+          fascination grew into a desire to understand and create them myself. This
+          motivated me to develop my design skills: in college I started with logos,
+          brand identities, and website layouts.
+        </p>
+        <p>
+          I am now actively growing in web development, diving deeper into JavaScript and
+          front-end frameworks to create digital products that are not only visually
+          appealing but also functional.
         </p>
       </section>
 

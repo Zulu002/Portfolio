@@ -5,7 +5,7 @@ import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 
-const language = ref("ru");
+const language = ref("en");
 
 const navContent = computed(() =>
   language.value === "en"
@@ -18,11 +18,11 @@ const navContent = computed(() =>
         ],
       }
     : {
-        ariaLabel: "Основные разделы",
+        ariaLabel: "Main sections",
         sections: [
-          { id: "projects", label: "ПРОЕКТЫ" },
-          { id: "graphics", label: "ВИТРИНА" },
-          { id: "contacts", label: "КОНТАКТЫ" },
+          { id: "projects", label: "PROJECTS" },
+          { id: "graphics", label: "SHOWCASE" },
+          { id: "contacts", label: "CONTACTS" },
         ],
       }
 );

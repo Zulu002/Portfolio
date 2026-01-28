@@ -11,14 +11,9 @@ export default {
       projects: [
         {
           id: 1,
-          title: {
-            ru: "Калькулятор накладных",
-            en: "Invoice Calculator",
-          },
-          description: {
-            ru: "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
-            en: "A web application that simplifies calculations when filling out physical invoices.",
-          },
+          title: "Invoice Calculator",
+          description:
+            "A web application that simplifies calculations when filling out physical invoices.",
           stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
@@ -47,7 +42,7 @@ export default {
 <template>
   <section class="projects">
     <div class="projects-wrapper">
-      <h1 class="title">{{ heading }}</h1>
+      <h1 class="title">PROJECTS</h1>
 
       <div class="cards">
         <article
@@ -74,7 +69,7 @@ export default {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {{ ctaLabel }}
+            View project
           </a>
         </article>
       </div>
