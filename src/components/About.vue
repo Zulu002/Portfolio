@@ -5,7 +5,6 @@
   <section>
     <main class="container">
       <section class="developer-section">
-        <!-- ЛОГО БЕЗ ПОДСВЕТКИ -->
         <div class="logo-wrap" aria-hidden="true">
           <img src="../assets/logo.svg" alt="Логотип разработчика" />
         </div>
@@ -60,7 +59,6 @@
   text-align: center;
 }
 
-/* ЛОГО */
 .logo-wrap {
   margin-bottom: 22px;
 }
@@ -70,7 +68,6 @@
   height: auto;
 }
 
-/* ЗАГОЛОВКИ */
 .title {
   margin: 0;
   font-family: "OpenSansBold";
@@ -88,7 +85,6 @@
   color: rgba(220, 220, 220, 0.6);
 }
 
-/* ТЕКСТ — КРУПНЕЕ */
 p {
   width: 100%;
   margin: 0 0 22px;
@@ -106,7 +102,6 @@ p {
   color: #ffffff;
 }
 
-/* DIVIDER */
 .divider {
   width: 100%;
   height: 2px;

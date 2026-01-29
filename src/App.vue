@@ -139,10 +139,7 @@ const scrollToSection = (sectionId) => {
 
 @media (max-width: 768px) {
   .site-header {
-    top: auto;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
   }
 
   .site-navigation {

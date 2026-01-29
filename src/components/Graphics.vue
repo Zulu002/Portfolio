@@ -85,8 +85,7 @@ export default {
   aspect-ratio: 1;
   overflow: hidden;
   text-decoration: none;
-  background: #2a475e;
-  border: 1px solid #3c5a78;
+  background: #2a2a2a;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
