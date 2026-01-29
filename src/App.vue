@@ -44,10 +44,10 @@ const scrollToSection = (sectionId) => {
       </nav>
     </header>
 
-    <About id="about" class="section section-1" />
-    <Project id="projects" class="section section-5" />
-    <Graphics id="graphics" class="section section-1" />
-    <Contacts id="contacts" class="section section-5" />
+    <About id="about" class="section" />
+    <Project id="projects" class="section" />
+    <Graphics id="graphics" class="section" />
+    <Contacts id="contacts" class="section" />
   </div>
 </template>
 
@@ -117,24 +117,6 @@ const scrollToSection = (sectionId) => {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.section-1 {
-  background-color: #1e1c17;
-}
-
-.section-3,
-.section-5 {
-  background-color: #1e1c17;
-  background-image:
-    radial-gradient(rgba(165, 211, 198, 0.1) 2px, transparent 1px),
-    radial-gradient(rgba(165, 211, 198, 0.1) 2px, transparent 1px);
-  background-size: 40px 40px, 80px 80px;
-  background-position: 0 0, 20px 20px;
-}
-
-.section-4 {
-  background-color: #eee6db;
 }
 
 @media (max-width: 768px) {
