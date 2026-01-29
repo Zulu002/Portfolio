@@ -12,6 +12,24 @@ export default {
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
         },
+        {
+          id: 2,
+          title: "Калькулятор накладных",
+          description:
+            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
+          stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
+          link: "https://zulu002.github.io/invoice/",
+          logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
+        },
+        {
+          id: 3,
+          title: "Калькулятор накладных",
+          description:
+            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
+          stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
+          link: "https://zulu002.github.io/invoice/",
+          logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
+        },
       ],
     };
   },
@@ -137,9 +155,9 @@ export default {
 .btn {
   padding: 12px 24px;
   background: #000;
-  color: #dcdcdc;
+  color: #eee6db;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
   font-family: "OpenSansBold";
   box-sizing: border-box;
   border: 1px solid transparent;
@@ -147,7 +165,7 @@ export default {
 }
 
 .btn:hover {
-  background: #dcdcdc;
+  background: #eee6db;
   color: #000;
   border-color: #000;
 }

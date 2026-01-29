@@ -73,7 +73,6 @@ const smoothScroll = (event) => {
   width: 100%;
   padding: 40px 20px;
   font-family: "OpenSansBold";
-  border-top: 1px solid rgba(220, 220, 220, 0.18);
   background: rgba(0, 0, 0, 0.1);
 }
 

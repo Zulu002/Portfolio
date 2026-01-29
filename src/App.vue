@@ -45,8 +45,8 @@ const scrollToSection = (sectionId) => {
     </header>
 
     <About id="about" class="section section-1" />
-    <Project id="projects" class="section section-3" />
-    <Graphics id="graphics" class="section section-4" />
+    <Project id="projects" class="section section-1" />
+    <Graphics id="graphics" class="section section-1" />
     <Contacts id="contacts" class="section section-5" />
   </div>
 </template>
@@ -56,53 +56,42 @@ const scrollToSection = (sectionId) => {
   min-height: 100%;
 }
 
-/* ===== HEADER (ПК: слева) ===== */
 .site-header {
   position: fixed;
   top: 18px;
-  left: 18px;              /* ✅ слева на ПК */
-  transform: none;         /* ✅ убрали центрирование */
+  left: 18px;   
+  transform: none;         
   z-index: 10;
 }
 
-/* ===== NAV PANEL ===== */
 .site-navigation {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   padding: 8px;
   border-radius: 999px;
-
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
-
   overflow: hidden;
 }
 
-/* ===== BUTTONS ===== */
 .site-nav-button {
   border: none;
   border-radius: 999px;
-
   height: 36px;
   padding: 0 16px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   font-family: "OpenSansBold";
   font-size: 0.85rem;
   letter-spacing: 0.02em;
   line-height: 1;
   white-space: nowrap;
-
   color: #dcdcdc;
   background: transparent;
   cursor: pointer;
-
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -120,7 +109,6 @@ const scrollToSection = (sectionId) => {
   outline-offset: 2px;
 }
 
-/* ===== SECTIONS ===== */
 .section {
   display: flex;
   justify-content: center;
@@ -149,20 +137,18 @@ const scrollToSection = (sectionId) => {
   background-color: #eee6db;
 }
 
-/* ===== MOBILE (меню снизу) ===== */
 @media (max-width: 768px) {
   .site-header {
     top: auto;
     bottom: 12px;
     left: 50%;
-    transform: translateX(-50%); /* ✅ на мобилке по центру снизу */
+    transform: translateX(-50%);
   }
 
   .site-navigation {
     max-width: calc(100vw - 24px);
     padding: 8px 10px;
     gap: 6px;
-
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;

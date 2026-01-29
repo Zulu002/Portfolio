@@ -67,10 +67,10 @@ export default {
 
 .title {
   margin: 0 0 20px;
-  color: #000;
+  color: #EEE6DB;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
-  text-align: center;
+  text-align: left;
 }
 
 .grid {
