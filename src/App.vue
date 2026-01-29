@@ -45,7 +45,7 @@ const scrollToSection = (sectionId) => {
     </header>
 
     <About id="about" class="section section-1" />
-    <Project id="projects" class="section section-1" />
+    <Project id="projects" class="section section-5" />
     <Graphics id="graphics" class="section section-1" />
     <Contacts id="contacts" class="section section-5" />
   </div>
