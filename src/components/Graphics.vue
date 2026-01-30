@@ -61,7 +61,6 @@ export default {
 .showcase-wrapper {
   max-width: 85%;
   margin: 0 auto;
-  padding: 0 20px;
   box-sizing: border-box;
 }
 
@@ -105,7 +104,6 @@ export default {
 @media (max-width: 640px) {
   .showcase-wrapper {
     max-width: 100%;
-    padding: 0 15px;
   }
 
   .title {

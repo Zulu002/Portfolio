@@ -73,7 +73,7 @@ export default {
 
 <style scoped>
 .projects {
-  padding: 40px 20px;
+  padding: 0 20px 40px;
   font-family: "OpenSansRegular";
 }
 
@@ -83,6 +83,7 @@ export default {
 }
 
 .title {
+  margin-top: 0;
   margin-bottom: 30px;
   color: #dcdcdc;
   font-size: 2.5rem;
