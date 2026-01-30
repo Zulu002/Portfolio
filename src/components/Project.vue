@@ -8,27 +8,32 @@ export default {
           title: "Калькулятор накладных",
           description:
             "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
-          stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
         },
         {
           id: 2,
-          title: "Калькулятор накладных",
+          title: "Лендинг продукта",
           description:
-            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
-          stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
-          link: "https://zulu002.github.io/invoice/",
-          logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
+            "Адаптивный лендинг с акцентом на структуру, композицию и пользовательский путь.",
+          link: "#",
+          logo: "https://via.placeholder.com/40",
         },
         {
           id: 3,
-          title: "Калькулятор накладных",
+          title: "UI Kit",
           description:
-            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
-          stack: ["HTML5", "CSS3", "JavaScript", "illustrator"],
-          link: "https://zulu002.github.io/invoice/",
-          logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
+            "Набор интерфейсных компонентов, собранных в единой визуальной системе.",
+          link: "#",
+          logo: "https://via.placeholder.com/40",
+        },
+        {
+          id: 4,
+          title: "Редизайн сервиса",
+          description:
+            "Концепт редизайна сервиса с улучшенной навигацией и UX-логикой.",
+          link: "#",
+          logo: "https://via.placeholder.com/40",
         },
       ],
     };
@@ -48,13 +53,9 @@ export default {
             <h3 class="name">{{ project.title }}</h3>
           </header>
 
-          <p class="description">{{ project.description }}</p>
-
-          <div class="stack">
-            <span v-for="tech in project.stack" :key="tech" class="stack-item">
-              {{ tech }}
-            </span>
-          </div>
+          <p class="description">
+            {{ project.description }}
+          </p>
 
           <a
             :href="project.link"
@@ -77,27 +78,27 @@ export default {
 }
 
 .projects-wrapper {
-  max-width: 1000px;
+  max-width: 1400px; /* шире, как раньше ощущалось */
   margin: 0 auto;
 }
 
 .title {
   margin-bottom: 30px;
-  color: #EEE6DB;
+  color: #eee6db;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; /* как было */
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 25px; /* ВЕРНУЛ */
   background: #eee6db;
   transition: 0.3s ease;
 }
@@ -123,45 +124,26 @@ export default {
 .name {
   margin: 0;
   color: #000;
-  font-size: 1.4rem;
+  font-size: 1.4rem; /* как было */
   font-family: "OpenSansBold";
 }
 
 .description {
+  flex-grow: 1;
   margin-bottom: 16px;
   color: #4c4c4c;
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* как было */
   line-height: 1.5;
-  flex-grow: 1;
-}
-
-.stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.stack-item {
-  padding: 6px 10px;
-  background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  color: #2b2b2b;
-  font-size: 0.8rem;
-  font-family: "OpenSansBold";
-  user-select: none;
 }
 
 .btn {
-  padding: 12px 24px;
+  padding: 12px 24px; /* как было */
   background: #000;
   color: #eee6db;
   text-decoration: none;
-  text-align: left;
   font-family: "OpenSansBold";
-  box-sizing: border-box;
   border: 1px solid transparent;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .btn:hover {
@@ -170,13 +152,20 @@ export default {
   border-color: #000;
 }
 
+/* Адаптив */
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
-  .title {
-    font-size: 2rem;
+  .cards {
+    grid-template-columns: 1fr;
   }
 
-  .card {
-    padding: 20px;
+  .title {
+    font-size: 2rem;
   }
 }
 </style>

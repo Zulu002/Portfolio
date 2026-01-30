@@ -13,16 +13,10 @@
 
 :root{
   --bg: #1E1C17;
-
-  /* линии сетки */
   --grid: rgba(165, 211, 198, 0.08);
   --grid-strong: rgba(165, 211, 198, 0.16);
-
-  /* размер клетки/толщина линий */
   --cell: 52px;
   --line: 1px;
-
-  /* виньетка */
   --vignette: rgba(0,0,0,0.55);
 }
 
@@ -40,7 +34,6 @@ body{
   isolation: isolate;
 }
 
-/* Основная мягкая сетка */
 body::before{
   content:"";
   position: fixed;
@@ -53,13 +46,12 @@ body::before{
     linear-gradient(to bottom, var(--grid) var(--line), transparent var(--line));
   background-size: var(--cell) var(--cell);
 
-  /* виньетка */
+  
   box-shadow:
     inset 0 0 160px var(--vignette),
     inset 0 0 80px rgba(0,0,0,0.35);
 }
 
-/* Акцентная сетка + шум */
 body::after{
   content:"";
   position: fixed;
@@ -73,7 +65,6 @@ body::after{
   background-size: var(--cell) var(--cell);
   opacity: 0.45;
 
-  /* статичная шумовая маска */
   -webkit-mask-image: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'>\
 <filter id='n'>\
@@ -100,3 +91,5 @@ body::after{
   -webkit-mask-size: 240px 240px;
   mask-size: 240px 240px;
 }
+
+
