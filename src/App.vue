@@ -4,13 +4,15 @@ import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
+import Stack from "./components/Stack.vue";
 
 const navContent = {
   ariaLabel: "Основные разделы",
   sections: [
     { id: "about", label: "ОБО МНЕ" },
-    { id: "projects", label: "ПРОЕКТЫ" },
+    { id: "stack", label: "СТЕК" },
     { id: "graphics", label: "ВИТРИНА" },
+    { id: "projects", label: "ПРОЕКТЫ" },
     { id: "contacts", label: "КОНТАКТЫ" },
   ],
 };
@@ -44,10 +46,11 @@ const scrollToSection = (sectionId) => {
       </nav>
     </header>
 
-    <About id="about" class="section" />
-    <Project id="projects" class="section" />
+    <About id="about" class="section0" />
+    <Stack id="stack" class="section" />
     <Graphics id="graphics" class="section" />
-    <Contacts id="contacts" class="section" />
+    <Project id="projects" class="section" />
+    <Contacts id="contacts" class="section0" />
   </div>
 </template>
 
@@ -109,11 +112,21 @@ const scrollToSection = (sectionId) => {
   outline-offset: 2px;
 }
 
-.section {
+.section0 {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100svh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80svh;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
