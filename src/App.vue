@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import About from "./components/About.vue";
+import TechStack from "./components/TechStack.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
@@ -9,6 +10,7 @@ const navContent = {
   ariaLabel: "Основные разделы",
   sections: [
     { id: "about", label: "ОБО МНЕ" },
+    { id: "stack", label: "СТЕК" },
     { id: "projects", label: "ПРОЕКТЫ" },
     { id: "graphics", label: "ВИТРИНА" },
     { id: "contacts", label: "КОНТАКТЫ" },
@@ -45,6 +47,7 @@ const scrollToSection = (sectionId) => {
     </header>
 
     <About id="about" class="section" />
+    <TechStack id="stack" class="section" />
     <Project id="projects" class="section" />
     <Graphics id="graphics" class="section" />
     <Contacts id="contacts" class="section" />
