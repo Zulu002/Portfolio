@@ -3,6 +3,8 @@ import photoshop from "../assets/icons/photoshop.svg";
 import illustrator from "../assets/icons/illustrator.svg";
 import figma from "../assets/icons/figma.svg";
 import aseprite from "../assets/icons/aseprite.svg";
+import pinterest from "../assets/icons/pinterest.svg";
+import chatgpt from "../assets/icons/ChatGPT.svg";
 
 import css from "../assets/icons/CSS3.svg";
 import html from "../assets/icons/html5.svg";
@@ -43,6 +45,16 @@ export default {
             { name: "Git", icon: git },
           ],
         },
+        {
+          id: 3,
+          title: "Другие инструменты",
+          description:
+            "Инструменты для поиска идей, вдохновения, ускорения работы и поддержки креативного и аналитического процесса.",
+          stack: [
+            { name: "Pinterest", icon: pinterest },
+            { name: "ChatGPT", icon: chatgpt },
+          ],
+        },
       ],
     };
   },
@@ -55,7 +67,12 @@ export default {
       <h1 class="title">ИНСТРУМЕНТЫ И ТЕХНОЛОГИИ</h1>
 
       <div class="cards">
-        <article v-for="card in cards" :key="card.id" class="card">
+        <article
+          v-for="card in cards"
+          :key="card.id"
+          class="card"
+          :class="{ wide: card.id === 3 }"
+        >
           <h3 class="name">{{ card.title }}</h3>
 
           <p class="description">
@@ -115,6 +132,11 @@ export default {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* 3-я карточка — на всю ширину (от 1-й до 2-й) */
+.card.wide {
+  grid-column: 1 / -1;
+}
+
 /* TEXT */
 .name {
   margin: 0 0 14px;
@@ -169,6 +191,11 @@ export default {
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  /* на 1 колонке wide не нужен, но и не мешает — оставим явно */
+  .card.wide {
+    grid-column: auto;
   }
 }
 
