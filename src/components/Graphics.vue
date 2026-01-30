@@ -67,7 +67,7 @@ export default {
 
 .title {
   margin: 0 0 20px;
-  color: #EEE6DB;
+  color: #dcdcdc;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
   text-align: left;

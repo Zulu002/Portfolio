@@ -73,7 +73,7 @@
   font-family: "OpenSansBold";
   font-size: clamp(32px, 3vw, 46px);
   letter-spacing: 0.04em;
-  color: #ffffff;
+  color: #dcdcdc;
 }
 
 .subtitle {
@@ -99,7 +99,7 @@ p {
 
 .intro {
   font-size: clamp(20px, 1.55vw, 24px);
-  color: #ffffff;
+  color: #dcdcdc;
 }
 
 .divider {

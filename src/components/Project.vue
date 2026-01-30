@@ -29,9 +29,9 @@ export default {
         },
         {
           id: 4,
-          title: "Редизайн сервиса",
+          title: "Dungeon",
           description:
-            "Концепт редизайна сервиса с улучшенной навигацией и UX-логикой.",
+            "Игра в жанре сокобан находится на стадии продумывания и изучения технологий разработки",
           link: "#",
           logo: "https://via.placeholder.com/40",
         },
@@ -84,7 +84,7 @@ export default {
 
 .title {
   margin-bottom: 30px;
-  color: #eee6db;
+  color: #dcdcdc;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
 }
@@ -99,7 +99,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 25px; /* ВЕРНУЛ */
-  background: #eee6db;
+  background: #dcdcdc;
   transition: 0.3s ease;
 }
 
@@ -139,7 +139,7 @@ export default {
 .btn {
   padding: 12px 24px; /* как было */
   background: #000;
-  color: #eee6db;
+  color: #EFEFEF;
   text-decoration: none;
   font-family: "OpenSansBold";
   border: 1px solid transparent;
@@ -147,7 +147,7 @@ export default {
 }
 
 .btn:hover {
-  background: #eee6db;
+  background: #EFEFEF;
   color: #000;
   border-color: #000;
 }

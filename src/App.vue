@@ -126,7 +126,7 @@ const scrollToSection = (sectionId) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80svh;
+  min-height: 55svh;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;

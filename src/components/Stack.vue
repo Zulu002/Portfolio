@@ -1,4 +1,17 @@
 <script>
+import photoshop from "../assets/icons/photoshop.svg";
+import illustrator from "../assets/icons/illustrator.svg";
+import figma from "../assets/icons/figma.svg";
+import aseprite from "../assets/icons/aseprite.svg";
+
+import css from "../assets/icons/CSS3.svg";
+import html from "../assets/icons/html5.svg";
+import js from "../assets/icons/JavaScript.svg";
+import vue from "../assets/icons/vue.svg";
+import unity from "../assets/icons/unity.svg";
+import python from "../assets/icons/python.svg";
+import git from "../assets/icons/git.svg";
+
 export default {
   data() {
     return {
@@ -8,14 +21,27 @@ export default {
           title: "Дизайн",
           description:
             "Графический и интерфейсный дизайн с упором на композицию, визуальную иерархию и пользовательский опыт. Работаю с брендингом, UI и игровыми ассетами.",
-          stack: ["Figma", "Photoshop", "Illustrator", "Aseprite"],
+          stack: [
+            { name: "Figma", icon: figma },
+            { name: "Photoshop", icon: photoshop },
+            { name: "Illustrator", icon: illustrator },
+            { name: "Aseprite", icon: aseprite },
+          ],
         },
         {
           id: 2,
           title: "Разработка",
           description:
             "Фронтенд-разработка и прототипирование интерфейсов. Создаю адаптивные, понятные и функциональные веб-продукты.",
-          stack: ["HTML", "CSS", "JavaScript", "Vue", "Unity", "Python"],
+          stack: [
+            { name: "HTML", icon: html },
+            { name: "CSS", icon: css },
+            { name: "JavaScript", icon: js },
+            { name: "Vue", icon: vue },
+            { name: "Unity", icon: unity },
+            { name: "Python", icon: python },
+            { name: "Git", icon: git },
+          ],
         },
       ],
     };
@@ -26,7 +52,7 @@ export default {
 <template>
   <section class="expertise">
     <div class="expertise-wrapper">
-      <h1 class="title">ИНСТРУМЕНТЫ И ТЕХНОЛГИИ</h1>
+      <h1 class="title">ИНСТРУМЕНТЫ И ТЕХНОЛОГИИ</h1>
 
       <div class="cards">
         <article v-for="card in cards" :key="card.id" class="card">
@@ -37,8 +63,9 @@ export default {
           </p>
 
           <ul class="stack">
-            <li v-for="item in card.stack" :key="item">
-              {{ item }}
+            <li v-for="item in card.stack" :key="item.name">
+              <img :src="item.icon" :alt="item.name" />
+              <span>{{ item.name }}</span>
             </li>
           </ul>
         </article>
@@ -60,7 +87,7 @@ export default {
 
 .title {
   margin-bottom: 30px;
-  color: #eee6db;
+  color: #dcdcdc;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
 }
@@ -77,16 +104,18 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 28px;
-  background: #eee6db;
-  transition: 0.3s ease;
+  background: #dcdcdc;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* CARD HOVER — подъём */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* TITLE */
+/* TEXT */
 .name {
   margin: 0 0 14px;
   color: #000;
@@ -94,7 +123,6 @@ export default {
   font-family: "OpenSansBold";
 }
 
-/* DESCRIPTION */
 .description {
   margin-bottom: 18px;
   color: #4c4c4c;
@@ -110,14 +138,31 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 14px 22px;
 }
 
 .stack li {
-  font-size: 0.9rem;
-  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 0.95rem;
   font-family: "OpenSansBold";
   letter-spacing: 0.04em;
+  color: #000;
+}
+
+/* ICONS */
+.stack img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+/* лёгкий hover на иконках */
+.stack li:hover img {
+  transform: scale(1.15);
 }
 
 /* ADAPTIVE */
@@ -130,6 +175,18 @@ export default {
 @media (max-width: 640px) {
   .title {
     font-size: 2rem;
+  }
+}
+
+/* TOUCH DEVICES */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  .stack li:hover img {
+    transform: none;
   }
 }
 </style>
