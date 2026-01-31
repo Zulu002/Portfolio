@@ -13,11 +13,11 @@ export default {
         },
         {
           id: 2,
-          title: "Лендинг продукта",
+          title: "Glorious Knight Jam",
           description:
-            "Адаптивный лендинг с акцентом на структуру, композицию и пользовательский путь.",
-          link: "#",
-          logo: "https://via.placeholder.com/40",
+            "Glorious Knight Jam — многостраничный сайт для геймджема. Спроектировал структуру, улучшил UX, разработал UI и реализовал сайт на чистом HTML/CSS/JS. Основной фокус — понятная навигация, адаптивность и приведение пользователя к записи.",
+          link: "https://zulu002.github.io/GloriousKnightJam/index.html",
+          logo: "https://raw.githubusercontent.com/Zulu002/GloriousKnightJam/refs/heads/main/images/icon.svg",
         },
         {
           id: 3,
