@@ -2,129 +2,168 @@
 </script>
 
 <template>
-  <section>
-    <main class="container">
-      <section class="developer-section">
-        <div class="logo-wrap" aria-hidden="true">
-          <img src="../assets/logo.svg" alt="Логотип разработчика" />
-        </div>
-
+  <section class="hero" id="about">
+    <div class="hero-inner">
+      <!-- ЛЕВАЯ ЧАСТЬ -->
+      <div class="hero-content">
         <h1 class="title">IGNIDRA</h1>
-        <span class="subtitle">Designer · Web · Game Dev</span>
+        <p class="subtitle">WEB-DESIGNER, GAMEDEV</p>
 
         <p class="intro">
-          Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн, а также
-          интересуюсь разработкой игр (геймдевом).
+          Меня зовут Гаджи. Я дизайнер с фокусом на графический и веб-дизайн,
+          а также интересуюсь разработкой игр (геймдевом).
         </p>
 
-        <p>
-          С детства меня увлекал мир видеоигр, и со временем это увлечение переросло в
-          желание понимать и создавать их самому. Это побудило меня развивать навыки
-          дизайна: в колледже я начал с создания логотипов, фирменного стиля и макетов
-          для веб-сайтов.
-        </p>
+        <div class="socials">
+          <a href="https://t.me/Ignidra" aria-label="Telegram" class="social-link">
+            <img src="../assets/icons/telegram.svg" alt="" />
+          </a>
 
-        <p>
-          Сейчас я активно развиваюсь в области веб-разработки, углубленно изучая
-          JavaScript и фреймворки для фронтенда, чтобы создавать не только визуально
-          привлекательные, но и функциональные цифровые продукты.
-        </p>
-      </section>
+          <a href="https://github.com/Zulu002" aria-label="GitHub" class="social-link">
+            <img src="../assets/icons/github.svg" alt="" />
+          </a>
 
-      <div class="divider" aria-hidden="true"></div>
-    </main>
+          <a href="https://pin.it/2EtxOo6aR" aria-label="Pinterest" class="social-link">
+            <img src="../assets/icons/pinterest.svg" alt="" />
+          </a>
+
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" aria-label="Mail" class="social-link">
+            <img src="../assets/icons/gmail.svg" alt="" />
+          </a>
+        </div>
+      </div>
+
+      <!-- ПРАВАЯ ЧАСТЬ -->
+      <div class="hero-logo" aria-hidden="true">
+        <img src="../assets/logo.svg" alt="" />
+      </div>
+    </div>
   </section>
 </template>
 
 <style scoped>
-.container {
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
   width: 100%;
-  max-width: 64%;
+  max-width: 1400px;
   margin: 0 auto;
-  box-sizing: border-box;
+  padding: 0 40px;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
+  gap: 80px;
 }
 
-.developer-section {
-  width: 100%;
-  color: #dcdcdc;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+/* ЛЕВАЯ ЧАСТЬ */
 
-.logo-wrap {
-  margin-bottom: 22px;
-}
-
-.logo-wrap img {
-  width: 120px;
-  height: auto;
+.hero-content {
+  max-width: 640px;
 }
 
 .title {
   margin: 0;
   font-family: "OpenSansBold";
-  font-size: clamp(32px, 3vw, 46px);
-  letter-spacing: 0.04em;
-  color: #dcdcdc;
+  font-size: clamp(64px, 7vw, 110px);
+  letter-spacing: 0;
+  color: #a5d3c6;
 }
 
 .subtitle {
-  margin: 10px 0 34px;
-  font-family: "OpenSansRegular";
-  font-size: clamp(13px, 1.1vw, 16px);
-  letter-spacing: 0.24em;
+  margin: 0 0 12px;
+  font-family: "OpenSansBold";
+  font-size: 27px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(220, 220, 220, 0.6);
-}
-
-p {
-  width: 100%;
-  margin: 0 0 22px;
-  font-family: "OpenSansRegular";
-  font-size: clamp(18px, 1.35vw, 22px);
-  line-height: 1.7;
-  text-align: justify;
-  color: rgba(220, 220, 220, 0.95);
+  color: rgba(165, 211, 198, 0.85);
 }
 
 .intro {
-  font-size: clamp(20px, 1.55vw, 24px);
-  color: #dcdcdc;
+  margin-top: 0;
+  font-family: "OpenSansRegular";
+  font-size: 22px;
+  color: rgba(220, 220, 220, 0.95);
 }
 
-.divider {
+/* СОЦСЕТИ */
+
+.socials {
+  margin-top: 36px;
+  display: flex;
+  gap: 18px;
+}
+
+.social-link {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.7;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.social-link img {
   width: 100%;
-  height: 2px;
-  margin: 20px 0 10px;
-  background: linear-gradient(to right, transparent, #a5d3c6, transparent);
+  height: 100%;
+  object-fit: contain;
+
+  /* приведение моно SVG к фирменному цвету */
+  filter: brightness(0) saturate(100%)
+    invert(83%) sepia(11%) saturate(493%)
+    hue-rotate(116deg) brightness(95%) contrast(88%);
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo img {
+  width: 100%;
+  max-width: 520px;
+  opacity: 0.9;
+}
+
+/* АДАПТИВ */
+
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .hero-logo {
+    order: -1;
+  }
 }
 
 @media (max-width: 768px) {
-  .container {
-    max-width: 100%;
+  .hero-inner {
+    padding: 0 20px;
   }
 
-  .logo-wrap img {
-    width: 100px;
+  .title {
+    font-size: 56px;
   }
 
-  p,
   .intro {
-    text-align: left;
-  }
-
-  p {
     font-size: 18px;
-  }
-
-  .intro {
-    font-size: 20px;
   }
 }
 </style>
