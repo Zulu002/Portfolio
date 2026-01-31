@@ -41,7 +41,6 @@
   width: 100%;
   max-width: 64%;
   margin: 0 auto;
-  padding: 0 20px;
   box-sizing: border-box;
 
   display: flex;
@@ -52,7 +51,6 @@
 .developer-section {
   width: 100%;
   color: #dcdcdc;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,11 +86,9 @@
 p {
   width: 100%;
   margin: 0 0 22px;
-
   font-family: "OpenSansRegular";
   font-size: clamp(18px, 1.35vw, 22px);
   line-height: 1.7;
-
   text-align: justify;
   color: rgba(220, 220, 220, 0.95);
 }
@@ -109,11 +105,9 @@ p {
   background: linear-gradient(to right, transparent, #a5d3c6, transparent);
 }
 
-/* МОБИЛКА */
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding: 0 14px;
   }
 
   .logo-wrap img {
@@ -131,10 +125,6 @@ p {
 
   .intro {
     font-size: 20px;
-  }
-
-  .divider {
-    width: 90%;
   }
 }
 </style>

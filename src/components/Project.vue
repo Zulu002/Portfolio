@@ -78,7 +78,7 @@ export default {
 }
 
 .projects-wrapper {
-  max-width: 1400px; /* шире, как раньше ощущалось */
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -93,13 +93,14 @@ export default {
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px; /* как было */
+  gap: 30px;
 }
 
 .card {
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding: 25px; /* ВЕРНУЛ */
+  padding: 25px;
   background: #dcdcdc;
   transition: 0.3s ease;
 }
@@ -125,7 +126,7 @@ export default {
 .name {
   margin: 0;
   color: #000;
-  font-size: 1.4rem; /* как было */
+  font-size: 1.4rem;
   font-family: "OpenSansBold";
 }
 
@@ -133,12 +134,12 @@ export default {
   flex-grow: 1;
   margin-bottom: 16px;
   color: #4c4c4c;
-  font-size: 0.95rem; /* как было */
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
 .btn {
-  padding: 12px 24px; /* как было */
+  padding: 12px 24px;
   background: #000;
   color: #EFEFEF;
   text-decoration: none;
@@ -153,7 +154,6 @@ export default {
   border-color: #000;
 }
 
-/* Адаптив */
 @media (max-width: 1200px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);

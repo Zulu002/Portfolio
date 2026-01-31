@@ -3,6 +3,9 @@ import photoshop from "../assets/icons/photoshop.svg";
 import illustrator from "../assets/icons/illustrator.svg";
 import figma from "../assets/icons/figma.svg";
 import aseprite from "../assets/icons/aseprite.svg";
+
+import miro from "../assets/icons/miro.svg";
+import trello from "../assets/icons/trello.svg";
 import pinterest from "../assets/icons/pinterest.svg";
 import chatgpt from "../assets/icons/ChatGPT.svg";
 
@@ -22,7 +25,7 @@ export default {
           id: 1,
           title: "Дизайн",
           description:
-            "Графический и интерфейсный дизайн с упором на композицию, визуальную иерархию и пользовательский опыт. Работаю с брендингом, UI и игровыми ассетами.",
+            "Веб и графический дизайн. Проектирую интерфейсы и визуальный стиль. Создаю логотипы, иконки и ассеты для игр.",
           stack: [
             { name: "Figma", icon: figma },
             { name: "Photoshop", icon: photoshop },
@@ -34,7 +37,7 @@ export default {
           id: 2,
           title: "Разработка",
           description:
-            "Фронтенд-разработка и прототипирование интерфейсов. Создаю адаптивные, понятные и функциональные веб-продукты.",
+            "Инди- и фронтенд-разработка, прототипирование интерфейсов. Верстаю, создаю макеты, добавляю интерактив и работаю с системой контроля версий.",
           stack: [
             { name: "HTML", icon: html },
             { name: "CSS", icon: css },
@@ -53,6 +56,8 @@ export default {
           stack: [
             { name: "Pinterest", icon: pinterest },
             { name: "ChatGPT", icon: chatgpt },
+            { name: "Trello", icon: trello },
+            { name: "Miro", icon: miro },
           ],
         },
       ],
@@ -109,15 +114,14 @@ export default {
   font-family: "OpenSansBold";
 }
 
-/* GRID */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
-/* CARD */
 .card {
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   padding: 28px;
@@ -126,18 +130,15 @@ export default {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* CARD HOVER — подъём */
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* 3-я карточка — на всю ширину (от 1-й до 2-й) */
 .card.wide {
   grid-column: 1 / -1;
 }
 
-/* TEXT */
 .name {
   margin: 0 0 14px;
   color: #000;
@@ -152,7 +153,6 @@ export default {
   line-height: 1.55;
 }
 
-/* STACK */
 .stack {
   list-style: none;
   padding: 0;
@@ -167,14 +167,12 @@ export default {
   display: flex;
   align-items: center;
   gap: 10px;
-
   font-size: 0.95rem;
   font-family: "OpenSansBold";
   letter-spacing: 0.04em;
   color: #000;
 }
 
-/* ICONS */
 .stack img {
   width: 32px;
   height: 32px;
@@ -182,18 +180,15 @@ export default {
   transition: transform 0.25s ease;
 }
 
-/* лёгкий hover на иконках */
 .stack li:hover img {
   transform: scale(1.15);
 }
 
-/* ADAPTIVE */
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr;
   }
 
-  /* на 1 колонке wide не нужен, но и не мешает — оставим явно */
   .card.wide {
     grid-column: auto;
   }
@@ -205,10 +200,8 @@ export default {
   }
 }
 
-/* TOUCH DEVICES */
 @media (hover: none) {
   .card:hover {
-    transform: none;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   }
 
