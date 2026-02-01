@@ -1,6 +1,8 @@
 <script>
 import logo1 from "../assets/projects/cal.png";
 import logo2 from "../assets/projects/gk.png";
+import logo3 from "../assets/projects/hp.png";
+import logo4 from "../assets/projects/build.svg";
 export default {
   data() {
     return {
@@ -25,12 +27,12 @@ export default {
         },
         {
           id: 3,
-          title: "UI Kit",
+          title: "Билд",
           description:
-            "Набор интерфейсных компонентов, собранных в единой визуальной системе.",
-          link: "#",
-          logo: "https://via.placeholder.com/40",
-          preview: "https://via.placeholder.com/800x450",
+            "Прототип сайта строительной компании в простом и чистом дизайне.Основная цель — понятно представить услуги, вызвать доверие и упростить путь пользователя к заявке.",
+          link: "https://zulu002.github.io/GloriousKnightJam/index.html",
+          logo: logo4,
+          preview: logo3,
         },
       ],
     };
