@@ -20,6 +20,13 @@ import git from "../assets/icons/git.svg";
 export default {
   data() {
     return {
+      // ⬇️ длинная карточка "про путь"
+      journeyCard: {
+        title: "МОЙ ПУТЬ",
+        text: `С детства я любил видеоигры - именно это привело меня к желанию научиться создавать их самому. Я поступил в Ростовский колледж связи и информатики на специальность «Информационные системы». На третьем курсе меня познакомили с веб-разработкой и дизайном, и я начал создавать небольшие веб-страницы, иконки и логотипы.
+Сейчас я получаю высшее образование по направлению «Бизнес-информатика» и параллельно изучаю мир инди-разработки.`,
+      },
+
       cards: [
         {
           id: 1,
@@ -69,7 +76,17 @@ export default {
 <template>
   <section class="expertise">
     <div class="expertise-wrapper">
-      <h1 class="title">ИНСТРУМЕНТЫ И ТЕХНОЛОГИИ</h1>
+      <h1 class="title">СТЕК</h1>
+
+      <!-- ⬇️ длинная карточка сверху -->
+      <article class="card journey">
+        <h3 class="name">{{ journeyCard.title }}</h3>
+
+        <!-- Если хочешь несколько строк/абзацев — оставляем переносы -->
+        <p class="description journey-text">
+          {{ journeyCard.text }}
+        </p>
+      </article>
 
       <div class="cards">
         <article
@@ -114,10 +131,11 @@ export default {
   font-family: "OpenSansBold";
 }
 
+/* Сетка карточек */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 15px;
 }
 
 .card {
@@ -135,8 +153,14 @@ export default {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* Широкая карточка внутри сетки */
 .card.wide {
   grid-column: 1 / -1;
+}
+
+/* ⬇️ Новая верхняя карточка "путь" (вне сетки), тоже на всю ширину */
+.card.journey {
+  margin-bottom: 15px; /* отделяем от сетки */
 }
 
 .name {
@@ -151,6 +175,12 @@ export default {
   color: #4c4c4c;
   font-size: 1rem;
   line-height: 1.55;
+}
+
+/* чтобы переносы строк из текста выглядели как абзацы */
+.journey-text {
+  white-space: pre-line;
+  margin-bottom: 0; /* у верхней карточки нет стека — убираем лишний отступ */
 }
 
 .stack {
@@ -203,6 +233,7 @@ export default {
 @media (hover: none) {
   .card:hover {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transform: none;
   }
 
   .stack li:hover img {

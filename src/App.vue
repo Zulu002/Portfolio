@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, nextTick } from "vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
@@ -19,12 +19,37 @@ const navContent = {
 
 const activeSection = ref("about");
 
-const scrollToSection = (sectionId) => {
+// небольшой отступ сверху при скролле (можешь менять)
+const EXTRA_OFFSET = 12;
+
+const getHeaderOffset = () => {
+  const header = document.querySelector(".site-header");
+  if (!header) return EXTRA_OFFSET;
+
+  const style = window.getComputedStyle(header);
+  const top = parseFloat(style.top || "0") || 0;
+
+  // универсально: если когда-нибудь перенесёшь меню наверх, отступ учтётся
+  const headerHeight = header.getBoundingClientRect().height || 0;
+
+  return Math.max(EXTRA_OFFSET, top + headerHeight + EXTRA_OFFSET);
+};
+
+const scrollToSection = async (sectionId) => {
+  // активная вкладка меняется ТОЛЬКО по клику
   activeSection.value = sectionId;
 
-  document.getElementById(sectionId)?.scrollIntoView({
+  await nextTick();
+
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+
+  const y =
+    window.scrollY + el.getBoundingClientRect().top - getHeaderOffset();
+
+  window.scrollTo({
+    top: Math.max(0, Math.round(y)),
     behavior: "smooth",
-    block: "start",
   });
 };
 </script>
@@ -50,7 +75,7 @@ const scrollToSection = (sectionId) => {
     <Stack id="stack" class="section" />
     <Graphics id="graphics" class="section" />
     <Project id="projects" class="section" />
-    <Contacts id="contacts" class="section0" />
+    <Contacts id="contacts" class="section" />
   </div>
 </template>
 
@@ -62,8 +87,8 @@ const scrollToSection = (sectionId) => {
 .site-header {
   position: fixed;
   top: 18px;
-  left: 18px;   
-  transform: none;         
+  left: 18px;
+  transform: none;
   z-index: 10;
 }
 

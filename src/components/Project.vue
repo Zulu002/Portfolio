@@ -1,4 +1,6 @@
 <script>
+import logo1 from "../assets/projects/cal.png";
+import logo2 from "../assets/projects/gk.png";
 export default {
   data() {
     return {
@@ -10,14 +12,16 @@ export default {
             "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
           link: "https://zulu002.github.io/invoice/",
           logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
+          preview: logo1,
         },
         {
           id: 2,
           title: "Glorious Knight Jam",
           description:
-            "Glorious Knight Jam — многостраничный сайт для геймджема. Спроектировал структуру, улучшил UX, разработал UI и реализовал сайт на чистом HTML/CSS/JS. Основной фокус — понятная навигация, адаптивность и приведение пользователя к записи.",
+            "Glorious Knight Jam — многостраничный сайт для геймджема. Спроектировал структуру, улучшил UX, разработал UI и реализовал сайт на чистом HTML/CSS/JS.",
           link: "https://zulu002.github.io/GloriousKnightJam/index.html",
           logo: "https://raw.githubusercontent.com/Zulu002/GloriousKnightJam/refs/heads/main/images/icon.svg",
+          preview: logo2,
         },
         {
           id: 3,
@@ -26,14 +30,7 @@ export default {
             "Набор интерфейсных компонентов, собранных в единой визуальной системе.",
           link: "#",
           logo: "https://via.placeholder.com/40",
-        },
-        {
-          id: 4,
-          title: "Dungeon",
-          description:
-            "Игра в жанре сокобан находится на стадии продумывания и изучения технологий разработки",
-          link: "#",
-          logo: "https://via.placeholder.com/40",
+          preview: "https://via.placeholder.com/800x450",
         },
       ],
     };
@@ -48,6 +45,11 @@ export default {
 
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
+          <!-- PREVIEW -->
+          <div class="preview">
+            <img :src="project.preview" :alt="project.title" />
+          </div>
+
           <header class="card-header">
             <img :src="project.logo" :alt="project.title" class="logo" />
             <h3 class="name">{{ project.title }}</h3>
@@ -83,26 +85,27 @@ export default {
 }
 
 .title {
-  margin-top: 0;
   margin-bottom: 30px;
   color: #dcdcdc;
   font-size: 2.5rem;
   font-family: "OpenSansBold";
 }
 
+/* GRID */
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
+/* CARD */
 .card {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   padding: 25px;
   background: #dcdcdc;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -110,11 +113,33 @@ export default {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* PREVIEW */
+.preview {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #cfcfcf;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .preview img {
+  transform: scale(1.04);
+}
+
+/* HEADER */
 .card-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .logo {
@@ -130,30 +155,33 @@ export default {
   font-family: "OpenSansBold";
 }
 
+/* TEXT */
 .description {
   flex-grow: 1;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   color: #4c4c4c;
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
+/* BUTTON */
 .btn {
   padding: 12px 24px;
   background: #000;
-  color: #EFEFEF;
+  color: #efefef;
   text-decoration: none;
   font-family: "OpenSansBold";
   border: 1px solid transparent;
-  transition: 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .btn:hover {
-  background: #EFEFEF;
+  background: #efefef;
   color: #000;
   border-color: #000;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1200px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);

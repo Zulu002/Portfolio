@@ -13,13 +13,13 @@ export default {
     return {
       projects: [
         { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
-        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
-        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
-        { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
+        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
+        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
+        { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
         { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
         { id: 6, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
         { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo7 },
-        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
+        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
       ],
     };
   },
