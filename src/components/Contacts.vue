@@ -1,19 +1,49 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 /**
- * hoverIdx = номер квадрата (1..9)
+ * 3 секции, каждая 3x3.
+ * active = [a1, a2, a3]
  * 0 = ничего не подсвечиваем
+ * 1..9 = активный квадрат
  */
-const hoverIdx = ref(0);
+const active = ref([0, 0, 0]);
 
-const setHover = (idx) => {
-  hoverIdx.value = idx;
+const setHover = (a1, a2, a3) => {
+  active.value = [a1, a2, a3];
 };
 
 const clearHover = () => {
-  hoverIdx.value = 0;
+  active.value = [0, 0, 0];
 };
+
+/**
+ * Для индекса 1..9 возвращаем:
+ * - activeIdx (сам)
+ * - neighbors (соседи крестом: вверх/вниз/влево/вправо)
+ */
+const getNeighbors = (idx) => {
+  if (!idx) return { activeIdx: 0, neighbors: new Set() };
+
+  // переводим 1..9 в координаты 0..2
+  const r = Math.floor((idx - 1) / 3);
+  const c = (idx - 1) % 3;
+
+  const neigh = [];
+
+  // вверх/вниз
+  if (r - 1 >= 0) neigh.push((r - 1) * 3 + c + 1);
+  if (r + 1 <= 2) neigh.push((r + 1) * 3 + c + 1);
+
+  // влево/вправо
+  if (c - 1 >= 0) neigh.push(r * 3 + (c - 1) + 1);
+  if (c + 1 <= 2) neigh.push(r * 3 + (c + 1) + 1);
+
+  return { activeIdx: idx, neighbors: new Set(neigh) };
+};
+
+// для каждой из 3 секций готовим состояние подсветки
+const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx)));
 </script>
 
 <template>
@@ -21,7 +51,7 @@ const clearHover = () => {
     <div class="contacts-wrapper">
       <article class="card">
         <div class="inner">
-          <!-- Левая колонка: контакты -->
+          <!-- Левая колонка -->
           <div class="links-col">
             <h3 class="name">КОНТАКТЫ</h3>
 
@@ -32,9 +62,9 @@ const clearHover = () => {
                   class="menu-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  @mouseenter="setHover(1)"
+                  @mouseenter="setHover(1, 5, 9)"
                   @mouseleave="clearHover"
-                  @focus="setHover(1)"
+                  @focus="setHover(1, 5, 9)"
                   @blur="clearHover"
                 >
                   Telegram
@@ -45,9 +75,9 @@ const clearHover = () => {
                 <a
                   href="mailto:ignidra0@gmail.com?subject=Портфолио&body=Здравствуйте!"
                   class="menu-link"
-                  @mouseenter="setHover(3)"
+                  @mouseenter="setHover(3, 6, 7)"
                   @mouseleave="clearHover"
-                  @focus="setHover(3)"
+                  @focus="setHover(3, 6, 7)"
                   @blur="clearHover"
                 >
                   Email
@@ -60,9 +90,9 @@ const clearHover = () => {
                   class="menu-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  @mouseenter="setHover(5)"
+                  @mouseenter="setHover(2, 4, 8)"
                   @mouseleave="clearHover"
-                  @focus="setHover(5)"
+                  @focus="setHover(2, 4, 8)"
                   @blur="clearHover"
                 >
                   GitHub
@@ -75,9 +105,9 @@ const clearHover = () => {
                   class="menu-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  @mouseenter="setHover(9)"
+                  @mouseenter="setHover(9, 1, 5)"
                   @mouseleave="clearHover"
-                  @focus="setHover(9)"
+                  @focus="setHover(9, 1, 5)"
                   @blur="clearHover"
                 >
                   Pinterest
@@ -88,18 +118,20 @@ const clearHover = () => {
             <p class="footer-meta">© 2026 by ignidra</p>
           </div>
 
-          <!-- Правая колонка: квадраты -->
+          <!-- Правая колонка: 3 секции 3x3 -->
           <div class="squares-col" aria-hidden="true">
-            <div class="squares" :data-active="hoverIdx">
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
-              <span class="sq"></span>
+            <div class="squares-stack">
+              <div v-for="(st, i) in sectionState" :key="i" class="squares">
+                <span
+                  v-for="n in 9"
+                  :key="n"
+                  class="sq"
+                  :class="{
+                    isActive: n === st.activeIdx,
+                    isNeighbor: st.neighbors.has(n),
+                  }"
+                ></span>
+              </div>
             </div>
           </div>
         </div>
@@ -134,7 +166,7 @@ const clearHover = () => {
 
 .inner {
   display: grid;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: 1fr auto; /* чтобы секции не вылезали */
   gap: 32px;
   align-items: center;
 }
@@ -162,7 +194,6 @@ const clearHover = () => {
   font-size: 1rem;
   line-height: 1.25;
   font-family: "OpenSansBold";
-
   transform: translateX(0);
   transition: transform 0.15s ease, color 0.15s ease;
 }
@@ -185,11 +216,16 @@ const clearHover = () => {
   letter-spacing: 0.02em;
 }
 
-/* Правая часть: квадраты */
+/* Правая часть */
 .squares-col {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.squares-stack {
+  display: flex;
+  gap: 10px;
 }
 
 .squares {
@@ -207,31 +243,16 @@ const clearHover = () => {
   transition: background-color 0.22s ease, border-color 0.22s ease;
 }
 
-/* ===== Подсветка: выбираем квадрат по data-active ===== */
-/* 1..9 — какой квадрат залить */
-.squares[data-active="1"] .sq:nth-child(1),
-.squares[data-active="2"] .sq:nth-child(2),
-.squares[data-active="3"] .sq:nth-child(3),
-.squares[data-active="4"] .sq:nth-child(4),
-.squares[data-active="5"] .sq:nth-child(5),
-.squares[data-active="6"] .sq:nth-child(6),
-.squares[data-active="7"] .sq:nth-child(7),
-.squares[data-active="8"] .sq:nth-child(8),
-.squares[data-active="9"] .sq:nth-child(9) {
-  background: #000;
-  border-color: #000;
+/* серые соседи — теперь всегда будут для любой позиции */
+.sq.isNeighbor {
+  background: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.28);
 }
 
-/* можно добавить легкие “соседи” для глубины */
-.squares[data-active="1"] .sq:nth-child(2),
-.squares[data-active="1"] .sq:nth-child(4),
-.squares[data-active="3"] .sq:nth-child(2),
-.squares[data-active="3"] .sq:nth-child(6),
-.squares[data-active="5"] .sq:nth-child(2),
-.squares[data-active="5"] .sq:nth-child(8),
-.squares[data-active="9"] .sq:nth-child(6),
-.squares[data-active="9"] .sq:nth-child(8) {
-  background: rgba(0, 0, 0, 0.18);
+/* активный */
+.sq.isActive {
+  background: #000;
+  border-color: #000;
 }
 
 @media (max-width: 720px) {
