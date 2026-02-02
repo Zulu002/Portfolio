@@ -43,7 +43,6 @@ export default {
 <template>
   <section class="projects">
     <div class="projects-wrapper">
-      <h1 class="title">ПРОЕКТЫ</h1>
 
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
@@ -84,13 +83,6 @@ export default {
 .projects-wrapper {
   max-width: 1400px;
   margin: 0 auto;
-}
-
-.title {
-  margin-bottom: 30px;
-  color: #dcdcdc;
-  font-size: 2.5rem;
-  font-family: "OpenSansBold";
 }
 
 /* GRID */

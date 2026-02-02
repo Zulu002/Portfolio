@@ -6,10 +6,6 @@
   font-family: 'OpenSansBold';
   src: url('../src/assets/OpenSans-Bold.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'Alagard';
-  src: url('../src/assets/alagard-12px-unicode.ttf') format('truetype');
-}
 
 :root{
   --bg: #161618;
@@ -64,32 +60,6 @@ body::after{
     linear-gradient(to bottom, var(--grid-strong) var(--line), transparent var(--line));
   background-size: var(--cell) var(--cell);
   opacity: 0.45;
-
-  -webkit-mask-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'>\
-<filter id='n'>\
-  <feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
-  <feComponentTransfer>\
-    <feFuncA type='gamma' amplitude='1' exponent='1.5' offset='0'/>\
-  </feComponentTransfer>\
-</filter>\
-<rect width='240' height='240' filter='url(%23n)'/>\
-</svg>");
-  mask-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'>\
-<filter id='n'>\
-  <feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
-  <feComponentTransfer>\
-    <feFuncA type='gamma' amplitude='1' exponent='1.5' offset='0'/>\
-  </feComponentTransfer>\
-</filter>\
-<rect width='240' height='240' filter='url(%23n)'/>\
-</svg>");
-
-  -webkit-mask-repeat: repeat;
-  mask-repeat: repeat;
-  -webkit-mask-size: 240px 240px;
-  mask-size: 240px 240px;
 }
 
 

@@ -18,15 +18,9 @@ import python from "../assets/icons/python.svg";
 import git from "../assets/icons/git.svg";
 
 export default {
+  name: "ExpertiseStack",
   data() {
     return {
-      // ⬇️ длинная карточка "про путь"
-      journeyCard: {
-        title: "МОЙ ПУТЬ",
-        text: `С детства я любил видеоигры - именно это привело меня к желанию научиться создавать их самому. Я поступил в Ростовский колледж связи и информатики на специальность «Информационные системы». На третьем курсе меня познакомили с веб-разработкой и дизайном, и я начал создавать небольшие веб-страницы, иконки и логотипы.
-Сейчас я получаю высшее образование по направлению «Бизнес-информатика» и параллельно изучаю мир инди-разработки.`,
-      },
-
       cards: [
         {
           id: 1,
@@ -76,17 +70,6 @@ export default {
 <template>
   <section class="expertise">
     <div class="expertise-wrapper">
-      <h1 class="title">СТЕК</h1>
-
-      <!-- ⬇️ длинная карточка сверху -->
-      <article class="card journey">
-        <h3 class="name">{{ journeyCard.title }}</h3>
-
-        <!-- Если хочешь несколько строк/абзацев — оставляем переносы -->
-        <p class="description journey-text">
-          {{ journeyCard.text }}
-        </p>
-      </article>
 
       <div class="cards">
         <article
@@ -124,13 +107,6 @@ export default {
   margin: 0 auto;
 }
 
-.title {
-  margin-bottom: 30px;
-  color: #dcdcdc;
-  font-size: 2.5rem;
-  font-family: "OpenSansBold";
-}
-
 /* Сетка карточек */
 .cards {
   display: grid;
@@ -158,11 +134,6 @@ export default {
   grid-column: 1 / -1;
 }
 
-/* ⬇️ Новая верхняя карточка "путь" (вне сетки), тоже на всю ширину */
-.card.journey {
-  margin-bottom: 15px; /* отделяем от сетки */
-}
-
 .name {
   margin: 0 0 14px;
   color: #000;
@@ -175,12 +146,6 @@ export default {
   color: #4c4c4c;
   font-size: 1rem;
   line-height: 1.55;
-}
-
-/* чтобы переносы строк из текста выглядели как абзацы */
-.journey-text {
-  white-space: pre-line;
-  margin-bottom: 0; /* у верхней карточки нет стека — убираем лишний отступ */
 }
 
 .stack {

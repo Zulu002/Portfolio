@@ -1,10 +1,11 @@
 <script setup>
-import { ref, nextTick } from "vue";
+import { ref, nextTick, onMounted, onBeforeUnmount } from "vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
+import Journey from "./components/Journey.vue";
 
 const navContent = {
   ariaLabel: "Основные разделы",
@@ -13,26 +14,29 @@ const navContent = {
     { id: "stack", label: "СТЕК" },
     { id: "graphics", label: "ВИТРИНА" },
     { id: "projects", label: "ПРОЕКТЫ" },
-    { id: "contacts", label: "КОНТАКТЫ" },
+    // ✅ "contacts" убрали
   ],
 };
 
 const activeSection = ref("about");
 
-// небольшой отступ сверху при скролле (можешь менять)
+// небольшой отступ сверху (чтобы не прилипало вплотную)
 const EXTRA_OFFSET = 12;
 
-const getHeaderOffset = () => {
+const updateHeaderOffsetVar = () => {
   const header = document.querySelector(".site-header");
-  if (!header) return EXTRA_OFFSET;
+  const root = document.querySelector(".container");
+  if (!header || !root) return;
 
   const style = window.getComputedStyle(header);
   const top = parseFloat(style.top || "0") || 0;
+  const h = header.getBoundingClientRect().height || 0;
 
-  // универсально: если когда-нибудь перенесёшь меню наверх, отступ учтётся
-  const headerHeight = header.getBoundingClientRect().height || 0;
-
-  return Math.max(EXTRA_OFFSET, top + headerHeight + EXTRA_OFFSET);
+  // scroll-margin-top будет равен высоте меню + верхнему отступу + extra
+  root.style.setProperty(
+    "--header-offset",
+    `${Math.round(top + h + EXTRA_OFFSET)}px`
+  );
 };
 
 const scrollToSection = async (sectionId) => {
@@ -44,18 +48,26 @@ const scrollToSection = async (sectionId) => {
   const el = document.getElementById(sectionId);
   if (!el) return;
 
-  const y =
-    window.scrollY + el.getBoundingClientRect().top - getHeaderOffset();
-
-  window.scrollTo({
-    top: Math.max(0, Math.round(y)),
+  // ✅ надёжно: скроллит к началу, а отступ решает scroll-margin-top
+  el.scrollIntoView({
     behavior: "smooth",
+    block: "start",
   });
 };
+
+onMounted(() => {
+  updateHeaderOffsetVar();
+  window.addEventListener("resize", updateHeaderOffsetVar, { passive: true });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateHeaderOffsetVar);
+});
 </script>
 
 <template>
   <div class="container">
+    <!-- ✅ МЕНЮ ВОЗВРАЩЕНО КАК БЫЛО -->
     <header class="site-header">
       <nav class="site-navigation" :aria-label="navContent.ariaLabel">
         <button
@@ -71,19 +83,24 @@ const scrollToSection = async (sectionId) => {
       </nav>
     </header>
 
-    <About id="about" class="section0" />
+    <!-- ✅ Компоненты как у тебя -->
+    <About class="section0" />
+
+    <Journey id="about" class="section" />
     <Stack id="stack" class="section" />
     <Graphics id="graphics" class="section" />
     <Project id="projects" class="section" />
-    <Contacts id="contacts" class="section" />
+    <Contacts class="section" />
   </div>
 </template>
 
 <style scoped>
 .container {
   min-height: 100%;
+  --header-offset: 90px; /* обновляется из JS */
 }
 
+/* ✅ исходная позиция меню */
 .site-header {
   position: fixed;
   top: 18px;
@@ -137,6 +154,7 @@ const scrollToSection = async (sectionId) => {
   outline-offset: 2px;
 }
 
+/* hero */
 .section0 {
   display: flex;
   justify-content: center;
@@ -147,14 +165,17 @@ const scrollToSection = async (sectionId) => {
   box-sizing: border-box;
 }
 
+/* секции */
 .section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 55svh;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+
+  /* ✅ главный фикс якорей */
+  scroll-margin-top: var(--header-offset);
 }
 
 @media (max-width: 768px) {
@@ -162,27 +183,9 @@ const scrollToSection = async (sectionId) => {
     display: none;
   }
 
-  .site-navigation {
-    max-width: calc(100vw - 24px);
-    padding: 8px 10px;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .site-navigation::-webkit-scrollbar {
-    display: none;
-  }
-
-  .site-nav-button {
-    height: 34px;
-    padding: 0 14px;
-    font-size: 0.78rem;
-  }
-
   .section {
     padding: 16px;
+    scroll-margin-top: 16px;
   }
 }
 </style>

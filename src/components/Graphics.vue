@@ -29,8 +29,6 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <h1 class="title">ВИТРИНА</h1>
-
       <div class="grid">
         <a
           v-for="project in projects"
@@ -62,14 +60,6 @@ export default {
   max-width: 85%;
   margin: 0 auto;
   box-sizing: border-box;
-}
-
-.title {
-  margin: 0 0 20px;
-  color: #dcdcdc;
-  font-size: 2.5rem;
-  font-family: "OpenSansBold";
-  text-align: left;
 }
 
 .grid {
