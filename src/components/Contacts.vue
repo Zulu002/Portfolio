@@ -51,7 +51,6 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
     <div class="contacts-wrapper">
       <article class="card">
         <div class="inner">
-          <!-- Левая колонка -->
           <div class="links-col">
             <h3 class="name">КОНТАКТЫ</h3>
 
