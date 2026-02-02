@@ -4,7 +4,6 @@
 <template>
   <section class="hero" id="about">
     <div class="hero-inner">
-      <!-- ЛЕВАЯ ЧАСТЬ -->
       <div class="hero-content">
         <h1 class="title">IGNIDRA</h1>
         <p class="subtitle">WEB-DESIGNER, GAMEDEV</p>
