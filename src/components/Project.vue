@@ -2,7 +2,7 @@
 import logo1 from "../assets/projects/cal.png";
 import logo2 from "../assets/projects/gk.png";
 import logo3 from "../assets/projects/hp.png";
-import logo4 from "../assets/projects/build.svg";
+
 export default {
   data() {
     return {
@@ -11,27 +11,39 @@ export default {
           id: 1,
           title: "Калькулятор накладных",
           description:
-            "Веб-приложение, которое упрощает вычислительные расчеты при заполнении физических накладных.",
+            "Веб-приложение для упрощения вычислений и работы с физическими накладными.",
+          points: [
+            "UX-ориентированная логика",
+            "Быстрые расчёты",
+            "Минималистичный интерфейс",
+          ],
           link: "https://zulu002.github.io/invoice/",
-          logo: "https://raw.githubusercontent.com/Zulu002/invoice/main/img/icon.svg",
           preview: logo1,
         },
         {
           id: 2,
           title: "Glorious Knight Jam",
           description:
-            "Glorious Knight Jam — многостраничный сайт для геймджема. Спроектировал структуру, улучшил UX, разработал UI и реализовал сайт на чистом HTML/CSS/JS.",
+            "Многостраничный сайт для геймджема с фокусом на навигацию и вовлечение.",
+          points: [
+            "Проектирование UX",
+            "Чистый HTML / CSS / JS",
+            "Адаптивная верстка",
+          ],
           link: "https://zulu002.github.io/GloriousKnightJam/index.html",
-          logo: "https://raw.githubusercontent.com/Zulu002/GloriousKnightJam/refs/heads/main/images/icon.svg",
           preview: logo2,
         },
         {
           id: 3,
           title: "Билд",
           description:
-            "Прототип сайта строительной компании в простом и чистом дизайне.Основная цель — понятно представить услуги, вызвать доверие и упростить путь пользователя к заявке.",
-          link: "https://zulu002.github.io/GloriousKnightJam/index.html",
-          logo: logo4,
+            "Прототип сайта строительной компании. Простота, доверие и понятный путь к заявке.",
+          points: [
+            "Чистый UI",
+            "Контентная структура",
+            "Фокус на услугах",
+          ],
+          link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
           preview: logo3,
         },
       ],
@@ -43,31 +55,44 @@ export default {
 <template>
   <section class="projects">
     <div class="projects-wrapper">
-
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
           <!-- PREVIEW -->
           <div class="preview">
-            <img :src="project.preview" :alt="project.title" />
+            <div class="preview-frame">
+              <img
+                :src="project.preview"
+                :alt="project.title"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
-          <header class="card-header">
-            <img :src="project.logo" :alt="project.title" class="logo" />
-            <h3 class="name">{{ project.title }}</h3>
-          </header>
+          <!-- INFO -->
+          <div class="card-body">
+            <h1 class="name">{{ project.title }}</h1>
 
-          <p class="description">
-            {{ project.description }}
-          </p>
+            <p class="description">
+              {{ project.description }}
+            </p>
 
-          <a
-            :href="project.link"
-            class="btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Посмотреть проект
-          </a>
+            <ul class="points">
+              <li v-for="(p, i) in project.points" :key="i">
+                {{ p }}
+              </li>
+            </ul>
+
+            <!-- BUTTON -->
+            <a
+              :href="project.link"
+              class="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Посмотреть проект
+            </a>
+          </div>
         </article>
       </div>
     </div>
@@ -75,8 +100,16 @@ export default {
 </template>
 
 <style scoped>
+/* КЛЮЧЕВОЕ: чтобы width:100% не пробивал из-за padding/border */
+:global(*),
+:global(*::before),
+:global(*::after) {
+  box-sizing: border-box;
+}
+
+/* SECTION */
 .projects {
-  padding: 0 20px 40px;
+  padding: 40px 20px;
   font-family: "OpenSansRegular";
 }
 
@@ -89,84 +122,116 @@ export default {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 28px;
 }
 
 /* CARD */
 .card {
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding: 25px;
-  background: #dcdcdc;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #f4f4f4;
+  color: #111;
+  border-radius: 6px;
+  overflow: hidden;
+
+  /* меньше лагов: изолируем перерисовку */
+  contain: content;
+
+  transition: box-shadow 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
 /* PREVIEW */
 .preview {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-bottom: 16px;
-  border-radius: 4px;
-  overflow: hidden;
-  background: #cfcfcf;
+  padding: 14px;
+  background: #f4f4f4;
 }
 
-.preview img {
+.preview-frame {
+  aspect-ratio: 16 / 10;
+  background: #e6e6e6;
+  border-radius: 4px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
   transition: transform 0.35s ease;
+  will-change: transform;
 }
 
-.card:hover .preview img {
-  transform: scale(1.04);
+.card:hover .preview-frame img {
+  transform: scale(1.02);
 }
 
-/* HEADER */
-.card-header {
+/* BODY */
+.card-body {
+  padding: 22px;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
+/* TITLE */
 .name {
   margin: 0;
-  color: #000;
-  font-size: 1.4rem;
   font-family: "OpenSansBold";
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
-/* TEXT */
+/* DESCRIPTION */
 .description {
-  flex-grow: 1;
-  margin-bottom: 18px;
-  color: #4c4c4c;
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: #444;
 }
 
-/* BUTTON */
+/* POINTS */
+.points {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.points li {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  background: #2a2a2a;
+  color: #ffffff ;
+  border: 1px solid #d0d0d0;
+  margin-bottom: 6px;
+  width: fit-content;
+}
+
+/* BUTTON — на всю ширину (без вылезания) */
 .btn {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
   padding: 12px 24px;
   background: #000;
   color: #efefef;
   text-decoration: none;
   font-family: "OpenSansBold";
+  font-size: 1rem;
   border: 1px solid transparent;
-  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
 }
 
 .btn:hover {
@@ -185,10 +250,6 @@ export default {
 @media (max-width: 640px) {
   .cards {
     grid-template-columns: 1fr;
-  }
-
-  .title {
-    font-size: 2rem;
   }
 }
 </style>
