@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       journeyCard: {
-        title: "МОЙ ПУТЬ",
+        title: "Мой путь",
         text: `С детства я любил видеоигры — именно это привело меня к желанию научиться создавать их самому. Я поступил в Ростовский колледж связи и информатики на специальность «Информационные системы». На третьем курсе меня познакомили с веб-разработкой и дизайном, и я начал создавать небольшие веб-страницы, иконки и логотипы.
 Сейчас я получаю высшее образование по направлению «Бизнес-информатика» и параллельно изучаю мир инди-разработки.`,
       },
@@ -36,11 +36,12 @@ export default {
 }
 
 .card {
+  border: 1px solid #201E19;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   padding: 28px;
-  background: #dcdcdc;
+  background: #1B1913;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
@@ -52,13 +53,13 @@ export default {
 
 .name {
   margin: 0 0 14px;
-  color: #000;
+  color: #EDECEC;
   font-size: 1.6rem;
   font-family: "OpenSansBold";
 }
 
 .description {
-  color: #2c2c2c;
+  color: #9A9996;
   font-size: 1rem;
   line-height: 1.55;
   margin: 0;

@@ -57,7 +57,7 @@ export default {
 }
 
 .showcase-wrapper {
-  max-width: 85%;
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -69,12 +69,13 @@ export default {
 }
 
 .tile {
+  border-radius: 5px;
   position: relative;
   display: flex;
   aspect-ratio: 1;
   overflow: hidden;
   text-decoration: none;
-  background: #2a2a2a;
+  background: #1B1913;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

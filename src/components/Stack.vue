@@ -110,10 +110,11 @@ export default {
 }
 
 .card {
+  border: 1px solid #201E19;
   display: flex;
   flex-direction: column;
   padding: 28px;
-  background: #dcdcdc;
+  background: #1B1913;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
@@ -126,24 +127,23 @@ export default {
 
 .name {
   margin: 0 0 14px;
-  color: #000;
+  color: #EDECEC;
   font-size: 1.5rem;
   font-family: "OpenSansBold";
 }
 
 .description {
   margin: 0 0 20px;
-  color: #4c4c4c;
+  color: #9A9996;
   font-size: 1rem;
   line-height: 1.55;
-  flex: 1; /* выравнивает высоту карточек */
+  flex: 1;
 }
 
 .stack {
   list-style: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   flex-wrap: wrap;
   gap: 12px 18px;
@@ -156,7 +156,7 @@ export default {
   font-size: 0.95rem;
   font-family: "OpenSansBold";
   letter-spacing: 0.04em;
-  color: #000;
+  color: #EDECEC;
 }
 
 .stack img {
