@@ -16,7 +16,6 @@ export default {
 <template>
   <section class="journey">
     <div class="journey-wrapper">
-
       <article class="card">
         <h3 class="name">{{ journeyCard.title }}</h3>
         <p class="description journey-text">{{ journeyCard.text }}</p>
@@ -63,7 +62,6 @@ export default {
   font-size: 1rem;
   line-height: 1.55;
   margin: 0;
-  font-family: "OpenSansBold";
 }
 
 /* переносы строк из текста */

@@ -9,11 +9,6 @@
 
 :root{
   --bg: #161618;
-  --grid: rgba(165, 211, 198, 0.08);
-  --grid-strong: rgba(165, 211, 198, 0.16);
-  --cell: 52px;
-  --line: 1px;
-  --vignette: rgba(0,0,0,0.55);
 }
 
 html, body {
@@ -26,40 +21,4 @@ body{
   background: var(--bg);
   color: rgba(255,255,255,0.92);
   overflow-x: hidden;
-  position: relative;
-  isolation: isolate;
 }
-
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
-
-  background-image:
-    linear-gradient(to right, var(--grid) var(--line), transparent var(--line)),
-    linear-gradient(to bottom, var(--grid) var(--line), transparent var(--line));
-  background-size: var(--cell) var(--cell);
-
-  
-  box-shadow:
-    inset 0 0 160px var(--vignette),
-    inset 0 0 80px rgba(0,0,0,0.35);
-}
-
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-
-  background-image:
-    linear-gradient(to right, var(--grid-strong) var(--line), transparent var(--line)),
-    linear-gradient(to bottom, var(--grid-strong) var(--line), transparent var(--line));
-  background-size: var(--cell) var(--cell);
-  opacity: 0.45;
-}
-
-

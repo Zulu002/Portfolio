@@ -70,14 +70,8 @@ export default {
 <template>
   <section class="expertise">
     <div class="expertise-wrapper">
-
       <div class="cards">
-        <article
-          v-for="card in cards"
-          :key="card.id"
-          class="card"
-          :class="{ wide: card.id === 3 }"
-        >
+        <article v-for="card in cards" :key="card.id" class="card">
           <h3 class="name">{{ card.title }}</h3>
 
           <p class="description">
@@ -85,7 +79,7 @@ export default {
           </p>
 
           <ul class="stack">
-            <li v-for="item in card.stack" :key="item.name">
+            <li v-for="item in card.stack" :key="item.name" class="stack-item">
               <img :src="item.icon" :alt="item.name" />
               <span>{{ item.name }}</span>
             </li>
@@ -107,21 +101,22 @@ export default {
   margin: 0 auto;
 }
 
-/* Сетка карточек */
+/* 3 карточки в ряд */
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
 }
 
 .card {
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   padding: 28px;
   background: #dcdcdc;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .card:hover {
@@ -129,23 +124,19 @@ export default {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Широкая карточка внутри сетки */
-.card.wide {
-  grid-column: 1 / -1;
-}
-
 .name {
   margin: 0 0 14px;
   color: #000;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-family: "OpenSansBold";
 }
 
 .description {
-  margin-bottom: 18px;
+  margin: 0 0 20px;
   color: #4c4c4c;
   font-size: 1rem;
   line-height: 1.55;
+  flex: 1; /* выравнивает высоту карточек */
 }
 
 .stack {
@@ -155,11 +146,11 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 22px;
+  gap: 12px 18px;
 }
 
-.stack li {
-  display: flex;
+.stack-item {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;
@@ -169,39 +160,38 @@ export default {
 }
 
 .stack img {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   transition: transform 0.25s ease;
 }
 
-.stack li:hover img {
-  transform: scale(1.15);
+.stack-item:hover img {
+  transform: scale(1.12);
 }
 
-@media (max-width: 900px) {
+/* Планшет: 2 колонки */
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Мобилка: 1 колонка */
+@media (max-width: 720px) {
   .cards {
     grid-template-columns: 1fr;
   }
-
-  .card.wide {
-    grid-column: auto;
-  }
 }
 
-@media (max-width: 640px) {
-  .title {
-    font-size: 2rem;
-  }
-}
-
+/* Отключаем ховеры на тач-устройствах */
 @media (hover: none) {
   .card:hover {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     transform: none;
   }
 
-  .stack li:hover img {
+  .stack-item:hover img {
     transform: none;
   }
 }
