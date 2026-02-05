@@ -12,8 +12,8 @@ const navContent = {
   sections: [
     { id: "about", label: "ОБО МНЕ" },
     { id: "stack", label: "СТЕК" },
-    { id: "graphics", label: "ВИТРИНА" },
     { id: "projects", label: "ПРОЕКТЫ" },
+    { id: "graphics", label: "ВИТРИНА" },
     // ✅ "contacts" убрали
   ],
 };
@@ -88,8 +88,8 @@ onBeforeUnmount(() => {
 
     <Journey id="about" class="section" />
     <Stack id="stack" class="section" />
-    <Graphics id="graphics" class="section" />
     <Project id="projects" class="section" />
+    <Graphics id="graphics" class="section" />
     <Contacts class="section" />
   </div>
 </template>

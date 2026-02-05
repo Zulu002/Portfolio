@@ -43,6 +43,7 @@ export default {
 <template>
   <section class="projects">
     <div class="projects-wrapper">
+      <h2 class="section-title">Проекты</h2>
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
           <!-- TOP (как на фото): заголовок/описание/линк -->
@@ -97,8 +98,18 @@ export default {
 }
 
 .projects-wrapper {
-  max-width: 1400px;
+  max-width: var(--content-width);
   margin: 0 auto;
+}
+
+/* SECTION TITLE */
+.section-title {
+  margin: 0 0 22px;
+  font-family: "OpenSansBold";
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #EDECEC;
 }
 
 /* GRID */
@@ -233,6 +244,10 @@ export default {
 }
 
 @media (max-width: 640px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
   .cards {
     grid-template-columns: 1fr;
   }

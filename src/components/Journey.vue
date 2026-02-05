@@ -31,7 +31,7 @@ export default {
 }
 
 .journey-wrapper {
-  max-width: 1400px;
+  max-width: var(--content-width);
   margin: 0 auto;
 }
 

@@ -9,6 +9,7 @@
 
 :root{
   --bg: #14120B;
+  --content-width: 1200px;
 }
 
 html, body {

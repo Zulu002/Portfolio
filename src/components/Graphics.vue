@@ -57,7 +57,7 @@ export default {
 }
 
 .showcase-wrapper {
-  max-width: 100%;
+  max-width: var(--content-width);
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -94,7 +94,7 @@ export default {
 
 @media (max-width: 640px) {
   .showcase-wrapper {
-    max-width: 100%;
+    max-width: var(--content-width);
   }
 
   .title {

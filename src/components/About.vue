@@ -49,7 +49,7 @@
 
 .hero-inner {
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 40px;
 
