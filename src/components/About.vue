@@ -32,7 +32,7 @@
         </div>
       </div>
 
-      <!-- ПРАВАЯ ЧАСТЬ -->
+      
       <div class="hero-logo" aria-hidden="true">
         <img src="../assets/logo.svg" alt="" />
       </div>
@@ -59,7 +59,7 @@
   gap: 80px;
 }
 
-/* ЛЕВАЯ ЧАСТЬ */
+
 
 .hero-content {
   max-width: 640px;
@@ -89,7 +89,7 @@
   color: rgba(220, 220, 220, 0.95);
 }
 
-/* СОЦСЕТИ */
+
 
 .socials {
   margin-top: 36px;
@@ -119,13 +119,13 @@
   height: 100%;
   object-fit: contain;
 
-  /* приведение моно SVG к фирменному цвету */
+  
   filter: brightness(0) saturate(100%)
     invert(83%) sepia(11%) saturate(493%)
     hue-rotate(116deg) brightness(95%) contrast(88%);
 }
 
-/* ПРАВАЯ ЧАСТЬ */
+
 
 .hero-logo {
   display: flex;
@@ -139,7 +139,7 @@
   opacity: 0.9;
 }
 
-/* АДАПТИВ */
+
 
 @media (max-width: 1024px) {
   .hero-inner {

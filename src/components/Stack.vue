@@ -101,7 +101,7 @@ export default {
   margin: 0 auto;
 }
 
-/* 3 карточки в ряд */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -110,6 +110,7 @@ export default {
 }
 
 .card {
+  border-radius: 5px;
   border: 1px solid #201E19;
   display: flex;
   flex-direction: column;
@@ -170,21 +171,21 @@ export default {
   transform: scale(1.12);
 }
 
-/* Планшет: 2 колонки */
+
 @media (max-width: 1100px) {
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Мобилка: 1 колонка */
+
 @media (max-width: 720px) {
   .cards {
     grid-template-columns: 1fr;
   }
 }
 
-/* Отключаем ховеры на тач-устройствах */
+
 @media (hover: none) {
   .card:hover {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);

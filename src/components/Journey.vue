@@ -65,7 +65,7 @@ export default {
   margin: 0;
 }
 
-/* переносы строк из текста */
+
 .journey-text {
   white-space: pre-line;
 }

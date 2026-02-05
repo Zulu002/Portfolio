@@ -46,12 +46,12 @@ export default {
       <h2 class="section-title">Проекты</h2>
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
-          <!-- TOP (как на фото): заголовок/описание/линк -->
+          
           <header class="card-top">
             <h3 class="name">{{ project.title }}</h3>
             <p class="description">{{ project.description }}</p>
 
-            <!-- ТЕГИ (оставляем) -->
+            
             <ul class="points" aria-label="Теги проекта">
               <li v-for="(p, i) in project.points" :key="i">{{ p }}</li>
             </ul>
@@ -66,7 +66,7 @@ export default {
             </a>
           </header>
 
-          <!-- BOTTOM: большой превью-блок как на карточке в примере -->
+          
           <div class="preview">
             <div class="preview-frame">
               <img
@@ -84,14 +84,14 @@ export default {
 </template>
 
 <style scoped>
-/* чтобы width/padding не ломали сетку */
+
 :global(*),
 :global(*::before),
 :global(*::after) {
   box-sizing: border-box;
 }
 
-/* SECTION */
+
 .projects {
   padding: 40px 20px;
   font-family: "OpenSansRegular";
@@ -102,7 +102,7 @@ export default {
   margin: 0 auto;
 }
 
-/* SECTION TITLE */
+
 .section-title {
   margin: 0 0 22px;
   font-family: "OpenSansBold";
@@ -112,14 +112,14 @@ export default {
   color: #EDECEC;
 }
 
-/* GRID */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
-/* CARD — компоновка как на фото: текст сверху, превью снизу */
+
 .card {
   background: #1B1913;
   color: #f2f2f2;
@@ -132,14 +132,11 @@ export default {
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.09) inset;
-  background-color: #24221d;
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* TOP */
+
 .card-top {
   padding: 20px 20px 14px;
   display: flex;
@@ -162,7 +159,7 @@ export default {
   line-height: 1.5;
 }
 
-/* ТЕГИ (оставили), но делаем аккуратными как бейджи */
+
 .points {
   margin: 2px 0 0;
   padding: 0;
@@ -183,7 +180,7 @@ export default {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* LINK как "Learn more →" */
+
 .learn {
   margin-top: 2px;
   display: inline-flex;
@@ -192,18 +189,18 @@ export default {
 
   text-decoration: none;
   font-family: "OpenSansBold";
-  color: #a5d3c6; /* как акцент на примере */
+  color: #a5d3c6; 
   width: fit-content;
 
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .learn:hover {
-  transform: translateX(2px);
+  transform: translateX(10px);
   opacity: 0.9;
 }
 
-/* PREVIEW BLOCK */
+
 .preview {
   padding: 14px 14px 18px;
 }
@@ -212,13 +209,13 @@ export default {
   border-radius: 8px;
   overflow: hidden;
 
-  /* "бумажная" подложка как на примере */
+  
   background: #d8d1c1;
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.35),
     0 12px 28px rgba(0, 0, 0, 0.35);
 
-  /* размер как карточка с картинкой */
+  
   aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
@@ -236,7 +233,7 @@ export default {
 }
 
 
-/* RESPONSIVE */
+
 @media (max-width: 1200px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);

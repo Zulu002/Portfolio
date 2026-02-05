@@ -1,12 +1,7 @@
 <script setup>
 import { computed, ref } from "vue";
 
-/**
- * 3 секции, каждая 3x3.
- * active = [a1, a2, a3]
- * 0 = ничего не подсвечиваем
- * 1..9 = активный квадрат
- */
+
 const active = ref([0, 0, 0]);
 
 const setHover = (a1, a2, a3) => {
@@ -17,32 +12,24 @@ const clearHover = () => {
   active.value = [0, 0, 0];
 };
 
-/**
- * Для индекса 1..9 возвращаем:
- * - activeIdx (сам)
- * - neighbors (соседи крестом: вверх/вниз/влево/вправо)
- */
+
 const getNeighbors = (idx) => {
   if (!idx) return { activeIdx: 0, neighbors: new Set() };
 
-  // переводим 1..9 в координаты 0..2
   const r = Math.floor((idx - 1) / 3);
   const c = (idx - 1) % 3;
 
   const neigh = [];
 
-  // вверх/вниз
   if (r - 1 >= 0) neigh.push((r - 1) * 3 + c + 1);
   if (r + 1 <= 2) neigh.push((r + 1) * 3 + c + 1);
 
-  // влево/вправо
   if (c - 1 >= 0) neigh.push(r * 3 + (c - 1) + 1);
   if (c + 1 <= 2) neigh.push(r * 3 + (c + 1) + 1);
 
   return { activeIdx: idx, neighbors: new Set(neigh) };
 };
 
-// для каждой из 3 секций готовим состояние подсветки
 const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx)));
 </script>
 
@@ -117,7 +104,7 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
             <p class="footer-meta">© 2026 by ignidra</p>
           </div>
 
-          <!-- Правая колонка: 3 секции 3x3 -->
+          
           <div class="squares-col" aria-hidden="true">
             <div class="squares-stack">
               <div v-for="(st, i) in sectionState" :key="i" class="squares">
@@ -165,12 +152,12 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
 
 .inner {
   display: grid;
-  grid-template-columns: 1fr auto; /* чтобы секции не вылезали */
+  grid-template-columns: 1fr auto; 
   gap: 32px;
   align-items: center;
 }
 
-/* Левая часть */
+
 .name {
   margin: 0 0 12px;
   color: #000;
@@ -215,7 +202,7 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
   letter-spacing: 0.02em;
 }
 
-/* Правая часть */
+
 .squares-col {
   display: flex;
   justify-content: flex-end;
@@ -242,13 +229,13 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
   transition: background-color 0.22s ease, border-color 0.22s ease;
 }
 
-/* серые соседи — теперь всегда будут для любой позиции */
+
 .sq.isNeighbor {
   background: rgba(0, 0, 0, 0.18);
   border-color: rgba(0, 0, 0, 0.28);
 }
 
-/* активный */
+
 .sq.isActive {
   background: #000;
   border-color: #000;

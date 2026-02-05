@@ -14,13 +14,11 @@ const navContent = {
     { id: "stack", label: "СТЕК" },
     { id: "projects", label: "ПРОЕКТЫ" },
     { id: "graphics", label: "ВИТРИНА" },
-    // ✅ "contacts" убрали
   ],
 };
 
 const activeSection = ref("about");
 
-// небольшой отступ сверху (чтобы не прилипало вплотную)
 const EXTRA_OFFSET = 12;
 
 const updateHeaderOffsetVar = () => {
@@ -32,7 +30,6 @@ const updateHeaderOffsetVar = () => {
   const top = parseFloat(style.top || "0") || 0;
   const h = header.getBoundingClientRect().height || 0;
 
-  // scroll-margin-top будет равен высоте меню + верхнему отступу + extra
   root.style.setProperty(
     "--header-offset",
     `${Math.round(top + h + EXTRA_OFFSET)}px`
@@ -40,7 +37,6 @@ const updateHeaderOffsetVar = () => {
 };
 
 const scrollToSection = async (sectionId) => {
-  // активная вкладка меняется ТОЛЬКО по клику
   activeSection.value = sectionId;
 
   await nextTick();
@@ -48,7 +44,6 @@ const scrollToSection = async (sectionId) => {
   const el = document.getElementById(sectionId);
   if (!el) return;
 
-  // ✅ надёжно: скроллит к началу, а отступ решает scroll-margin-top
   el.scrollIntoView({
     behavior: "smooth",
     block: "start",
@@ -67,7 +62,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="container">
-    <!-- ✅ МЕНЮ ВОЗВРАЩЕНО КАК БЫЛО -->
+    
     <header class="site-header">
       <nav class="site-navigation" :aria-label="navContent.ariaLabel">
         <button
@@ -83,9 +78,8 @@ onBeforeUnmount(() => {
       </nav>
     </header>
 
-    <!-- ✅ Компоненты как у тебя -->
+    
     <About class="section0" />
-
     <Journey id="about" class="section" />
     <Stack id="stack" class="section" />
     <Project id="projects" class="section" />
@@ -97,10 +91,10 @@ onBeforeUnmount(() => {
 <style scoped>
 .container {
   min-height: 100%;
-  --header-offset: 90px; /* обновляется из JS */
+  --header-offset: 90px; 
 }
 
-/* ✅ исходная позиция меню */
+
 .site-header {
   position: fixed;
   top: 18px;
@@ -154,27 +148,27 @@ onBeforeUnmount(() => {
   outline-offset: 2px;
 }
 
-/* hero */
+
 .section0 {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100svh;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
-/* секции */
+
 .section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 
-  /* ✅ главный фикс якорей */
+  
   scroll-margin-top: var(--header-offset);
 }
 
