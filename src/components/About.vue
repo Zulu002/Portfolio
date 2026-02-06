@@ -42,7 +42,7 @@
 
 <style scoped>
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
 }
@@ -51,7 +51,6 @@
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 40px;
 
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
