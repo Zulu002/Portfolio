@@ -16,6 +16,7 @@ export default {
 <template>
   <section class="journey">
     <div class="journey-wrapper">
+      <h2 class="section-title">Обо мне</h2>
       <article class="card">
         <h3 class="name">{{ journeyCard.title }}</h3>
         <p class="description journey-text">{{ journeyCard.text }}</p>
@@ -25,6 +26,7 @@ export default {
 </template>
 
 <style scoped>
+
 .journey {
   padding: 40px 20px;
   font-family: "OpenSansRegular";
@@ -33,6 +35,15 @@ export default {
 .journey-wrapper {
   max-width: var(--content-width);
   margin: 0 auto;
+}
+
+.section-title {
+  margin: 0 0 22px;
+  font-family: "OpenSansBold";
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #EDECEC;
 }
 
 .card {
@@ -71,8 +82,8 @@ export default {
 }
 
 @media (max-width: 640px) {
-  .title {
-    font-size: 2rem;
+  .section-title {
+    font-size: 1.6rem;
   }
 }
 
