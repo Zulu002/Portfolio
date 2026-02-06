@@ -46,7 +46,17 @@ export default {
       <h2 class="section-title">Проекты</h2>
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
-          
+          <div class="preview">
+            <div class="preview-frame">
+              <img
+                :src="project.preview"
+                :alt="project.title"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
           <header class="card-top">
             <h3 class="name">{{ project.title }}</h3>
             <p class="description">{{ project.description }}</p>
@@ -65,18 +75,6 @@ export default {
               Посмотреть проект <span aria-hidden="true">→</span>
             </a>
           </header>
-
-          
-          <div class="preview">
-            <div class="preview-frame">
-              <img
-                :src="project.preview"
-                :alt="project.title"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
         </article>
       </div>
     </div>
@@ -206,7 +204,7 @@ export default {
 }
 
 .preview-frame {
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
 
   
