@@ -29,6 +29,7 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
+      <h2 class="section-title">Графика</h2>
       <div class="grid">
         <a
           v-for="project in projects"
@@ -60,6 +61,15 @@ export default {
   max-width: var(--content-width);
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.section-title {
+  margin: 0 0 22px;
+  font-family: "OpenSansBold";
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #EDECEC;
 }
 
 .grid {
@@ -97,9 +107,9 @@ export default {
     max-width: var(--content-width);
   }
 
-  .title {
+  .section-title {
     text-align: left;
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .grid {
