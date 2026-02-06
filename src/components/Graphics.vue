@@ -30,23 +30,57 @@ export default {
   <section class="projects-showcase">
     <div class="showcase-wrapper">
       <h2 class="section-title">Графика</h2>
-      <div class="grid">
-        <a
-          v-for="project in projects"
-          :key="project.id"
-          :href="project.link"
-          class="tile"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            :src="project.logo"
-            :alt="`Project ${project.id}`"
-            class="image"
-            loading="lazy"
-          />
-        </a>
+
+      <div class="slider">
+        <div class="track">
+          <div class="marquee" aria-label="Лента логотипов">
+            <!-- группа 1 -->
+            <div class="marquee__group">
+              <a
+                v-for="project in projects"
+                :key="`a-${project.id}`"
+                :href="project.link"
+                class="tile"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  :src="project.logo"
+                  :alt="`Project ${project.id}`"
+                  class="image"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </a>
+            </div>
+
+            <!-- ВОТ ЭТО: отступ между группами -->
+            <span class="marquee__spacer" aria-hidden="true"></span>
+
+            <!-- группа 2 (дубликат) -->
+            <div class="marquee__group" aria-hidden="true">
+              <a
+                v-for="project in projects"
+                :key="`b-${project.id}`"
+                :href="project.link"
+                class="tile"
+                target="_blank"
+                rel="noopener noreferrer"
+                tabindex="-1"
+              >
+                <img
+                  :src="project.logo"
+                  :alt="`Project ${project.id}`"
+                  class="image"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 </template>
@@ -72,16 +106,61 @@ export default {
   color: #EDECEC;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+.slider {
+  position: relative;
+  width: 100%;
 }
 
+/* окно */
+.track {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 0 4px;
+
+  /* gap как у тебя */
+  --logo-gap: 15px;
+}
+
+/* лента */
+.marquee {
+  display: flex;
+
+  /* важно: + gap, потому что мы вставили spacer */
+  width: calc(200% + var(--logo-gap));
+
+  will-change: transform;
+  animation: marquee-move 18s linear infinite;
+}
+
+.marquee__group {
+  width: 50%;
+  display: flex;
+  gap: var(--logo-gap);
+}
+
+.marquee__spacer {
+  flex: 0 0 var(--logo-gap);
+}
+
+/* пауза при наведении/фокусе */
+.track:hover .marquee,
+.track:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+/* двигаем ровно на 1 группу + spacer */
+@keyframes marquee-move {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - var(--logo-gap))); }
+}
+
+/* ТВОИ СТИЛИ КАРТОЧЕК — НЕ МЕНЯЮ */
 .tile {
   border-radius: 5px;
   position: relative;
   display: flex;
+  flex: 0 0 calc((100% - 45px) / 4);
   aspect-ratio: 1;
   overflow: hidden;
   text-decoration: none;
@@ -102,6 +181,12 @@ export default {
   transform: scale(1.1);
 }
 
+@media (max-width: 1100px) {
+  .tile {
+    flex-basis: calc((100% - 30px) / 3);
+  }
+}
+
 @media (max-width: 640px) {
   .showcase-wrapper {
     max-width: var(--content-width);
@@ -112,13 +197,14 @@ export default {
     font-size: 1.6rem;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  /* как у тебя было на мобилке */
+  .track {
+    --logo-gap: 12px;
   }
 
   .tile {
     border-width: 2px;
+    width: auto;
   }
 
   .tile:hover {
