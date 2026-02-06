@@ -59,7 +59,7 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
 
               <li>
                 <a
-                  href="mailto:ignidra0@gmail.com?subject=Портфолио&body=Здравствуйте!"
+                  href="mailto:ignidra0@gmail.com?subject=%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!"
                   class="menu-link"
                   @mouseenter="setHover(3, 6, 7)"
                   @mouseleave="clearHover"

@@ -26,7 +26,7 @@
             <img src="../assets/icons/pinterest.svg" alt="" />
           </a>
 
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=Портфолио&body=Здравствуйте!" aria-label="Mail" class="social-link">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" aria-label="Mail" class="social-link">
             <img src="../assets/icons/gmail.svg" alt="" />
           </a>
         </div>
