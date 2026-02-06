@@ -185,7 +185,7 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
 }
 
 .menu-link:hover {
-  transform: translateX(6px);
+  transform: translateX(10px);
   color: rgba(0, 0, 0, 0.92);
 }
 
