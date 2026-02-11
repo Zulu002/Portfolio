@@ -24,6 +24,35 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.updateVisibleColumns();
+    window.addEventListener("resize", this.updateVisibleColumns, { passive: true });
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.updateVisibleColumns);
+  },
+  methods: {
+    updateVisibleColumns() {
+      const width = window.innerWidth;
+
+      if (width <= 480) {
+        this.visibleColumns = 2;
+        return;
+      }
+
+      if (width <= 768) {
+        this.visibleColumns = 3;
+        return;
+      }
+
+      if (width <= 1024) {
+        this.visibleColumns = 4;
+        return;
+      }
+
+      this.visibleColumns = 5;
+    },
+  },
 };
 </script>
 
@@ -90,10 +119,13 @@ export default {
 <style scoped>
 .projects-showcase {
   width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
   font-family: "OpenSansRegular";
 }
 
 .showcase-wrapper {
+  width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
   box-sizing: border-box;
@@ -185,16 +217,6 @@ export default {
 }
 
 @media (max-width: 640px) {
-  .projects-showcase {
-    width: calc(100% + 32px);
-    margin-inline: -16px;
-  }
-
-  .showcase-wrapper {
-    padding-inline: 8px;
-    box-sizing: border-box;
-  }
-
   .section-title {
     text-align: left;
     font-size: 1.6rem;
