@@ -187,7 +187,7 @@ export default {
 
   text-decoration: none;
   font-family: "OpenSansBold";
-  color: #a5d3c6; 
+  color: #59B994; 
   width: fit-content;
 
   transition: transform 0.2s ease, opacity 0.2s ease;

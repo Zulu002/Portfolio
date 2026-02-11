@@ -145,7 +145,7 @@ const sectionState = computed(() => active.value.map((idx) => getNeighbors(idx))
   width: 100%;
   border-radius: 5px;
   padding: 26px 28px 22px;
-  background: #a5d3c6;
+  background: #59B994;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
 }

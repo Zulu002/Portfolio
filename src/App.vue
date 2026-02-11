@@ -24,6 +24,7 @@ import Journey from "./components/Journey.vue";
 }
 
 .section0 {
+  background-color: #59B994;
   display: flex;
   justify-content: center;
   align-items: center;

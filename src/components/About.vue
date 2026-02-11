@@ -15,19 +15,19 @@
 
         <div class="socials">
           <a href="https://t.me/Ignidra" aria-label="Telegram" class="social-link">
-            <img src="../assets/icons/telegram.svg" alt="" />
+            <span class="social-icon icon-telegram" aria-hidden="true"></span>
           </a>
 
           <a href="https://github.com/Zulu002" aria-label="GitHub" class="social-link">
-            <img src="../assets/icons/github.svg" alt="" />
+            <span class="social-icon icon-github" aria-hidden="true"></span>
           </a>
 
           <a href="https://pin.it/2EtxOo6aR" aria-label="Pinterest" class="social-link">
-            <img src="../assets/icons/pinterest.svg" alt="" />
+            <span class="social-icon icon-pinterest" aria-hidden="true"></span>
           </a>
 
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" aria-label="Mail" class="social-link">
-            <img src="../assets/icons/gmail.svg" alt="" />
+            <span class="social-icon icon-gmail" aria-hidden="true"></span>
           </a>
         </div>
       </div>
@@ -69,7 +69,7 @@
   font-family: "OpenSansBold";
   font-size: clamp(64px, 7vw, 110px);
   letter-spacing: 0;
-  color: #a5d3c6;
+  color: #14120B;
 }
 
 .subtitle {
@@ -78,14 +78,14 @@
   font-size: 27px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(165, 211, 198, 0.85);
+  color: #14120B;
 }
 
 .intro {
   margin-top: 0;
   font-family: "OpenSansRegular";
   font-size: 22px;
-  color: rgba(220, 220, 220, 0.95);
+  color: #14120B;
 }
 
 
@@ -113,15 +113,37 @@
   transform: translateY(-2px);
 }
 
-.social-link img {
+.social-icon {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  display: block;
+  background-color: #14120B;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
 
-  
-  filter: brightness(0) saturate(100%)
-    invert(83%) sepia(11%) saturate(493%)
-    hue-rotate(116deg) brightness(95%) contrast(88%);
+.icon-telegram {
+  mask-image: url("../assets/icons/telegram.svg");
+  -webkit-mask-image: url("../assets/icons/telegram.svg");
+}
+
+.icon-github {
+  mask-image: url("../assets/icons/github.svg");
+  -webkit-mask-image: url("../assets/icons/github.svg");
+}
+
+.icon-pinterest {
+  mask-image: url("../assets/icons/pinterest.svg");
+  -webkit-mask-image: url("../assets/icons/pinterest.svg");
+}
+
+.icon-gmail {
+  mask-image: url("../assets/icons/gmail.svg");
+  -webkit-mask-image: url("../assets/icons/gmail.svg");
 }
 
 
