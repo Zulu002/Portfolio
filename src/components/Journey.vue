@@ -38,7 +38,7 @@ export default {
 }
 
 .section-title {
-  margin: 0 0 22px;
+  margin: 10px 0 22px 0;
   font-family: "OpenSansBold";
   font-size: 2rem;
   letter-spacing: 0.06em;

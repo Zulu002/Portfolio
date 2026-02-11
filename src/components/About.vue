@@ -73,7 +73,7 @@
 }
 
 .subtitle {
-  margin: 0 0 12px;
+  margin: 0;
   font-family: "OpenSansBold";
   font-size: 27px;
   letter-spacing: 0.18em;
@@ -91,7 +91,8 @@
 
 
 .socials {
-  margin-top: 36px;
+  margin-top: 26px;
+  margin-bottom: 26px;
   display: flex;
   gap: 18px;
 }
