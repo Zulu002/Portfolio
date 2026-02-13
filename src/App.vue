@@ -12,8 +12,8 @@ import Journey from "./components/Journey.vue";
     <About class="section0" />
     <Journey id="journey" class="section" />
     <Stack id="stack" class="section" />
-    <Project id="projects" class="section" />
     <Graphics id="graphics" class="section" />
+    <Project id="projects" class="section" />
     <Contacts class="section" />
   </div>
 </template>
