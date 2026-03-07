@@ -10,9 +10,9 @@ import Journey from "./components/Journey.vue";
 <template>
   <div class="container">
     <About class="section0" />
+    <Graphics id="graphics" class="section" />
     <Journey id="journey" class="section" />
     <Stack id="stack" class="section" />
-    <Graphics id="graphics" class="section" />
     <Project id="projects" class="section" />
     <Contacts class="section" />
   </div>
@@ -24,8 +24,6 @@ import Journey from "./components/Journey.vue";
 }
 
 .section0 {
-  border-radius: 0 0 10px 10px;
-  background-color: #59B994;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -44,6 +44,7 @@ export default {
   <section class="projects">
     <div class="projects-wrapper">
       <h2 class="section-title">Проекты</h2>
+
       <div class="cards">
         <article v-for="project in projects" :key="project.id" class="card">
           <div class="preview">
@@ -54,18 +55,21 @@ export default {
                 loading="lazy"
                 decoding="async"
               />
+
+              <div class="overlay">
+                <div class="overlay-content">
+                  <h3 class="name">{{ project.title }}</h3>
+                  <p class="description">{{ project.description }}</p>
+
+                  <ul class="points" aria-label="Теги проекта">
+                    <li v-for="(p, i) in project.points" :key="i">{{ p }}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
-          <header class="card-top">
-            <h3 class="name">{{ project.title }}</h3>
-            <p class="description">{{ project.description }}</p>
-
-            
-            <ul class="points" aria-label="Теги проекта">
-              <li v-for="(p, i) in project.points" :key="i">{{ p }}</li>
-            </ul>
-
+          <div class="card-bottom">
             <a
               :href="project.link"
               class="learn"
@@ -74,7 +78,7 @@ export default {
             >
               Посмотреть проект <span aria-hidden="true">→</span>
             </a>
-          </header>
+          </div>
         </article>
       </div>
     </div>
@@ -82,13 +86,11 @@ export default {
 </template>
 
 <style scoped>
-
 :global(*),
 :global(*::before),
 :global(*::after) {
   box-sizing: border-box;
 }
-
 
 .projects {
   padding: 40px 20px;
@@ -100,7 +102,6 @@ export default {
   margin: 0 auto;
 }
 
-
 .section-title {
   margin: 0 0 22px;
   font-family: "OpenSansBold";
@@ -110,13 +111,11 @@ export default {
   color: #EDECEC;
 }
 
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
-
 
 .card {
   background: #1B1913;
@@ -134,9 +133,54 @@ export default {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
+.preview {
+  padding: 14px 14px 10px;
+}
 
-.card-top {
-  padding: 20px 20px 14px;
+.preview-frame {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #d8d1c1;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 12px 28px rgba(0, 0, 0, 0.35);
+  aspect-ratio: 4 / 3;
+}
+
+.preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.card:hover .preview-frame img {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay-content {
+  width: 100%;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -145,18 +189,18 @@ export default {
 .name {
   margin: 0;
   font-family: "OpenSansBold";
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: #ffffff;
 }
 
 .description {
   margin: 0;
-  color: #9A9996;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
-
 
 .points {
   margin: 2px 0 0;
@@ -171,25 +215,24 @@ export default {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-
   padding: 6px 10px;
-
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
 }
 
+.card-bottom {
+  padding: 0 20px 20px;
+}
 
 .learn {
-  margin-top: 2px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   text-decoration: none;
   font-family: "OpenSansBold";
-  color: #59B994; 
+  color: #7FDFFF;
   width: fit-content;
-
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -197,40 +240,6 @@ export default {
   transform: translateX(10px);
   opacity: 0.9;
 }
-
-
-.preview {
-  padding: 14px 14px 18px;
-}
-
-.preview-frame {
-  border-radius: 5px;
-  overflow: hidden;
-
-  
-  background: #d8d1c1;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.35),
-    0 12px 28px rgba(0, 0, 0, 0.35);
-
-  
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  transform: scale(1.01);
-  transition: transform 0.35s ease;
-  will-change: transform;
-}
-
-
 
 @media (max-width: 1200px) {
   .cards {
@@ -245,6 +254,16 @@ export default {
 
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .overlay {
+    opacity: 1;
+    visibility: visible;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.28));
+  }
+
+  .overlay-content {
+    padding: 16px;
   }
 }
 </style>

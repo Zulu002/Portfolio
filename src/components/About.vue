@@ -5,6 +5,10 @@
   <section class="hero" id="about">
     <div class="hero-inner">
       <div class="hero-content">
+        <div class="hero-logo" aria-hidden="true">
+          <img src="../assets/logo.svg" alt="" />
+        </div>
+
         <h1 class="title">IGNIDRA</h1>
         <p class="subtitle">WEB-DESIGNER, GAMEDEV</p>
 
@@ -31,11 +35,6 @@
           </a>
         </div>
       </div>
-
-      
-      <div class="hero-logo" aria-hidden="true">
-        <img src="../assets/logo.svg" alt="" />
-      </div>
     </div>
   </section>
 </template>
@@ -52,16 +51,15 @@
   max-width: var(--content-width);
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 80px;
+  gap: 40px;
 }
-
-
 
 .hero-content {
   max-width: 640px;
+  text-align: center;
 }
 
 .title {
@@ -69,7 +67,7 @@
   font-family: "OpenSansBold";
   font-size: clamp(64px, 7vw, 110px);
   letter-spacing: 0;
-  color: #14120B;
+  color: #EDECEC;
 }
 
 .subtitle {
@@ -78,33 +76,30 @@
   font-size: 27px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #14120B;
+  color: #EDECEC;
 }
 
 .intro {
   margin-top: 0;
   font-family: "OpenSansRegular";
   font-size: 22px;
-  color: #14120B;
+  color: #EDECEC;
 }
-
-
 
 .socials {
   margin-top: 26px;
   margin-bottom: 26px;
   display: flex;
+  justify-content: center;
   gap: 18px;
 }
 
 .social-link {
   width: 43px;
   height: 43px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0.7;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
@@ -118,7 +113,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  background-color: #14120B;
+  background-color: #EDECEC;
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
@@ -147,31 +142,17 @@
   -webkit-mask-image: url("../assets/icons/gmail.svg");
 }
 
-
-
 .hero-logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
 }
 
 .hero-logo img {
   width: 100%;
   max-width: 520px;
   opacity: 0.9;
-}
-
-
-
-@media (max-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .hero-logo {
-    order: -1;
-  }
 }
 
 @media (max-width: 768px) {
@@ -185,6 +166,10 @@
 
   .intro {
     font-size: 18px;
+  }
+
+  .hero-logo {
+    margin-top: 24px;
   }
 }
 </style>

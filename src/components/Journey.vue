@@ -53,14 +53,13 @@ export default {
   flex-direction: column;
   padding: 28px;
   background: #1B1913;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
   box-shadow:
-    0 0 45px rgba(89,185,148,0.25);
+    0 0 45px rgba(127, 223, 255, 0.25);
 }
 
 .name {

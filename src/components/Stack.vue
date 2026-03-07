@@ -124,7 +124,7 @@ export default {
 .card:hover {
   transform: translateY(-6px);
   box-shadow:
-    0 0 45px rgba(89,185,148,0.25);
+    0 0 45px rgba(127, 223, 255, 0.25);
 }
 
 .name {
