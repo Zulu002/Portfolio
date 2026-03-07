@@ -101,7 +101,6 @@ export default {
   margin: 0 auto;
 }
 
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -123,8 +122,7 @@ export default {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow:
-    0 0 45px rgba(127, 223, 255, 0.25);
+  box-shadow: 0 0 45px rgba(127, 223, 255, 0.25);
 }
 
 .name {
@@ -139,12 +137,11 @@ export default {
   color: #9A9996;
   font-size: 1rem;
   line-height: 1.55;
-  flex: 1;
 }
 
 .stack {
   list-style: none;
-  padding: 0;
+  padding: 16px 0 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -172,20 +169,17 @@ export default {
   transform: scale(1.12);
 }
 
-
 @media (max-width: 1100px) {
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-
 @media (max-width: 720px) {
   .cards {
     grid-template-columns: 1fr;
   }
 }
-
 
 @media (hover: none) {
   .card:hover {

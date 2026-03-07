@@ -10,6 +10,8 @@ import logo8 from "../assets/storage/logo8.svg";
 import logo9 from "../assets/storage/logo9.svg";
 import logo10 from "../assets/storage/logo10.svg";
 import logo11 from "../assets/storage/logo11.svg";
+import logo12 from "../assets/storage/logo12.svg";
+import logo13 from "../assets/storage/logo13.svg";
 
 export default {
   data() {
@@ -27,6 +29,8 @@ export default {
         { id: 9, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
         { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
         { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
+        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
+        { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
       ],
     };
   },
