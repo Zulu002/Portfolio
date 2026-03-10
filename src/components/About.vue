@@ -5,16 +5,12 @@
   <section class="hero" id="about">
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-logo" aria-hidden="true">
-          <img src="../assets/logo.svg" alt="" />
-        </div>
-
-        <h1 class="title">IGNIDRA</h1>
+        <h1 class="title">Зулумханов Гаджи (Ignidra)</h1>
         <p class="subtitle">WEB-DESIGNER, GAMEDEV</p>
 
         <p class="intro">
           Меня зовут Гаджи. Занимаюсь графическим и веб-дизайном,
-          а также интересуюсь разработкой игр (геймдевом).
+          а также интересуюсь разработкой игр.
         </p>
 
         <div class="socials">
@@ -30,7 +26,11 @@
             <span class="social-icon icon-pinterest" aria-hidden="true"></span>
           </a>
 
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" aria-label="Mail" class="social-link">
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ignidra0@gmail.com&su=%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!"
+            aria-label="Mail"
+            class="social-link"
+          >
             <span class="social-icon icon-gmail" aria-hidden="true"></span>
           </a>
         </div>
@@ -43,35 +43,32 @@
 .hero {
   min-height: 80vh;
   display: flex;
-  align-items: center;
+  align-items: end;
 }
 
 .hero-inner {
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  padding: 0 20px;
 }
 
 .hero-content {
-  max-width: 640px;
-  text-align: center;
+  max-width: 1050px;
+  text-align: left;
 }
 
 .title {
   margin: 0;
   font-family: "OpenSansBold";
-  font-size: clamp(64px, 7vw, 110px);
+  font-size: clamp(45px, 7vw, 90px);
   letter-spacing: 0;
   color: #EDECEC;
+  line-height: 0.95;
 }
 
 .subtitle {
-  margin: 0;
+  margin: 12px 0 0;
   font-family: "OpenSansBold";
   font-size: 27px;
   letter-spacing: 0.18em;
@@ -80,9 +77,11 @@
 }
 
 .intro {
-  margin-top: 0;
+  margin-top: 24px;
+  max-width: 650px;
   font-family: "OpenSansRegular";
   font-size: 22px;
+  line-height: 1.5;
   color: #EDECEC;
 }
 
@@ -90,7 +89,7 @@
   margin-top: 26px;
   margin-bottom: 26px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 18px;
 }
 
@@ -142,34 +141,23 @@
   -webkit-mask-image: url("../assets/icons/gmail.svg");
 }
 
-.hero-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.hero-logo img {
-  width: 100%;
-  max-width: 520px;
-  opacity: 0.9;
-}
-
 @media (max-width: 768px) {
-  .hero-inner {
-    padding: 0 20px;
-  }
-
   .title {
     font-size: 56px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    letter-spacing: 0.12em;
   }
 
   .intro {
     font-size: 18px;
   }
 
-  .hero-logo {
-    margin-top: 24px;
+  .social-link {
+    width: 38px;
+    height: 38px;
   }
 }
 </style>

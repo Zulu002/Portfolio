@@ -25,8 +25,8 @@ import Journey from "./components/Journey.vue";
 
 .section0 {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: end;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
