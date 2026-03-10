@@ -69,7 +69,6 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <h2 class="section-title">Графика</h2>
 
       <div class="slider">
         <div
@@ -141,14 +140,7 @@ export default {
   box-sizing: border-box;
 }
 
-.section-title {
-  margin: 0 0 22px;
-  font-family: "OpenSansBold";
-  font-size: 2rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #EDECEC;
-}
+
 
 .slider {
   position: relative;

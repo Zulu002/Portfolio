@@ -10,8 +10,8 @@ import Journey from "./components/Journey.vue";
 <template>
   <div class="container">
     <About class="section0" />
-    <Graphics id="graphics" class="section" />
     <Journey id="journey" class="section" />
+    <Graphics id="graphics" class="section" />
     <Stack id="stack" class="section" />
     <Project id="projects" class="section" />
     <Contacts class="section" />
