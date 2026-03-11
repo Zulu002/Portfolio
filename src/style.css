@@ -18,32 +18,18 @@ html, body {
 }
 
 body {
-  position: relative;
   min-height: 100vh;
   color: rgba(255,255,255,0.92);
   overflow-x: hidden;
-  background: #0d0d0b;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
   background:
     linear-gradient(
       to bottom,
-      rgba(121, 201, 232, 0.18) 0%,
-      rgba(121, 201, 232, 0.08) 18%,
-      rgba(121, 201, 232, 0.00) 35%
-    ),
-    linear-gradient(
-      to bottom,
-      #171611 0%,
-      #11100d 40%,
-      #0b0b09 100%
+      #232a2d 0%,
+      #1d2325 10%,
+      #181d1e 22%,
+      #141716 36%,
+      #10110f 52%,
+      #0d0d0b 72%,
+      #0d0d0b 100%
     );
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }

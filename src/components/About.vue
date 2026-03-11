@@ -50,7 +50,6 @@
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .hero-content {
@@ -61,7 +60,7 @@
 .title {
   margin: 0;
   font-family: "OpenSansBold";
-  font-size: clamp(45px, 7vw, 90px);
+  font-size: clamp(31px, 7vw, 90px);
   letter-spacing: 0;
   color: #EDECEC;
   line-height: 0.95;
