@@ -67,7 +67,7 @@
 }
 
 .subtitle {
-  margin: 12px 0 0;
+  margin: 24px 0 0;
   font-family: "OpenSansBold";
   font-size: 27px;
   letter-spacing: 0.18em;
@@ -76,7 +76,7 @@
 }
 
 .intro {
-  margin-top: 24px;
+  margin: 0;
   max-width: 650px;
   font-family: "OpenSansRegular";
   font-size: 22px;
