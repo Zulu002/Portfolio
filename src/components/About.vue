@@ -6,7 +6,7 @@
     <div class="hero-inner">
       <div class="hero-content">
         <h1 class="title">Зулумханов Гаджи (Ignidra)</h1>
-        <p class="subtitle">WEB-DESIGNER, GAMEDEV</p>
+        <p class="subtitle">web-designer, graphic-designer</p>
 
         <p class="intro">
           Меня зовут Гаджи. Занимаюсь графическим и веб-дизайном,
