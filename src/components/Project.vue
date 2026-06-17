@@ -1,83 +1,119 @@
-<script>
-import logo1 from "../assets/projects/cal.png";
-import logo2 from "../assets/projects/gk.png";
-import logo3 from "../assets/projects/hp.png";
+<script setup>
+import { computed } from "vue";
+import invoicePreview from "../assets/projects/cal.png";
+import jamPreview from "../assets/projects/gk.png";
+import buildPreview from "../assets/projects/hp.png";
 
-export default {
-  data() {
-    return {
-      projects: [
-        {
-          id: 1,
-          title: "Калькулятор накладных",
-          description:
-            "Веб-приложение для упрощения вычислений и работы с физическими накладными.",
-          points: ["UX-ориентированная логика", "Быстрые расчёты", "Минималистичный интерфейс"],
-          link: "https://zulu002.github.io/invoice/",
-          preview: logo1,
-        },
-        {
-          id: 2,
-          title: "Glorious Knight Jam",
-          description:
-            "Многостраничный сайт для геймджема с фокусом на навигацию и вовлечение.",
-          points: ["Проектирование UX", "Чистый HTML / CSS / JS", "Адаптивная верстка"],
-          link: "https://zulu002.github.io/GloriousKnightJam/index.html",
-          preview: logo2,
-        },
-        {
-          id: 3,
-          title: "Билд",
-          description:
-            "Прототип сайта строительной компании. Простота, доверие и понятный путь к заявке.",
-          points: ["Чистый UI", "Контентная структура", "Фокус на услугах"],
-          link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
-          preview: logo3,
-        },
-      ],
-    };
+const props = defineProps({
+  locale: {
+    type: String,
+    default: "en",
+  },
+});
+
+const content = {
+  en: {
+    title: "projects",
+    open: "open",
+    tagsLabel: "Project tags",
+    openLabel: "Open",
+    projects: [
+      {
+        title: "Invoice Calculator",
+        description:
+          "A small web app that simplifies calculations for physical invoices and everyday paperwork.",
+        tags: ["UX logic", "fast calculations", "minimal UI"],
+        link: "https://zulu002.github.io/invoice/",
+        preview: invoicePreview,
+      },
+      {
+        title: "Glorious Knight Jam",
+        description:
+          "A multi-page game jam website focused on clear navigation, event structure, and engagement.",
+        tags: ["UX design", "HTML CSS JS", "responsive layout"],
+        link: "https://zulu002.github.io/GloriousKnightJam/index.html",
+        preview: jamPreview,
+      },
+      {
+        title: "Build",
+        description:
+          "A construction company website prototype built around trust, clarity, and a direct path to contact.",
+        tags: ["clean UI", "content structure", "service focus"],
+        link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
+        preview: buildPreview,
+      },
+    ],
+  },
+  ru: {
+    title: "проекты",
+    open: "открыть",
+    tagsLabel: "Теги проекта",
+    openLabel: "Открыть",
+    projects: [
+      {
+        title: "Invoice Calculator",
+        description:
+          "Небольшое веб-приложение для быстрых расчетов и работы с физическими накладными.",
+        tags: ["UX-логика", "быстрые расчеты", "минимальный UI"],
+        link: "https://zulu002.github.io/invoice/",
+        preview: invoicePreview,
+      },
+      {
+        title: "Glorious Knight Jam",
+        description:
+          "Многостраничный сайт для геймджема с понятной навигацией, структурой события и вовлечением.",
+        tags: ["UX-дизайн", "HTML CSS JS", "адаптив"],
+        link: "https://zulu002.github.io/GloriousKnightJam/index.html",
+        preview: jamPreview,
+      },
+      {
+        title: "Build",
+        description:
+          "Прототип сайта строительной компании про доверие, ясность и прямой путь к контакту.",
+        tags: ["чистый UI", "структура", "услуги"],
+        link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
+        preview: buildPreview,
+      },
+    ],
   },
 };
+
+const text = computed(() => content[props.locale] ?? content.en);
 </script>
 
 <template>
   <section class="projects">
-    <div class="projects-wrapper">
-      <h2 class="section-title">Проекты</h2>
+    <div class="projects-panel">
+      <h2 class="section-title">{{ text.title }}</h2>
 
-      <div class="cards">
-        <article v-for="project in projects" :key="project.id" class="card">
-          <div class="preview">
-            <div class="preview-frame">
-              <img
-                :src="project.preview"
-                :alt="project.title"
-                loading="lazy"
-                decoding="async"
-              />
+      <div class="project-list">
+        <article v-for="project in text.projects" :key="project.title" class="project-item">
+          <a
+            :href="project.link"
+            class="preview-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="`${text.openLabel} ${project.title}`"
+          >
+            <img :src="project.preview" :alt="project.title" loading="lazy" decoding="async" />
+          </a>
 
-              <div class="overlay">
-                <div class="overlay-content">
-                  <h3 class="name">{{ project.title }}</h3>
-                  <p class="description">{{ project.description }}</p>
+          <div class="project-copy">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
 
-                  <ul class="points" aria-label="Теги проекта">
-                    <li v-for="(p, i) in project.points" :key="i">{{ p }}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
             <a
               :href="project.link"
-              class="learn"
+              class="project-open"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Посмотреть проект <span aria-hidden="true">→</span>
+              {{ text.open }}
             </a>
+
+            <ul class="tag-list" :aria-label="text.tagsLabel">
+              <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -86,184 +122,145 @@ export default {
 </template>
 
 <style scoped>
-:global(*),
-:global(*::before),
-:global(*::after) {
+.projects {
+  width: 100%;
+  padding: 10px;
   box-sizing: border-box;
 }
 
-.projects {
-  padding: 40px 20px;
-  font-family: "OpenSansRegular";
-}
-
-.projects-wrapper {
+.projects-panel {
+  width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
+  padding: 28px 31px 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #000000;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
 .section-title {
-  margin: 0 0 22px;
-  font-family: "OpenSansBold";
-  font-size: 2rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #EDECEC;
+  margin: 0 0 24px;
+  color: #d1ffc4;
+  font-size: clamp(28px, 3.2vw, 31px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
-.cards {
+.project-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 0;
 }
 
-.card {
-  background: #1B1913;
-  color: #f2f2f2;
-  border-radius: 5px;
+.project-item {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  min-width: 0;
+  padding: 18px 0;
+  border-top: 1px solid rgba(209, 255, 196, 0.26);
+}
+
+.project-item:last-child {
+  padding-bottom: 0;
+}
+
+.preview-link {
+  display: block;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #201E19;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-}
-
-.preview {
-  padding: 14px 14px 10px;
-}
-
-.preview-frame {
-  position: relative;
+  aspect-ratio: 16 / 10;
   border-radius: 5px;
-  overflow: hidden;
-  background: #d8d1c1;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.35),
-    0 12px 28px rgba(0, 0, 0, 0.35);
-  aspect-ratio: 4 / 3;
+  background: transparent;
 }
 
-.preview-frame img {
+.preview-link img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transform: scale(1.01);
-  transition: transform 0.35s ease;
-  will-change: transform;
+  transition: transform var(--motion-duration) var(--motion-ease);
 }
 
-.card:hover .preview-frame img {
-  transform: scale(1.06);
+.preview-link:hover img,
+.preview-link:focus-visible img {
+  transform: scale(1.04);
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.68);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  display: flex;
-  align-items: flex-end;
-}
-
-.card:hover .overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.overlay-content {
-  width: 100%;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.name {
-  margin: 0;
-  font-family: "OpenSansBold";
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+.project-title {
+  margin: 0 0 8px;
   color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
-.description {
+.project-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 62px;
+  min-height: 32px;
+  margin-top: 14px;
+  padding: 0 12px;
+  border-radius: 5px;
+  background: #d1ffc4;
+  color: #060606;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+}
+
+.project-open:hover,
+.project-open:focus-visible {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.project-description {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.2;
 }
 
-.points {
-  margin: 2px 0 0;
-  padding: 0;
-  list-style: none;
+.tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
 }
 
-.points li {
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.95);
-  border-radius: 4px;
+.tag-list li {
+  padding: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #d1ffc4;
+  font-size: 13px;
+  line-height: 1;
 }
 
-.card-bottom {
-  padding: 0 20px 20px;
-}
-
-.learn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  font-family: "OpenSansBold";
-  color: #7FDFFF;
-  width: fit-content;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.learn:hover {
-  transform: translateX(10px);
-  opacity: 0.9;
-}
-
-@media (max-width: 1200px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 760px) {
+  .project-item {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
 @media (max-width: 640px) {
-  .section-title {
-    font-size: 1.6rem;
+  .projects {
+    padding: 8px 16px;
   }
 
-  .cards {
-    grid-template-columns: 1fr;
+  .projects-panel {
+    padding: 24px 22px;
   }
 
-  .overlay {
-    opacity: 1;
-    visibility: visible;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.28));
-  }
-
-  .overlay-content {
-    padding: 16px;
-  }
 }
 </style>

@@ -1,21 +1,27 @@
 <script setup>
+import { ref } from "vue";
+import Header from "./components/Header.vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
 import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
+
+const locale = ref("en");
 </script>
 
 <template>
-  <div class="container">
-    <About class="section0" />
-    <Journey id="journey" class="section" />
-    <Graphics id="graphics" class="section" />
-    <Stack id="stack" class="section" />
-    <Project id="projects" class="section" />
-    <Contacts class="section" />
-  </div>
+  <Header v-model:locale="locale" />
+
+  <main class="container">
+    <About :locale="locale" class="section0" />
+    <Journey :locale="locale" id="journey" class="section" />
+    <Graphics :locale="locale" id="graphics" class="section" />
+    <Stack :locale="locale" id="stack" class="section" />
+    <Project :locale="locale" id="projects" class="section" />
+    <Contacts :locale="locale" id="contacts" class="section" />
+  </main>
 </template>
 
 <style scoped>

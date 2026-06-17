@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
+
 @font-face {
   font-family: 'OpenSansRegular';
   src: url('../src/assets/Inter_24pt-Regular.ttf') format('truetype');
@@ -10,26 +12,20 @@
 
 :root {
   --content-width: 1200px;
+  --motion-duration: 0.45s;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html, body {
   margin: 0;
   min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 112px;
 }
 
 body {
   min-height: 100vh;
   color: rgba(255,255,255,0.92);
   overflow-x: hidden;
-  background:
-    linear-gradient(
-      to bottom,
-      #232a2d 0%,
-      #1d2325 10%,
-      #181d1e 22%,
-      #141716 36%,
-      #10110f 52%,
-      #0d0d0b 72%,
-      #0d0d0b 100%
-    );
+  background: #1F2225;
 }

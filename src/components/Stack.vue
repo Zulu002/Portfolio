@@ -1,14 +1,13 @@
-<script>
+<script setup>
+import { computed } from "vue";
 import photoshop from "../assets/icons/photoshop.svg";
 import illustrator from "../assets/icons/illustrator.svg";
 import figma from "../assets/icons/figma.svg";
 import aseprite from "../assets/icons/aseprite.svg";
-
 import miro from "../assets/icons/miro.svg";
 import trello from "../assets/icons/trello.svg";
 import pinterest from "../assets/icons/pinterest.svg";
 import chatgpt from "../assets/icons/ChatGPT.svg";
-
 import css from "../assets/icons/CSS3.svg";
 import html from "../assets/icons/html5.svg";
 import js from "../assets/icons/JavaScript.svg";
@@ -17,177 +16,226 @@ import unity from "../assets/icons/unity.svg";
 import python from "../assets/icons/python.svg";
 import git from "../assets/icons/git.svg";
 
-export default {
-  name: "ExpertiseStack",
-  data() {
-    return {
-      cards: [
-        {
-          id: 1,
-          title: "Дизайн",
-          description:
-            "Веб и графический дизайн. Проектирую интерфейсы и визуальный стиль. Создаю логотипы, иконки и ассеты для игр и не только.",
-          stack: [
-            { name: "Figma", icon: figma },
-            { name: "Photoshop", icon: photoshop },
-            { name: "Illustrator", icon: illustrator },
-            { name: "Aseprite", icon: aseprite },
-          ],
-        },
-        {
-          id: 2,
-          title: "Разработка",
-          description:
-            "Инди- и фронтенд-разработка, прототипирование интерфейсов. Верстаю, создаю макеты, добавляю интерактив и работаю с системой контроля версий.",
-          stack: [
-            { name: "HTML", icon: html },
-            { name: "CSS", icon: css },
-            { name: "JavaScript", icon: js },
-            { name: "Vue", icon: vue },
-            { name: "Unity", icon: unity },
-            { name: "Python", icon: python },
-            { name: "Git", icon: git },
-          ],
-        },
-        {
-          id: 3,
-          title: "Другие инструменты",
-          description:
-            "Инструменты для поиска идей, вдохновения, ускорения работы и поддержки креативного и аналитического процесса.",
-          stack: [
-            { name: "Pinterest", icon: pinterest },
-            { name: "ChatGPT", icon: chatgpt },
-            { name: "Trello", icon: trello },
-            { name: "Miro", icon: miro },
-          ],
-        },
-      ],
-    };
+const props = defineProps({
+  locale: {
+    type: String,
+    default: "en",
+  },
+});
+
+const toolGroups = {
+  en: {
+    title: "stack",
+    groups: [
+      {
+        title: "design",
+        description:
+          "I work with interfaces, visual systems, logos, icons, and game-ready assets.",
+        tools: [
+          { name: "Figma", icon: figma },
+          { name: "Photoshop", icon: photoshop },
+          { name: "Illustrator", icon: illustrator },
+          { name: "Aseprite", icon: aseprite },
+        ],
+      },
+      {
+        title: "development",
+        description:
+          "I build responsive pages, add interaction, prototype ideas, and keep projects organized in Git.",
+        tools: [
+          { name: "HTML", icon: html },
+          { name: "CSS", icon: css },
+          { name: "JavaScript", icon: js },
+          { name: "Vue", icon: vue },
+          { name: "Unity", icon: unity },
+          { name: "Python", icon: python },
+          { name: "Git", icon: git },
+        ],
+      },
+      {
+        title: "workflow",
+        description:
+          "I use planning, references, and AI tools to move faster from rough ideas to polished results.",
+        tools: [
+          { name: "Pinterest", icon: pinterest },
+          { name: "ChatGPT", icon: chatgpt },
+          { name: "Trello", icon: trello },
+          { name: "Miro", icon: miro },
+        ],
+      },
+    ],
+  },
+  ru: {
+    title: "навыки",
+    groups: [
+      {
+        title: "дизайн",
+        description:
+          "Работаю с интерфейсами, визуальными системами, логотипами, иконками и ассетами для игр.",
+        tools: [
+          { name: "Figma", icon: figma },
+          { name: "Photoshop", icon: photoshop },
+          { name: "Illustrator", icon: illustrator },
+          { name: "Aseprite", icon: aseprite },
+        ],
+      },
+      {
+        title: "разработка",
+        description:
+          "Верстаю адаптивные страницы, добавляю интерактив, прототипирую идеи и работаю с Git.",
+        tools: [
+          { name: "HTML", icon: html },
+          { name: "CSS", icon: css },
+          { name: "JavaScript", icon: js },
+          { name: "Vue", icon: vue },
+          { name: "Unity", icon: unity },
+          { name: "Python", icon: python },
+          { name: "Git", icon: git },
+        ],
+      },
+      {
+        title: "процесс",
+        description:
+          "Использую планирование, референсы и AI-инструменты, чтобы быстрее доводить идеи до результата.",
+        tools: [
+          { name: "Pinterest", icon: pinterest },
+          { name: "ChatGPT", icon: chatgpt },
+          { name: "Trello", icon: trello },
+          { name: "Miro", icon: miro },
+        ],
+      },
+    ],
   },
 };
+
+const text = computed(() => toolGroups[props.locale] ?? toolGroups.en);
 </script>
 
 <template>
-  <section class="expertise">
-    <div class="expertise-wrapper">
-      <div class="cards">
-        <article v-for="card in cards" :key="card.id" class="card">
-          <h3 class="name">{{ card.title }}</h3>
+  <section class="stack-section">
+    <div class="stack-panel">
+      <h2 class="section-title">{{ text.title }}</h2>
 
-          <p class="description">
-            {{ card.description }}
-          </p>
+      <div class="stack-grid">
+        <section v-for="group in text.groups" :key="group.title" class="stack-group">
+          <h3 class="group-title">{{ group.title }}</h3>
+          <p class="group-description">{{ group.description }}</p>
 
-          <ul class="stack">
-            <li v-for="item in card.stack" :key="item.name" class="stack-item">
-              <img :src="item.icon" :alt="item.name" />
-              <span>{{ item.name }}</span>
+          <ul class="tool-list">
+            <li v-for="tool in group.tools" :key="tool.name" class="tool-item">
+              <img :src="tool.icon" :alt="tool.name" />
+              <span>{{ tool.name }}</span>
             </li>
           </ul>
-        </article>
+        </section>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.expertise {
-  padding: 40px 20px;
-  font-family: "OpenSansRegular";
+.stack-section {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.expertise-wrapper {
+.stack-panel {
+  width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
+  padding: 28px 31px 30px;
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  border-image: repeating-linear-gradient(
+      90deg,
+      #d1ffc4 0 28px,
+      transparent 28px 42px
+    )
+    4;
+  border-radius: 5px;
+  background: #000000;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
-.cards {
+.section-title {
+  margin: 0 0 24px;
+  color: #d1ffc4;
+  font-size: clamp(28px, 3.2vw, 31px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.stack-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  align-items: stretch;
+  gap: 28px;
 }
 
-.card {
-  border-radius: 5px;
-  border: 1px solid #201E19;
-  display: flex;
-  flex-direction: column;
-  padding: 28px;
-  background: #1B1913;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+.stack-group {
+  min-width: 0;
 }
 
-.card:hover {
-  transform: translateY(-6px);
+.group-title {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
-.name {
-  margin: 0 0 14px;
-  color: #EDECEC;
-  font-size: 1.5rem;
-  font-family: "OpenSansBold";
+.group-description {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+  line-height: 1.22;
 }
 
-.description {
-  margin: 0 0 20px;
-  color: #9A9996;
-  font-size: 1rem;
-  line-height: 1.55;
-}
-
-.stack {
-  list-style: none;
-  padding: 16px 0 0;
-  margin: 0;
+.tool-list {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.stack-item {
+.tool-item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
-  font-family: "OpenSansBold";
-  letter-spacing: 0.04em;
-  color: #EDECEC;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
 }
 
-.stack img {
-  width: 30px;
-  height: 30px;
+.tool-item img {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  transition: transform var(--motion-duration) var(--motion-ease);
 }
 
-.stack-item:hover img {
+.tool-item:hover img {
   transform: scale(1.12);
 }
 
-@media (max-width: 1100px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 720px) {
-  .cards {
+@media (max-width: 900px) {
+  .stack-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (hover: none) {
-  .card:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-    transform: none;
+@media (max-width: 640px) {
+  .stack-section {
+    padding: 8px 16px;
   }
 
-  .stack-item:hover img {
-    transform: none;
+  .stack-panel {
+    padding: 24px 22px;
   }
 }
 </style>
