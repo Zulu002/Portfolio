@@ -27,6 +27,8 @@ const locale = ref("en");
 <style scoped>
 .container {
   min-height: 100%;
+  padding-top: 53px;
+  box-sizing: border-box;
 }
 
 .section0 {
@@ -48,6 +50,10 @@ const locale = ref("en");
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-top: 101px;
+  }
+
   .section {
     padding: 16px;
   }

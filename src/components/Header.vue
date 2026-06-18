@@ -88,9 +88,12 @@ const setLocale = (value) => {
 
 <style scoped>
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 10;
   width: 100%;
-  padding: 14px 28px 10px;
+  padding: 5px 28px;
   box-sizing: border-box;
 }
 
@@ -225,7 +228,7 @@ const setLocale = (value) => {
 
 @media (max-width: 760px) {
   .site-header {
-    padding: 10px 14px 8px;
+    padding: 5px 14px;
   }
 
   .header-inner {

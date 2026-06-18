@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import photoshop from "../assets/icons/photoshop.svg";
 import illustrator from "../assets/icons/illustrator.svg";
 import figma from "../assets/icons/figma.svg";
@@ -22,6 +22,9 @@ const props = defineProps({
     default: "en",
   },
 });
+
+const activeStep = ref(0);
+let intervalId;
 
 const toolGroups = {
   en: {
@@ -109,6 +112,17 @@ const toolGroups = {
 };
 
 const text = computed(() => toolGroups[props.locale] ?? toolGroups.en);
+const activeTool = (tools) => tools[activeStep.value % tools.length];
+
+onMounted(() => {
+  intervalId = window.setInterval(() => {
+    activeStep.value += 1;
+  }, 5500);
+});
+
+onBeforeUnmount(() => {
+  window.clearInterval(intervalId);
+});
 </script>
 
 <template>
@@ -119,14 +133,23 @@ const text = computed(() => toolGroups[props.locale] ?? toolGroups.en);
       <div class="stack-grid">
         <section v-for="group in text.groups" :key="group.title" class="stack-group">
           <h3 class="group-title">{{ group.title }}</h3>
-          <p class="group-description">{{ group.description }}</p>
 
-          <ul class="tool-list">
-            <li v-for="tool in group.tools" :key="tool.name" class="tool-item">
-              <img :src="tool.icon" :alt="tool.name" />
-              <span>{{ tool.name }}</span>
-            </li>
-          </ul>
+          <div class="tool-roller" aria-hidden="true">
+            <Transition name="icon-scroll">
+              <div
+                :key="`${group.title}-${activeTool(group.tools).name}`"
+                class="roller-item"
+              >
+                <img
+                  :src="activeTool(group.tools).icon"
+                  :alt="activeTool(group.tools).name"
+                />
+                <span>{{ activeTool(group.tools).name }}</span>
+              </div>
+            </Transition>
+          </div>
+
+          <p class="group-description">{{ group.description }}</p>
         </section>
       </div>
     </div>
@@ -146,13 +169,6 @@ const text = computed(() => toolGroups[props.locale] ?? toolGroups.en);
   margin: 0 auto;
   padding: 28px 31px 30px;
   box-sizing: border-box;
-  border: 4px solid transparent;
-  border-image: repeating-linear-gradient(
-      90deg,
-      #d1ffc4 0 28px,
-      transparent 28px 42px
-    )
-    4;
   border-radius: 5px;
   background: #000000;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
@@ -185,42 +201,59 @@ const text = computed(() => toolGroups[props.locale] ?? toolGroups.en);
   line-height: 1.1;
 }
 
-.group-description {
-  margin: 0 0 18px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 15px;
-  line-height: 1.22;
+.tool-roller {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  margin: 0 0 16px;
+  overflow: hidden;
 }
 
-.tool-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 18px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tool-item {
+.roller-item {
+  position: absolute;
+  inset: 0 auto auto 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 30px;
-  padding: 0;
+  gap: 9px;
+  height: 32px;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
 }
 
-.tool-item img {
-  width: 22px;
-  height: 22px;
+.roller-item img {
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-  transition: transform var(--motion-duration) var(--motion-ease);
 }
 
-.tool-item:hover img {
-  transform: scale(1.12);
+.icon-scroll-enter-active,
+.icon-scroll-leave-active {
+  transition: opacity 0.55s var(--motion-ease),
+    transform 0.55s var(--motion-ease);
+}
+
+.icon-scroll-enter-from {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+
+.icon-scroll-enter-to,
+.icon-scroll-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.icon-scroll-leave-to {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.group-description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.28;
 }
 
 @media (max-width: 900px) {
