@@ -235,7 +235,7 @@ onBeforeUnmount(() => {
 
 .icon-scroll-enter-from {
   opacity: 0;
-  transform: translateY(-24px);
+  transform: translateY(24px);
 }
 
 .icon-scroll-enter-to,
@@ -246,7 +246,7 @@ onBeforeUnmount(() => {
 
 .icon-scroll-leave-to {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(-24px);
 }
 
 .group-description {
