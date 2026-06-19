@@ -14,14 +14,32 @@ const content = {
     text:
       "I've been fascinated with video games since childhood, and this is what eventually led me to want to create my own projects. I enrolled in the Rostov College of Communications and Informatics, majoring in Information Systems. In my third year, I discovered web development and design and began creating small web pages, icons, and logos. I'm currently pursuing a degree in Business Informatics and simultaneously studying indie development, striving to develop at the intersection of design, technology, and digital product creation.",
     prefix: "I am",
-    words: ["developer", "designer", ":)", "game developer", "master chief"],
+    words: [
+      "developer",
+      "designer",
+      ":)",
+      "game developer",
+      "master chief",
+      "secret cow level",
+      "works on my machine",
+      "404 sleep not found",
+    ],
   },
   ru: {
     title: "немного обо мне",
     text:
       "С детства меня увлекали видеоигры, и со временем это привело меня к желанию создавать собственные проекты. Я поступил в Ростовский колледж связи и информатики на направление информационных систем. На третьем курсе познакомился с веб-разработкой и дизайном, начал делать небольшие страницы, иконки и логотипы. Сейчас я учусь на бизнес-информатике и параллельно изучаю инди-разработку, развиваясь на стыке дизайна, технологий и цифровых продуктов.",
     prefix: "Я",
-    words: ["разработчик", "дизайнер", ":)", "game developer", "master chief"],
+    words: [
+      "разработчик",
+      "дизайнер",
+      ":)",
+      "game developer",
+      "master chief",
+      "secret cow level",
+      "works on my machine",
+      "404 sleep not found",
+    ],
   },
 };
 
@@ -122,7 +140,7 @@ watch(
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0;
-  color: #d1ffc4;
+  color: var(--accent);
 }
 
 .journey-text {
@@ -141,7 +159,7 @@ watch(
   width: 100%;
   height: 1px;
   margin: 26px 0 18px;
-  background: rgba(209, 255, 196, 0.42);
+  background: rgba(var(--accent-rgb), 0.42);
 }
 
 .typing-line {
@@ -162,13 +180,13 @@ watch(
 
 .typing-word {
   min-width: 172px;
-  color: #d1ffc4;
+  color: var(--accent);
 }
 
 .typing-caret {
   width: 2px;
   height: 25px;
-  background: #d1ffc4;
+  background: var(--accent);
   animation: caret-blink 0.8s steps(1) infinite;
 }
 

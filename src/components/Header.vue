@@ -1,6 +1,5 @@
 <script setup>
 import { computed } from "vue";
-import logoUrl from "../assets/header-logo.svg";
 
 const props = defineProps({
   locale: {
@@ -18,26 +17,22 @@ const emit = defineEmits(["update:locale", "navigate"]);
 const labels = {
   en: {
     nav: [
-      { label: "About", href: "#about" },
-      { label: "Illustrations", href: "#graphics" },
-      { label: "Stack", href: "#stack" },
-      { label: "Projects", href: "#projects" },
+      { label: "About", href: "#about", marker: "1" },
+      { label: "Journey", href: "#journey", marker: "2" },
+      { label: "Illustrations", href: "#graphics", marker: "3" },
+      { label: "Stack", href: "#stack", marker: "4" },
+      { label: "Projects", href: "#projects", marker: "5" },
     ],
-    contacts: "Contacts",
-    home: "Ignidra home",
-    logo: "Ignidra logo",
     switchLabel: "Switch language",
   },
   ru: {
     nav: [
-      { label: "Обо мне", href: "#about" },
-      { label: "Иллюстрации", href: "#graphics" },
-      { label: "Навыки", href: "#stack" },
-      { label: "Проекты", href: "#projects" },
+      { label: "Обо мне", href: "#about", marker: "1" },
+      { label: "Путь", href: "#journey", marker: "2" },
+      { label: "Иллюстрации", href: "#graphics", marker: "3" },
+      { label: "Навыки", href: "#stack", marker: "4" },
+      { label: "Проекты", href: "#projects", marker: "5" },
     ],
-    contacts: "Контакты",
-    home: "На главную Ignidra",
-    logo: "Логотип Ignidra",
     switchLabel: "Переключить язык",
   },
 };
@@ -57,24 +52,6 @@ const navigate = (href) => {
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <a
-        class="brand-name"
-        href="#about"
-        :aria-label="text.home"
-        @click.prevent="navigate('#about')"
-      >
-        Ignidra
-      </a>
-
-      <a
-        class="brand-mark"
-        href="#about"
-        :aria-label="text.logo"
-        @click.prevent="navigate('#about')"
-      >
-        <img :src="logoUrl" alt="" />
-      </a>
-
       <nav class="main-nav" aria-label="Main navigation">
         <a
           v-for="link in text.nav"
@@ -82,40 +59,31 @@ const navigate = (href) => {
           class="nav-link"
           :class="{ active: activeSection === sectionFromHref(link.href) }"
           :href="link.href"
+          :aria-label="link.label"
+          :title="link.label"
           @click.prevent="navigate(link.href)"
         >
-          {{ link.label }}
+          {{ link.marker }}
         </a>
       </nav>
 
-      <div class="header-actions">
-        <div class="language-switch" :aria-label="text.switchLabel">
-          <button
-            type="button"
-            class="language-option"
-            :class="{ active: locale === 'en' }"
-            @click="setLocale('en')"
-          >
-            EN
-          </button>
-          <button
-            type="button"
-            class="language-option"
-            :class="{ active: locale === 'ru' }"
-            @click="setLocale('ru')"
-          >
-            RU
-          </button>
-        </div>
-
-        <a
-          class="contact-link"
-          :class="{ active: activeSection === 'contacts' }"
-          href="#contacts"
-          @click.prevent="navigate('#contacts')"
+      <div class="language-switch" :aria-label="text.switchLabel">
+        <button
+          type="button"
+          class="language-option"
+          :class="{ active: locale === 'en' }"
+          @click="setLocale('en')"
         >
-          {{ text.contacts }}
-        </a>
+          EN
+        </button>
+        <button
+          type="button"
+          class="language-option"
+          :class="{ active: locale === 'ru' }"
+          @click="setLocale('ru')"
+        >
+          RU
+        </button>
       </div>
     </div>
   </header>
@@ -124,179 +92,108 @@ const navigate = (href) => {
 <style scoped>
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 10px;
+  right: 17px;
   z-index: 10;
-  width: 100%;
-  padding: 5px 28px;
+  width: 33px;
   box-sizing: border-box;
 }
 
 .header-inner {
-  display: grid;
-  grid-template-columns: max-content 43px minmax(0, 1fr) max-content;
-  gap: 5px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 0 auto;
-}
-
-.brand-name,
-.brand-mark,
-.main-nav,
-.contact-link,
-.language-switch {
-  min-height: 43px;
-  border-radius: 3px;
-  background: #d1ffc4;
-  color: #060606;
+  gap: 3px;
+  padding: 4px;
+  border-radius: 4px;
+  background: #000000;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   box-sizing: border-box;
 }
 
-.brand-name,
-.contact-link,
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-  letter-spacing: 0;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.brand-name {
-  min-width: 82px;
-  padding: 0 9px;
-  font-size: 20px;
-}
-
-.brand-mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 43px;
-  padding: 4px;
-}
-
-.brand-mark img {
-  display: block;
-  width: 32px;
-  height: 36px;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 21px;
-  padding: 0 17px;
-}
-
-.nav-link,
-.contact-link {
-  font-size: 14px;
-}
-
-.nav-link,
-.contact-link {
-  color: #060606;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: color var(--motion-duration) var(--motion-ease),
-    text-decoration-color var(--motion-duration) var(--motion-ease);
-}
-
-.contact-link {
-  min-width: 84px;
-  padding: 0 16px;
-}
-
-.header-actions {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
+.main-nav,
 .language-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-link,
+.language-option {
   display: inline-flex;
   align-items: center;
-  padding: 4px;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  background: transparent;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  transition: background-color var(--motion-duration) var(--motion-ease),
+    color var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+}
+
+.nav-link {
+  text-decoration: none;
 }
 
 .language-option {
-  min-width: 36px;
-  height: 35px;
+  height: 25px;
   border: 0;
-  border-radius: 3px;
-  background: transparent;
-  color: #060606;
   cursor: pointer;
-  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
   font-size: 13px;
-  transition: background-color var(--motion-duration) var(--motion-ease);
-}
-
-.language-option.active,
-.language-option:hover,
-.language-option:focus-visible {
-  background: rgba(6, 6, 6, 0.12);
 }
 
 .nav-link:hover,
 .nav-link.active,
-.contact-link:hover,
-.contact-link.active {
-  color: #060606;
-  text-decoration-color: currentColor;
+.language-option:hover,
+.language-option.active,
+.language-option:focus-visible {
+  background: #3d3d3d;
+  color: #ffffff;
 }
 
-.brand-name:focus-visible,
-.brand-mark:focus-visible,
+.nav-link:hover,
+.nav-link.active {
+  transform: translateY(-1px);
+}
+
 .nav-link:focus-visible,
-.contact-link:focus-visible,
 .language-option:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .site-header {
-    padding: 5px 14px;
+    top: 10px;
+    right: 10px;
+    width: 31px;
   }
 
   .header-inner {
-    grid-template-columns: max-content 43px 1fr;
-    grid-template-areas:
-      "name mark actions"
-      "nav nav nav";
+    padding: 4px;
   }
 
-  .brand-name {
-    grid-area: name;
+  .nav-link,
+  .language-option {
+    width: 23px;
+    border-radius: 4px;
   }
 
-  .brand-mark {
-    grid-area: mark;
+  .nav-link {
+    height: 23px;
+    font-size: 18px;
   }
 
-  .main-nav {
-    grid-area: nav;
-    justify-content: space-between;
-    gap: 10px;
-    overflow-x: auto;
-  }
-
-  .header-actions {
-    grid-area: actions;
-    justify-self: end;
-  }
-
-  .contact-link {
-    min-width: 0;
+  .language-option {
+    height: 23px;
+    font-size: 12px;
   }
 }
 </style>

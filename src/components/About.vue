@@ -138,7 +138,7 @@ const dots = [
   font-size: 18px;
   line-height: 1.15;
   letter-spacing: 0;
-  color: #d1ffc4;
+  color: var(--accent);
 }
 
 .dot-pattern {
@@ -162,13 +162,13 @@ const dots = [
 }
 
 .dot-cell.bright {
-  --dot-from: #d1ffc4;
-  --dot-to: #738d68;
+  --dot-from: var(--accent);
+  --dot-to: var(--accent-muted);
 }
 
 .dot-cell.muted {
-  --dot-from: #738d68;
-  --dot-to: #d1ffc4;
+  --dot-from: var(--accent-muted);
+  --dot-to: var(--accent);
 }
 
 @keyframes dot-shift {

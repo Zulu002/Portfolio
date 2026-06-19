@@ -84,7 +84,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 
 .contacts-title {
   margin: 0 0 12px;
-  color: #d1ffc4;
+  color: var(--accent);
   font-size: clamp(28px, 3.2vw, 31px);
   font-weight: 400;
   line-height: 1.1;
@@ -113,7 +113,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   min-height: 36px;
   padding: 0 12px;
   border-radius: 5px;
-  background: #d1ffc4;
+  background: var(--accent);
   color: #060606;
   font-size: 15px;
   line-height: 1;

@@ -176,7 +176,7 @@ onBeforeUnmount(() => {
 
 .section-title {
   margin: 0 0 24px;
-  color: #d1ffc4;
+  color: var(--accent);
   font-size: clamp(28px, 3.2vw, 31px);
   font-weight: 400;
   line-height: 1.1;

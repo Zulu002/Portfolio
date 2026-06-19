@@ -17,7 +17,7 @@ let lenis;
 let animationFrameId;
 let sectionObserver;
 
-const sectionIds = ["about", "graphics", "stack", "projects", "contacts"];
+const sectionIds = ["about", "journey", "graphics", "stack", "projects", "contacts"];
 
 const scrollToSection = (href) => {
   const target = document.querySelector(href);
@@ -26,7 +26,7 @@ const scrollToSection = (href) => {
     return;
   }
 
-  lenis?.scrollTo(target, { offset: -72 });
+  lenis?.scrollTo(target, { offset: -16 });
 };
 
 watch(locale, (value) => {
@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .container {
   min-height: 100%;
-  padding-top: 53px;
+  padding-top: 0;
   box-sizing: border-box;
 }
 
@@ -130,10 +130,6 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding-top: 101px;
-  }
-
   .section {
     padding: 16px;
   }

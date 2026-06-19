@@ -141,7 +141,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 
 .section-title {
   margin: 0 0 24px;
-  color: #d1ffc4;
+  color: var(--accent);
   font-size: clamp(28px, 3.2vw, 31px);
   font-weight: 400;
   line-height: 1.1;
@@ -160,7 +160,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   align-items: center;
   min-width: 0;
   padding: 18px 0;
-  border-top: 1px solid rgba(209, 255, 196, 0.26);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.26);
 }
 
 .project-item:last-child {
@@ -206,7 +206,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   margin-top: 14px;
   padding: 0 12px;
   border-radius: 5px;
-  background: #d1ffc4;
+  background: var(--accent);
   color: #060606;
   font-size: 15px;
   line-height: 1;
@@ -241,7 +241,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   padding: 0;
   border-radius: 5px;
   background: transparent;
-  color: #d1ffc4;
+  color: var(--accent);
   font-size: 13px;
   line-height: 1;
 }
