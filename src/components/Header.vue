@@ -7,9 +7,13 @@ const props = defineProps({
     type: String,
     default: "en",
   },
+  activeSection: {
+    type: String,
+    default: "about",
+  },
 });
 
-const emit = defineEmits(["update:locale"]);
+const emit = defineEmits(["update:locale", "navigate"]);
 
 const labels = {
   en: {
@@ -39,23 +43,47 @@ const labels = {
 };
 
 const text = computed(() => labels[props.locale] ?? labels.en);
+const sectionFromHref = (href) => href.replace("#", "");
 
 const setLocale = (value) => {
   emit("update:locale", value);
+};
+
+const navigate = (href) => {
+  emit("navigate", href);
 };
 </script>
 
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand-name" href="#about" :aria-label="text.home">Ignidra</a>
+      <a
+        class="brand-name"
+        href="#about"
+        :aria-label="text.home"
+        @click.prevent="navigate('#about')"
+      >
+        Ignidra
+      </a>
 
-      <a class="brand-mark" href="#about" :aria-label="text.logo">
+      <a
+        class="brand-mark"
+        href="#about"
+        :aria-label="text.logo"
+        @click.prevent="navigate('#about')"
+      >
         <img :src="logoUrl" alt="" />
       </a>
 
       <nav class="main-nav" aria-label="Main navigation">
-        <a v-for="link in text.nav" :key="link.href" class="nav-link" :href="link.href">
+        <a
+          v-for="link in text.nav"
+          :key="link.href"
+          class="nav-link"
+          :class="{ active: activeSection === sectionFromHref(link.href) }"
+          :href="link.href"
+          @click.prevent="navigate(link.href)"
+        >
           {{ link.label }}
         </a>
       </nav>
@@ -80,7 +108,14 @@ const setLocale = (value) => {
           </button>
         </div>
 
-        <a class="contact-link" href="#contacts">{{ text.contacts }}</a>
+        <a
+          class="contact-link"
+          :class="{ active: activeSection === 'contacts' }"
+          href="#contacts"
+          @click.prevent="navigate('#contacts')"
+        >
+          {{ text.contacts }}
+        </a>
       </div>
     </div>
   </header>
@@ -212,7 +247,9 @@ const setLocale = (value) => {
 }
 
 .nav-link:hover,
-.contact-link:hover {
+.nav-link.active,
+.contact-link:hover,
+.contact-link.active {
   color: #060606;
   text-decoration-color: currentColor;
 }

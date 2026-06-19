@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import Lenis from "lenis";
 import Header from "./components/Header.vue";
 import About from "./components/About.vue";
 import Project from "./components/Project.vue";
@@ -8,11 +9,90 @@ import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
 
-const locale = ref("en");
+const savedLocale = window.localStorage.getItem("portfolio-locale");
+const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
+const activeSection = ref("about");
+
+let lenis;
+let animationFrameId;
+let sectionObserver;
+
+const sectionIds = ["about", "graphics", "stack", "projects", "contacts"];
+
+const scrollToSection = (href) => {
+  const target = document.querySelector(href);
+
+  if (!target) {
+    return;
+  }
+
+  lenis?.scrollTo(target, { offset: -72 });
+};
+
+watch(locale, (value) => {
+  window.localStorage.setItem("portfolio-locale", value);
+});
+
+onMounted(async () => {
+  await nextTick();
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  lenis = new Lenis({
+    duration: reduceMotion ? 0 : 1.05,
+    smoothWheel: !reduceMotion,
+    wheelMultiplier: 0.85,
+  });
+
+  const raf = (time) => {
+    lenis.raf(time);
+    animationFrameId = window.requestAnimationFrame(raf);
+  };
+
+  animationFrameId = window.requestAnimationFrame(raf);
+
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+      if (visibleEntry?.target.id) {
+        activeSection.value = visibleEntry.target.id;
+      }
+    },
+    {
+      rootMargin: "-35% 0px -45% 0px",
+      threshold: [0.15, 0.35, 0.6],
+    },
+  );
+
+  sectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+    if (!section) {
+      return;
+    }
+
+    sectionObserver.observe(section);
+  });
+});
+
+onBeforeUnmount(() => {
+  if (animationFrameId) {
+    window.cancelAnimationFrame(animationFrameId);
+  }
+
+  sectionObserver?.disconnect();
+  lenis?.destroy();
+});
 </script>
 
 <template>
-  <Header v-model:locale="locale" />
+  <Header
+    v-model:locale="locale"
+    :active-section="activeSection"
+    @navigate="scrollToSection"
+  />
 
   <main class="container">
     <About :locale="locale" class="section0" />

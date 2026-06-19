@@ -14,14 +14,14 @@ const content = {
     text:
       "I've been fascinated with video games since childhood, and this is what eventually led me to want to create my own projects. I enrolled in the Rostov College of Communications and Informatics, majoring in Information Systems. In my third year, I discovered web development and design and began creating small web pages, icons, and logos. I'm currently pursuing a degree in Business Informatics and simultaneously studying indie development, striving to develop at the intersection of design, technology, and digital product creation.",
     prefix: "I am",
-    words: ["developer", "designer"],
+    words: ["developer", "designer", ":)", "game developer", "master chief"],
   },
   ru: {
     title: "немного обо мне",
     text:
       "С детства меня увлекали видеоигры, и со временем это привело меня к желанию создавать собственные проекты. Я поступил в Ростовский колледж связи и информатики на направление информационных систем. На третьем курсе познакомился с веб-разработкой и дизайном, начал делать небольшие страницы, иконки и логотипы. Сейчас я учусь на бизнес-информатике и параллельно изучаю инди-разработку, развиваясь на стыке дизайна, технологий и цифровых продуктов.",
     prefix: "Я",
-    words: ["разработчик", "дизайнер"],
+    words: ["разработчик", "дизайнер", ":)", "game developer", "master chief"],
   },
 };
 
@@ -76,7 +76,7 @@ watch(
     isDeleting = false;
     typedText.value = "";
     timerId = window.setTimeout(tick, 250);
-  }
+  },
 );
 </script>
 
@@ -161,7 +161,7 @@ watch(
 }
 
 .typing-word {
-  min-width: 112px;
+  min-width: 172px;
   color: #d1ffc4;
 }
 
@@ -204,7 +204,7 @@ watch(
   }
 
   .typing-word {
-    min-width: 94px;
+    min-width: 142px;
   }
 }
 </style>

@@ -261,6 +261,5 @@ const text = computed(() => content[props.locale] ?? content.en);
   .projects-panel {
     padding: 24px 22px;
   }
-
 }
 </style>

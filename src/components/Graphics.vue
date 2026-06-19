@@ -22,7 +22,6 @@ export default {
   },
   data() {
     return {
-      visibleColumns: 5,
       projects: [
         { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
         { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
@@ -58,35 +57,6 @@ export default {
       return content[this.locale] || content.en;
     },
   },
-  mounted() {
-    this.updateVisibleColumns();
-    window.addEventListener("resize", this.updateVisibleColumns, { passive: true });
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.updateVisibleColumns);
-  },
-  methods: {
-    updateVisibleColumns() {
-      const width = window.innerWidth;
-
-      if (width <= 480) {
-        this.visibleColumns = 2;
-        return;
-      }
-
-      if (width <= 768) {
-        this.visibleColumns = 3;
-        return;
-      }
-
-      if (width <= 1024) {
-        this.visibleColumns = 4;
-        return;
-      }
-
-      this.visibleColumns = 5;
-    },
-  },
 };
 </script>
 
@@ -115,6 +85,7 @@ export default {
               :alt="`Illustration ${project.id}`"
               class="image"
               loading="lazy"
+              decoding="async"
               draggable="false"
             />
           </a>
