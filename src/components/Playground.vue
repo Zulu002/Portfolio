@@ -11,11 +11,13 @@ const props = defineProps({
 const content = {
   en: {
     title: "loading next idea",
-    text: "a lot of ideas",
+    text:
+      "I have a lot of ideas and projects that I want to try: design, games, applications.",
   },
   ru: {
     title: "загружаю идею",
-    text: "много идей",
+    text:
+      "У меня много идей и проектов, которые я хочу попробовать: дизайн, игры, приложения.",
   },
 };
 

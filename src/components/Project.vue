@@ -83,11 +83,33 @@ const text = computed(() => content[props.locale] ?? content.en);
 
 <template>
   <section class="projects">
-    <div class="projects-panel">
-      <h2 class="section-title">{{ text.title }}</h2>
+    <div class="project-list">
+      <article
+        v-for="(project, index) in text.projects"
+        :key="project.title"
+        class="project-item"
+        :class="{ reversed: index % 2 === 1 }"
+      >
+        <div class="project-copy">
+          <span class="project-number">{{ String(index + 1).padStart(2, "0") }}</span>
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
 
-      <div class="project-list">
-        <article v-for="project in text.projects" :key="project.title" class="project-item">
+          <ul class="tag-list" :aria-label="text.tagsLabel">
+            <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
+          </ul>
+
+          <a
+            :href="project.link"
+            class="project-open"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ text.open }}
+          </a>
+        </div>
+
+        <div class="project-preview">
           <a
             :href="project.link"
             class="preview-link"
@@ -97,26 +119,8 @@ const text = computed(() => content[props.locale] ?? content.en);
           >
             <img :src="project.preview" :alt="project.title" loading="lazy" decoding="async" />
           </a>
-
-          <div class="project-copy">
-            <h3 class="project-title">{{ project.title }}</h3>
-            <p class="project-description">{{ project.description }}</p>
-
-            <a
-              :href="project.link"
-              class="project-open"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ text.open }}
-            </a>
-
-            <ul class="tag-list" :aria-label="text.tagsLabel">
-              <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
-            </ul>
-          </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
   </section>
 </template>
@@ -128,51 +132,62 @@ const text = computed(() => content[props.locale] ?? content.en);
   box-sizing: border-box;
 }
 
-.projects-panel {
+.project-list {
+  display: grid;
+  gap: 10px;
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 28px 31px 30px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  background: #000000;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-}
-
-.section-title {
-  margin: 0 0 24px;
-  color: var(--accent);
-  font-size: clamp(28px, 3.2vw, 31px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.project-list {
-  display: grid;
-  gap: 0;
 }
 
 .project-item {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+  gap: 32px;
   align-items: center;
   min-width: 0;
-  padding: 18px 0;
-  border-top: 1px solid rgba(var(--accent-rgb), 0.26);
+  min-height: 330px;
+  padding: 28px 31px 30px;
+  border-radius: 5px;
+  background: #000000;
+  box-sizing: border-box;
 }
 
-.project-item:last-child {
-  padding-bottom: 0;
+.project-item.reversed {
+  grid-template-columns: minmax(0, 0.54fr) minmax(0, 0.46fr);
+}
+
+.project-item.reversed .project-copy {
+  order: 2;
+}
+
+.project-item.reversed .project-preview {
+  order: 1;
+}
+
+.project-copy {
+  min-width: 0;
+}
+
+.project-number {
+  display: block;
+  margin-bottom: 18px;
+  color: rgba(var(--accent-rgb), 0.24);
+  font-size: clamp(58px, 8vw, 104px);
+  line-height: 0.82;
 }
 
 .preview-link {
   display: block;
+  position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   border-radius: 5px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.24);
+  transition: box-shadow var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
 }
 
 .preview-link img {
@@ -188,10 +203,16 @@ const text = computed(() => content[props.locale] ?? content.en);
   transform: scale(1.04);
 }
 
+.preview-link:hover,
+.preview-link:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+  transform: translateY(-2px);
+}
+
 .project-title {
   margin: 0 0 8px;
   color: #ffffff;
-  font-size: 24px;
+  font-size: clamp(28px, 3.2vw, 36px);
   font-weight: 400;
   line-height: 1.1;
 }
@@ -201,10 +222,10 @@ const text = computed(() => content[props.locale] ?? content.en);
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 62px;
-  min-height: 32px;
-  margin-top: 14px;
-  padding: 0 12px;
+  min-width: 84px;
+  min-height: 38px;
+  margin-top: 20px;
+  padding: 0 16px;
   border-radius: 5px;
   background: var(--accent);
   color: #060606;
@@ -223,9 +244,10 @@ const text = computed(() => content[props.locale] ?? content.en);
 
 .project-description {
   margin: 0;
+  max-width: 520px;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.24;
 }
 
 .tag-list {
@@ -234,7 +256,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 14px 0 0;
+  margin: 18px 0 0;
 }
 
 .tag-list li {
@@ -247,9 +269,16 @@ const text = computed(() => content[props.locale] ?? content.en);
 }
 
 @media (max-width: 760px) {
-  .project-item {
+  .project-item,
+  .project-item.reversed {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
+    min-height: 0;
+  }
+
+  .project-item.reversed .project-copy,
+  .project-item.reversed .project-preview {
+    order: initial;
   }
 }
 
@@ -258,8 +287,12 @@ const text = computed(() => content[props.locale] ?? content.en);
     padding: 8px 16px;
   }
 
-  .projects-panel {
+  .project-item {
     padding: 24px 22px;
+  }
+
+  .project-number {
+    margin-bottom: 14px;
   }
 }
 </style>
