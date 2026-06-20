@@ -26,7 +26,10 @@ const scrollToSection = (href) => {
     return;
   }
 
-  lenis?.scrollTo(target, { offset: -16 });
+  const targetHeight = target.getBoundingClientRect().height;
+  const centerOffset = Math.max((window.innerHeight - targetHeight) / 2, 16);
+
+  lenis?.scrollTo(target, { offset: -centerOffset });
 };
 
 watch(locale, (value) => {

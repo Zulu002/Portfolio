@@ -117,7 +117,7 @@ const activeTool = (tools) => tools[activeStep.value % tools.length];
 onMounted(() => {
   intervalId = window.setInterval(() => {
     activeStep.value += 1;
-  }, 5500);
+  }, 2600);
 });
 
 onBeforeUnmount(() => {
@@ -127,31 +127,27 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="stack-section">
-    <div class="stack-panel">
-      <h2 class="section-title">{{ text.title }}</h2>
+    <div class="stack-grid">
+      <section v-for="group in text.groups" :key="group.title" class="stack-group">
+        <h3 class="group-title">{{ group.title }}</h3>
 
-      <div class="stack-grid">
-        <section v-for="group in text.groups" :key="group.title" class="stack-group">
-          <h3 class="group-title">{{ group.title }}</h3>
+        <div class="tool-roller" aria-hidden="true">
+          <Transition name="icon-scroll">
+            <div
+              :key="`${group.title}-${activeTool(group.tools).name}`"
+              class="roller-item"
+            >
+              <img
+                :src="activeTool(group.tools).icon"
+                :alt="activeTool(group.tools).name"
+              />
+              <span>{{ activeTool(group.tools).name }}</span>
+            </div>
+          </Transition>
+        </div>
 
-          <div class="tool-roller" aria-hidden="true">
-            <Transition name="icon-scroll">
-              <div
-                :key="`${group.title}-${activeTool(group.tools).name}`"
-                class="roller-item"
-              >
-                <img
-                  :src="activeTool(group.tools).icon"
-                  :alt="activeTool(group.tools).name"
-                />
-                <span>{{ activeTool(group.tools).name }}</span>
-              </div>
-            </Transition>
-          </div>
-
-          <p class="group-description">{{ group.description }}</p>
-        </section>
-      </div>
+        <p class="group-description">{{ group.description }}</p>
+      </section>
     </div>
   </section>
 </template>
@@ -161,36 +157,28 @@ onBeforeUnmount(() => {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-}
-
-.stack-panel {
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 28px 31px 30px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  background: #000000;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
-.section-title {
-  margin: 0 0 24px;
-  color: var(--accent);
-  font-size: clamp(28px, 3.2vw, 31px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0;
+.stack-grid {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
 }
 
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 10px;
 }
 
 .stack-group {
   min-width: 0;
+  min-height: 218px;
+  padding: 28px 31px 30px;
+  border-radius: 5px;
+  background: #000000;
+  box-sizing: border-box;
 }
 
 .group-title {
@@ -267,7 +255,7 @@ onBeforeUnmount(() => {
     padding: 8px 16px;
   }
 
-  .stack-panel {
+  .stack-group {
     padding: 24px 22px;
   }
 }

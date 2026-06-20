@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 
-const accentVariants = ['lime', 'sky', 'berry', 'yellow']
+const accentVariants = ['lime', 'sky', 'berry', 'yellow', 'orange']
 const accent = accentVariants[Math.floor(Math.random() * accentVariants.length)]
 
 document.documentElement.dataset.accent = accent

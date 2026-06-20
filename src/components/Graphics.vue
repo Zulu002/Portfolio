@@ -23,23 +23,29 @@ export default {
   data() {
     return {
       projects: [
-        { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
-        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
-        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
+        { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo7 },
+        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
+        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
         { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
         { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
         { id: 6, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
-        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo7 },
-        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
+        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
+        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
         { id: 9, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
         { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
         { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
-        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
+        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
         { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
       ],
     };
   },
   computed: {
+    darkBackedProjects() {
+      return this.projects.slice(0, 6);
+    },
+    lightBackedProjects() {
+      return this.projects.slice(6);
+    },
     text() {
       const content = {
         en: {
@@ -63,17 +69,46 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <div class="showcase-panel">
-        <div class="showcase-heading">
+      <div class="showcase-column showcase-column-dark">
+        <div class="showcase-copy">
           <h2 class="showcase-title">{{ text.title }}</h2>
           <p class="showcase-text">
             {{ text.description }}
           </p>
         </div>
 
-        <div class="gallery-grid" :aria-label="text.aria">
+        <div class="gallery-grid gallery-grid-light" :aria-label="text.aria">
           <a
-            v-for="project in projects"
+            v-for="project in lightBackedProjects"
+            :key="project.id"
+            :href="project.link"
+            class="tile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              :src="project.logo"
+              :alt="`Illustration ${project.id}`"
+              class="image"
+              loading="lazy"
+              decoding="async"
+              draggable="false"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="showcase-column showcase-column-light">
+        <div class="showcase-copy">
+          <h2 class="showcase-title">{{ text.title }}</h2>
+          <p class="showcase-text">
+            {{ text.description }}
+          </p>
+        </div>
+
+        <div class="gallery-grid gallery-grid-dark" :aria-label="text.aria">
+          <a
+            v-for="project in darkBackedProjects"
             :key="project.id"
             :href="project.link"
             class="tile"
@@ -103,26 +138,41 @@ export default {
 }
 
 .showcase-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+  gap: 10px;
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
   box-sizing: border-box;
 }
 
-.showcase-panel {
+.showcase-column {
   width: 100%;
   padding: 28px 31px 30px;
   box-sizing: border-box;
   border-radius: 5px;
-  background: #000000;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
-.showcase-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
-  gap: 24px;
-  align-items: start;
+.showcase-column-light {
+  border: 4px solid #000000;
+  background: transparent;
+}
+
+.showcase-column-light .showcase-title {
+  color: #060606;
+}
+
+.showcase-column-light .showcase-text {
+  color: #060606;
+}
+
+.showcase-column-dark {
+  background: #000000;
+}
+
+.showcase-copy {
   margin-bottom: 24px;
 }
 
@@ -137,32 +187,40 @@ export default {
 
 .showcase-text {
   max-width: 560px;
-  margin: 0;
-  justify-self: end;
+  margin: 12px 0 0;
   color: #ffffff;
   font-size: 16px;
   line-height: 1.2;
-  text-align: right;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  width: 100%;
   gap: 14px;
   justify-content: center;
   justify-items: center;
 }
 
+.gallery-grid-dark {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gallery-grid-light {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .tile {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 1;
   overflow: hidden;
   text-decoration: none;
   border-radius: 50%;
-  background: transparent;
   width: 100%;
-  max-width: 128px;
+  max-width: 118px;
+  box-sizing: border-box;
   transition: border-radius var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
 }
@@ -190,21 +248,24 @@ export default {
     padding: 8px 16px;
   }
 
-  .showcase-panel {
+  .showcase-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-column {
     padding: 24px 22px;
   }
 
-  .showcase-heading {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .showcase-column-dark .showcase-text {
+    color: #ffffff;
   }
 
-  .showcase-text {
-    justify-self: start;
-    text-align: left;
+  .showcase-column-light .showcase-text {
+    color: #060606;
   }
 
-  .gallery-grid {
+  .gallery-grid-dark,
+  .gallery-grid-light {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
