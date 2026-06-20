@@ -18,7 +18,7 @@ let lenis;
 let animationFrameId;
 let sectionObserver;
 
-const sectionIds = ["about", "journey", "graphics", "stack", "projects", "contacts"];
+const sectionIds = ["about", "journey", "stack", "graphics", "projects", "contacts"];
 
 const scrollToSection = (href) => {
   const target = document.querySelector(href);

@@ -19,8 +19,8 @@ const labels = {
     nav: [
       { label: "About", href: "#about", marker: "1" },
       { label: "Journey", href: "#journey", marker: "2" },
-      { label: "Illustrations", href: "#graphics", marker: "3" },
-      { label: "Stack", href: "#stack", marker: "4" },
+      { label: "Stack", href: "#stack", marker: "3" },
+      { label: "Illustrations", href: "#graphics", marker: "4" },
       { label: "Projects", href: "#projects", marker: "5" },
     ],
     switchLabel: "Switch language",
@@ -29,8 +29,8 @@ const labels = {
     nav: [
       { label: "Обо мне", href: "#about", marker: "1" },
       { label: "Путь", href: "#journey", marker: "2" },
-      { label: "Иллюстрации", href: "#graphics", marker: "3" },
-      { label: "Навыки", href: "#stack", marker: "4" },
+      { label: "Навыки", href: "#stack", marker: "3" },
+      { label: "Иллюстрации", href: "#graphics", marker: "4" },
       { label: "Проекты", href: "#projects", marker: "5" },
     ],
     switchLabel: "Переключить язык",
