@@ -101,8 +101,8 @@ onBeforeUnmount(() => {
   <main class="container">
     <About :locale="locale" class="section0" />
     <Journey :locale="locale" id="journey" class="section" />
-    <Graphics :locale="locale" id="graphics" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
+    <Graphics :locale="locale" id="graphics" class="section" />
     <Playground :locale="locale" class="section" />
     <Project :locale="locale" id="projects" class="section" />
     <Contacts :locale="locale" id="contacts" class="section" />
