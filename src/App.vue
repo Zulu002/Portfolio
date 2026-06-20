@@ -9,6 +9,7 @@ import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
 import Playground from "./components/Playground.vue";
+import ContactStrip from "./components/ContactStrip.vue";
 
 const savedLocale = window.localStorage.getItem("portfolio-locale");
 const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
@@ -16,9 +17,32 @@ const activeSection = ref("about");
 
 let lenis;
 let animationFrameId;
-let sectionObserver;
+let sectionElements = [];
 
-const sectionIds = ["about", "journey", "stack", "graphics", "projects", "contacts"];
+const sectionIds = ["about", "journey", "stack", "graphics", "projects"];
+
+const updateActiveSection = () => {
+  if (!sectionElements.length) {
+    return;
+  }
+
+  const viewportCenter = window.innerHeight / 2;
+  const closestSection = sectionElements
+    .map((section) => {
+      const rect = section.getBoundingClientRect();
+      const sectionCenter = rect.top + rect.height / 2;
+
+      return {
+        id: section.id,
+        distance: Math.abs(sectionCenter - viewportCenter),
+      };
+    })
+    .sort((first, second) => first.distance - second.distance)[0];
+
+  if (closestSection?.id) {
+    activeSection.value = closestSection.id;
+  }
+};
 
 const scrollToSection = (href) => {
   const target = document.querySelector(href);
@@ -50,35 +74,18 @@ onMounted(async () => {
 
   const raf = (time) => {
     lenis.raf(time);
+    updateActiveSection();
     animationFrameId = window.requestAnimationFrame(raf);
   };
 
   animationFrameId = window.requestAnimationFrame(raf);
 
-  sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleEntry = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+  sectionElements = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
 
-      if (visibleEntry?.target.id) {
-        activeSection.value = visibleEntry.target.id;
-      }
-    },
-    {
-      rootMargin: "-35% 0px -45% 0px",
-      threshold: [0.15, 0.35, 0.6],
-    },
-  );
-
-  sectionIds.forEach((id) => {
-    const section = document.getElementById(id);
-    if (!section) {
-      return;
-    }
-
-    sectionObserver.observe(section);
-  });
+  updateActiveSection();
+  window.addEventListener("resize", updateActiveSection);
 });
 
 onBeforeUnmount(() => {
@@ -86,7 +93,7 @@ onBeforeUnmount(() => {
     window.cancelAnimationFrame(animationFrameId);
   }
 
-  sectionObserver?.disconnect();
+  window.removeEventListener("resize", updateActiveSection);
   lenis?.destroy();
 });
 </script>
@@ -100,6 +107,7 @@ onBeforeUnmount(() => {
 
   <main class="container">
     <About :locale="locale" class="section0" />
+    <ContactStrip :locale="locale" />
     <Journey :locale="locale" id="journey" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
     <Graphics :locale="locale" id="graphics" class="section" />
@@ -130,13 +138,13 @@ onBeforeUnmount(() => {
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 10px;
+  padding: 6px 10px;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 16px;
+    padding: 10px 16px;
   }
 }
 </style>

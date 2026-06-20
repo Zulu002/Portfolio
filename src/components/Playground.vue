@@ -49,9 +49,6 @@ const pixels = [
         ></span>
       </div>
 
-      <div class="load-line" aria-hidden="true">
-        <span></span>
-      </div>
     </article>
   </section>
 </template>
@@ -65,9 +62,13 @@ const pixels = [
 
 .play-card {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
   width: 100%;
   max-width: var(--content-width);
-  min-height: 172px;
+  min-height: 124px;
   margin: 0 auto;
   overflow: hidden;
   padding: 24px 31px 28px;
@@ -83,7 +84,6 @@ const pixels = [
 }
 
 .card-title {
-  max-width: calc(100% - 178px);
   margin: 0;
   color: var(--accent);
   font-size: clamp(28px, 3.2vw, 31px);
@@ -100,12 +100,10 @@ const pixels = [
 }
 
 .pixel-loader {
-  position: absolute;
-  top: 24px;
-  right: 31px;
   display: grid;
   grid-template-columns: repeat(6, 18px);
   gap: 6px;
+  justify-self: end;
 }
 
 .pixel {
@@ -118,26 +116,6 @@ const pixels = [
 
 .pixel.active {
   background: var(--accent);
-}
-
-.load-line {
-  position: absolute;
-  right: 31px;
-  bottom: 28px;
-  left: 31px;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.load-line span {
-  display: block;
-  width: 42%;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--accent);
-  animation: loader-scan 3.2s var(--motion-ease) infinite;
 }
 
 @keyframes pixel-pulse {
@@ -153,19 +131,8 @@ const pixels = [
   }
 }
 
-@keyframes loader-scan {
-  0% {
-    transform: translateX(-110%);
-  }
-
-  100% {
-    transform: translateX(260%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .pixel,
-  .load-line span {
+  .pixel {
     animation: none;
   }
 }
@@ -176,17 +143,17 @@ const pixels = [
   }
 
   .play-card {
-    min-height: 166px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    min-height: 128px;
     padding: 22px;
   }
 
   .card-title {
-    max-width: calc(100% - 134px);
+    max-width: none;
   }
 
   .pixel-loader {
-    top: 22px;
-    right: 22px;
     grid-template-columns: repeat(6, 15px);
     gap: 5px;
   }
@@ -196,10 +163,5 @@ const pixels = [
     height: 15px;
   }
 
-  .load-line {
-    right: 22px;
-    bottom: 22px;
-    left: 22px;
-  }
 }
 </style>

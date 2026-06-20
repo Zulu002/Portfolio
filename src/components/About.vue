@@ -104,7 +104,7 @@ const dots = [
 .about-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
+  align-items: center;
   width: 100%;
   max-width: var(--content-width);
   min-height: 278px;
