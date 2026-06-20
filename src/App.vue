@@ -8,6 +8,7 @@ import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
+import Playground from "./components/Playground.vue";
 
 const savedLocale = window.localStorage.getItem("portfolio-locale");
 const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
@@ -102,6 +103,7 @@ onBeforeUnmount(() => {
     <Journey :locale="locale" id="journey" class="section" />
     <Graphics :locale="locale" id="graphics" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
+    <Playground :locale="locale" class="section" />
     <Project :locale="locale" id="projects" class="section" />
     <Contacts :locale="locale" id="contacts" class="section" />
   </main>

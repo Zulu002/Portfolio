@@ -139,7 +139,7 @@ export default {
 
 .showcase-wrapper {
   display: grid;
-  grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   width: 100%;
   max-width: var(--content-width);
