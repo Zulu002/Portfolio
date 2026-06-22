@@ -13,14 +13,11 @@ const content = {
     title: "little about me",
     text:
       "I've been fascinated with video games since childhood, and this is what eventually led me to want to create my own projects. I enrolled in the Rostov College of Communications and Informatics, majoring in Information Systems. In my third year, I discovered web development and design and began creating small web pages, icons, and logos. I'm currently pursuing a degree in Business Informatics and simultaneously studying indie development, striving to develop at the intersection of design, technology, and digital product creation.",
-    prefix: "I am",
     words: [
-      "developer",
-      "designer",
-      ":)",
-      "game developer",
-      "master chief",
-      "secret cow level",
+      "I am a developer",
+      "I am a designer",
+      "Even the smallest person can change the future",
+      "Eyes up, Guardian",
       "works on my machine",
       "404 sleep not found",
     ],
@@ -29,14 +26,11 @@ const content = {
     title: "немного обо мне",
     text:
       "С детства меня увлекали видеоигры, и со временем это привело меня к желанию создавать собственные проекты. Я поступил в Ростовский колледж связи и информатики на направление информационных систем. На третьем курсе познакомился с веб-разработкой и дизайном, начал делать небольшие страницы, иконки и логотипы. Сейчас я учусь на бизнес-информатике и параллельно изучаю инди-разработку, развиваясь на стыке дизайна, технологий и цифровых продуктов.",
-    prefix: "Я",
     words: [
-      "разработчик",
-      "дизайнер",
-      ":)",
-      "game developer",
-      "master chief",
-      "secret cow level",
+      "я разработчик",
+      "я дизайнер",
+      "Даже самый маленький может изменить будущее",
+      "Выше нос, Страж",
       "works on my machine",
       "404 sleep not found",
     ],
@@ -107,9 +101,7 @@ watch(
       <div class="journey-divider" aria-hidden="true"></div>
 
       <p class="typing-line">
-        <span class="typing-prefix">{{ text.prefix }}</span>
         <span class="typing-word">{{ typedText }}</span>
-        <span class="typing-caret" aria-hidden="true"></span>
       </p>
     </div>
   </section>
@@ -174,32 +166,9 @@ watch(
   letter-spacing: 0;
 }
 
-.typing-prefix {
-  color: #ffffff;
-}
-
 .typing-word {
-  min-width: 172px;
+  min-width: 360px;
   color: var(--accent);
-}
-
-.typing-caret {
-  width: 2px;
-  height: 25px;
-  background: var(--accent);
-  animation: caret-blink 0.8s steps(1) infinite;
-}
-
-@keyframes caret-blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-
-  51%,
-  100% {
-    opacity: 0;
-  }
 }
 
 @media (max-width: 640px) {
@@ -222,7 +191,7 @@ watch(
   }
 
   .typing-word {
-    min-width: 142px;
+    min-width: 0;
   }
 }
 </style>

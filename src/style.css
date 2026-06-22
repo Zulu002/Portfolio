@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
-
 @font-face {
   font-family: 'OpenSansRegular';
   src: url('../src/assets/Inter_24pt-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'OpenSansBold';
   src: url('../src/assets/Inter_28pt-Bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 :root {
@@ -41,6 +41,18 @@
   --accent: #ff9f43;
   --accent-muted: #94602b;
   --accent-rgb: 255, 159, 67;
+}
+
+:root[data-accent="violet"] {
+  --accent: #c7a6ff;
+  --accent-muted: #6f5a96;
+  --accent-rgb: 199, 166, 255;
+}
+
+:root[data-accent="mint"] {
+  --accent: #74ffd8;
+  --accent-muted: #408c78;
+  --accent-rgb: 116, 255, 216;
 }
 
 html, body {

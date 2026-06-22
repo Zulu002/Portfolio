@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from "vue";
-import invoicePreview from "../assets/projects/cal.png";
-import jamPreview from "../assets/projects/gk.png";
-import buildPreview from "../assets/projects/hp.png";
+import invoicePreview from "../assets/projects/cal-preview.jpg";
+import jamPreview from "../assets/projects/gk-preview.jpg";
+import buildPreview from "../assets/projects/hp-preview.jpg";
 
 const props = defineProps({
   locale: {
@@ -117,7 +117,14 @@ const text = computed(() => content[props.locale] ?? content.en);
             rel="noopener noreferrer"
             :aria-label="`${text.openLabel} ${project.title}`"
           >
-            <img :src="project.preview" :alt="project.title" loading="lazy" decoding="async" />
+            <img
+              :src="project.preview"
+              :alt="project.title"
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
         </div>
       </article>

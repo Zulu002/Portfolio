@@ -140,6 +140,8 @@ onBeforeUnmount(() => {
               <img
                 :src="activeTool(group.tools).icon"
                 :alt="activeTool(group.tools).name"
+                width="24"
+                height="24"
               />
               <span>{{ activeTool(group.tools).name }}</span>
             </div>
