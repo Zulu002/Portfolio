@@ -8,6 +8,8 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["navigate"]);
+
 const content = {
   en: {
     name: "Zulumkhanov",
@@ -22,6 +24,11 @@ const content = {
 };
 
 const text = computed(() => content[props.locale] ?? content.en);
+const contactLabel = computed(() => (props.locale === "ru" ? "Контакты" : "Contacts"));
+
+const goToContacts = () => {
+  emit("navigate", "#contacts");
+};
 
 const dots = [
   "muted",
@@ -69,7 +76,6 @@ const dots = [
   "bright",
   "bright",
   "bright",
-  "empty",
 ];
 </script>
 
@@ -79,6 +85,9 @@ const dots = [
       <div class="about-copy">
         <h1 class="about-title">{{ text.name }}<br />{{ text.surname }}</h1>
         <p class="about-tagline">{{ text.tagline }}</p>
+        <button type="button" class="about-contact" @click="goToContacts">
+          {{ contactLabel }}
+        </button>
       </div>
 
       <div class="dot-pattern" aria-hidden="true">
@@ -141,12 +150,50 @@ const dots = [
   color: var(--accent);
 }
 
+.about-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-height: 36px;
+  margin-top: 18px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--accent);
+  color: #060606;
+  cursor: pointer;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: background-color var(--motion-duration) var(--motion-ease),
+    text-decoration-color var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+}
+
+.about-contact:hover,
+.about-contact:focus-visible {
+  text-decoration-color: currentColor;
+  transform: translateY(-1px);
+}
+
+.about-contact:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
 .dot-pattern {
   display: grid;
   grid-template-columns: repeat(9, 40px);
   grid-auto-rows: 40px;
   gap: 4px;
-  align-self: center;
+  align-self: end;
+  justify-self: end;
+  margin-bottom: 0;
 }
 
 .dot-cell {
@@ -195,6 +242,7 @@ const dots = [
 
   .dot-pattern {
     justify-self: end;
+    align-self: end;
   }
 }
 
@@ -221,6 +269,8 @@ const dots = [
     grid-template-columns: repeat(9, 28px);
     grid-auto-rows: 28px;
     gap: 4px;
+    width: 100%;
+    max-width: 284px;
   }
 
   .dot-cell {
