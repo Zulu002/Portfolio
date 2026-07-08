@@ -1,8 +1,8 @@
-<script setup>
+﻿<script setup>
 import { computed } from "vue";
 import invoicePreview from "../assets/projects/cal-preview.jpg";
 import jamPreview from "../assets/projects/gk-preview.jpg";
-import buildPreview from "../assets/projects/hp-preview.jpg";
+import loopBitPreview from "../assets/projects/loopbit-preview.png";
 
 const props = defineProps({
   locale: {
@@ -27,20 +27,21 @@ const content = {
         preview: invoicePreview,
       },
       {
+        title: "LoopBit",
+        description:
+          "A terminal-driven planner where tasks are created and updated through typed commands.",
+        tags: ["terminal UI", "task planner", "command logic"],
+        link: "https://zulu002.github.io/LoopBit/",
+        preview: loopBitPreview,
+        fit: "contain",
+      },
+      {
         title: "Glorious Knight Jam",
         description:
           "A multi-page game jam website focused on clear navigation, event structure, and engagement.",
         tags: ["UX design", "HTML CSS JS", "responsive layout"],
         link: "https://zulu002.github.io/GloriousKnightJam/index.html",
         preview: jamPreview,
-      },
-      {
-        title: "Build",
-        description:
-          "A construction company website prototype built around trust, clarity, and a direct path to contact.",
-        tags: ["clean UI", "content structure", "service focus"],
-        link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
-        preview: buildPreview,
       },
     ],
   },
@@ -59,20 +60,21 @@ const content = {
         preview: invoicePreview,
       },
       {
+        title: "LoopBit",
+        description:
+          "Планировщик в терминальном стиле: задачи создаются и обновляются через команды в строке ввода.",
+        tags: ["terminal UI", "планировщик", "команды"],
+        link: "https://zulu002.github.io/LoopBit/",
+        preview: loopBitPreview,
+        fit: "contain",
+      },
+      {
         title: "Glorious Knight Jam",
         description:
           "Многостраничный сайт для геймджема с понятной навигацией, структурой события и вовлечением.",
         tags: ["UX-дизайн", "HTML CSS JS", "адаптив"],
         link: "https://zulu002.github.io/GloriousKnightJam/index.html",
         preview: jamPreview,
-      },
-      {
-        title: "Build",
-        description:
-          "Прототип сайта строительной компании про доверие, ясность и прямой путь к контакту.",
-        tags: ["чистый UI", "структура", "услуги"],
-        link: "https://www.figma.com/design/7Fh3YxnuhcraX8bPg6A9kg/Untitled?node-id=0-1&t=tbHeU7CS72UovLF1-1",
-        preview: buildPreview,
       },
     ],
   },
@@ -120,6 +122,7 @@ const text = computed(() => content[props.locale] ?? content.en);
             <img
               :src="project.preview"
               :alt="project.title"
+              :class="{ 'preview-image-contain': project.fit === 'contain' }"
               width="1200"
               height="675"
               loading="lazy"
@@ -203,6 +206,10 @@ const text = computed(() => content[props.locale] ?? content.en);
   height: 100%;
   object-fit: cover;
   transition: transform var(--motion-duration) var(--motion-ease);
+}
+
+.preview-link img.preview-image-contain {
+  object-fit: contain;
 }
 
 .preview-link:hover img,

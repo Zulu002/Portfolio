@@ -12,6 +12,7 @@ import logo10 from "../assets/storage/logo10.svg";
 import logo11 from "../assets/storage/logo11.svg";
 import logo12 from "../assets/storage/logo12.svg";
 import logo13 from "../assets/storage/logo13.svg";
+import loopBit from "../assets/storage/LoopBit.svg";
 
 export default {
   props: {
@@ -28,23 +29,24 @@ export default {
         { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
         { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
         { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
-        { id: 6, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
-        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
-        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
-        { id: 9, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
-        { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
-        { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
-        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
-        { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
+        { id: 6, link: "https://pin.it/6jYmg8GZU", logo: loopBit, alt: "LoopBit logo" },
+        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
+        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
+        { id: 9, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
+        { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
+        { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
+        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
+        { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
+        { id: 14, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
       ],
     };
   },
   computed: {
     darkBackedProjects() {
-      return this.projects.slice(0, 6);
+      return this.projects.slice(0, 7);
     },
     lightBackedProjects() {
-      return this.projects.slice(6);
+      return this.projects.slice(7);
     },
     text() {
       const content = {
@@ -88,7 +90,7 @@ export default {
           >
             <img
               :src="project.logo"
-              :alt="`Illustration ${project.id}`"
+              :alt="project.alt || `Illustration ${project.id}`"
               class="image"
               width="128"
               height="128"
@@ -119,7 +121,7 @@ export default {
           >
             <img
               :src="project.logo"
-              :alt="`Illustration ${project.id}`"
+              :alt="project.alt || `Illustration ${project.id}`"
               class="image"
               width="128"
               height="128"
