@@ -3,6 +3,7 @@ import { computed } from "vue";
 import invoicePreview from "../assets/projects/cal-preview.jpg";
 import jamPreview from "../assets/projects/gk-preview.jpg";
 import loopBitPreview from "../assets/projects/loopbit-preview.png";
+import tetraPreview from "../assets/projects/tetra-preview.png";
 
 const props = defineProps({
   locale: {
@@ -43,6 +44,14 @@ const content = {
         link: "https://zulu002.github.io/GloriousKnightJam/index.html",
         preview: jamPreview,
       },
+      {
+        title: "TETRA",
+        description:
+          "A fast-paced retro puzzle game where pieces continuously fall from above. Grab, rotate, and place them before they cross the dashed deadline.",
+        tags: ["retro puzzle", "Godot", "arcade"],
+        link: "https://ignidra.itch.io/tetra",
+        preview: tetraPreview,
+      },
     ],
   },
   ru: {
@@ -75,6 +84,14 @@ const content = {
         tags: ["UX-дизайн", "HTML CSS JS", "адаптив"],
         link: "https://zulu002.github.io/GloriousKnightJam/index.html",
         preview: jamPreview,
+      },
+      {
+        title: "TETRA",
+        description:
+          "Динамичная ретро-головоломка, в которой фигуры непрерывно падают сверху. Хватайте, вращайте и размещайте их до пересечения пунктирной границы.",
+        tags: ["ретро-головоломка", "Godot", "аркада"],
+        link: "https://ignidra.itch.io/tetra",
+        preview: tetraPreview,
       },
     ],
   },
