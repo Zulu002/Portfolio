@@ -9,6 +9,7 @@ import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
 import Playground from "./components/Playground.vue";
+import NextIdea from "./components/NextIdea.vue";
 
 const savedLocale = window.localStorage.getItem("portfolio-locale");
 const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
@@ -108,15 +109,19 @@ onBeforeUnmount(() => {
     <About :locale="locale" class="section0" @navigate="scrollToSection" />
     <Journey :locale="locale" id="journey" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
-    <Playground :locale="locale" class="section" />
+    <NextIdea :locale="locale" class="section" />
     <Graphics :locale="locale" id="graphics" class="section" />
     <Project :locale="locale" id="projects" class="section" />
+    <Playground :locale="locale" class="section" />
     <Contacts :locale="locale" id="contacts" class="section" />
   </main>
 </template>
 
 <style scoped>
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   min-height: 100%;
   padding-top: 0;
   box-sizing: border-box;
@@ -127,7 +132,7 @@ onBeforeUnmount(() => {
   justify-content: flex-end;
   align-items: end;
   width: 100%;
-  padding: 10px 10px 6px;
+  padding: 10px 10px 0;
   box-sizing: border-box;
 }
 
@@ -136,17 +141,13 @@ onBeforeUnmount(() => {
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 6px 10px;
+  padding: 0;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding: 10px 16px;
-  }
-
   .section0 {
-    padding: 10px 16px;
+    padding: 10px 16px 0;
   }
 }
 </style>
