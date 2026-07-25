@@ -146,6 +146,11 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
   .section0 {
     padding: 10px 16px 0;
   }
