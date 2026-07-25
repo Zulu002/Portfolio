@@ -30,53 +30,9 @@ const goToContacts = () => {
   emit("navigate", "#contacts");
 };
 
-const dots = [
-  "muted",
-  "bright",
-  "empty",
-  "bright",
-  "empty",
-  "muted",
-  "bright",
-  "bright",
-  "bright",
-  "empty",
-  "bright",
-  "muted",
-  "bright",
-  "empty",
-  "bright",
-  "bright",
-  "bright",
-  "empty",
-  "muted",
-  "bright",
-  "empty",
-  "bright",
-  "muted",
-  "bright",
-  "empty",
-  "bright",
-  "bright",
-  "bright",
-  "bright",
-  "muted",
-  "empty",
-  "bright",
-  "bright",
-  "muted",
-  "bright",
-  "muted",
-  "bright",
-  "empty",
-  "muted",
-  "bright",
-  "empty",
-  "muted",
-  "bright",
-  "bright",
-  "bright",
-];
+const dots = Array.from({ length: 45 }, (_, index) =>
+  index % 4 === 0 || index % 7 === 0 ? "muted" : "bright",
+);
 </script>
 
 <template>
@@ -241,8 +197,20 @@ const dots = [
   }
 
   .dot-pattern {
-    justify-self: end;
-    align-self: end;
+    order: -1;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: clamp(3px, 0.8vw, 6px);
+    justify-self: center;
+    align-self: auto;
+    width: 100%;
+    max-width: 540px;
+  }
+
+  .dot-cell {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
 }
 
@@ -265,17 +233,5 @@ const dots = [
     font-size: 15px;
   }
 
-  .dot-pattern {
-    grid-template-columns: repeat(9, 28px);
-    grid-auto-rows: 28px;
-    gap: 4px;
-    width: 100%;
-    max-width: 284px;
-  }
-
-  .dot-cell {
-    width: 28px;
-    height: 28px;
-  }
 }
 </style>
