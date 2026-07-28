@@ -13,6 +13,8 @@ import logo11 from "../assets/storage/logo11.svg";
 import logo12 from "../assets/storage/logo12.svg";
 import logo13 from "../assets/storage/logo13.svg";
 import loopBit from "../assets/storage/LoopBit.svg";
+import head from "../assets/storage/head.svg";
+import tertris from "../assets/storage/tertris.svg";
 
 export default {
   props: {
@@ -38,15 +40,33 @@ export default {
         { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
         { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
         { id: 14, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
+        {
+          id: 15,
+          link: "https://pin.it/6jYmg8GZU",
+          logo: head,
+          alt: "Geometric head illustration",
+          panel: "dark",
+        },
+        {
+          id: 16,
+          link: "https://pin.it/6jYmg8GZU",
+          logo: tertris,
+          alt: "Tetris illustration",
+          panel: "light",
+        },
       ],
     };
   },
   computed: {
     darkBackedProjects() {
-      return this.projects.slice(0, 7);
+      return this.projects.filter(
+        (project, index) => project.panel === "light" || (!project.panel && index < 7),
+      );
     },
     lightBackedProjects() {
-      return this.projects.slice(7);
+      return this.projects.filter(
+        (project, index) => project.panel === "dark" || (!project.panel && index >= 7),
+      );
     },
     text() {
       const content = {

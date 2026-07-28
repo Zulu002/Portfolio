@@ -30,8 +30,16 @@ const goToContacts = () => {
   emit("navigate", "#contacts");
 };
 
-const dots = Array.from({ length: 45 }, (_, index) =>
-  index % 4 === 0 || index % 7 === 0 ? "muted" : "bright",
+const dotPattern = [
+  "111101111",
+  "100000010",
+  "101100100",
+  "100101000",
+  "111101111",
+];
+
+const dots = dotPattern.flatMap((row) =>
+  [...row].map((cell) => (cell === "1" ? "bright" : "muted")),
 );
 </script>
 
@@ -72,9 +80,9 @@ const dots = Array.from({ length: 45 }, (_, index) =>
   align-items: center;
   width: 100%;
   max-width: var(--content-width);
-  min-height: 278px;
+  min-height: 238px;
   margin: 0 auto;
-  padding: 36px 31px 24px 24px;
+  padding: 24px 31px;
   box-sizing: border-box;
   background: #000000;
   border-radius: 5px;
@@ -84,7 +92,7 @@ const dots = Array.from({ length: 45 }, (_, index) =>
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 216px;
+  min-height: 190px;
 }
 
 .about-title {
@@ -188,7 +196,7 @@ const dots = Array.from({ length: 45 }, (_, index) =>
 @media (max-width: 980px) {
   .about-panel {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 22px;
     align-items: start;
   }
 
@@ -204,7 +212,7 @@ const dots = Array.from({ length: 45 }, (_, index) =>
     justify-self: center;
     align-self: auto;
     width: 100%;
-    max-width: 540px;
+    max-width: 440px;
   }
 
   .dot-cell {
@@ -221,7 +229,7 @@ const dots = Array.from({ length: 45 }, (_, index) =>
 
   .about-panel {
     min-height: 0;
-    padding: 28px 22px 22px;
+    padding: 22px;
   }
 
   .about-title {

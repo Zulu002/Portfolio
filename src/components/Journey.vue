@@ -16,10 +16,8 @@ const content = {
     words: [
       "I am a developer",
       "I am a designer",
-      "Even the smallest person can change the future",
-      "Eyes up, Guardian",
       "works on my machine",
-      "404 sleep not found",
+      "404 not found",
     ],
   },
   ru: {
@@ -29,10 +27,8 @@ const content = {
     words: [
       "я разработчик",
       "я дизайнер",
-      "Даже самый маленький может изменить будущее",
-      "Выше нос, Страж",
       "works on my machine",
-      "404 sleep not found",
+      "404 not found",
     ],
   },
 };
@@ -117,16 +113,16 @@ watch(
 .journey-panel {
   width: 100%;
   max-width: var(--content-width);
-  min-height: 218px;
+  min-height: 0;
   margin: 0 auto;
-  padding: 28px 31px 30px;
+  padding: 22px 31px;
   box-sizing: border-box;
   border-radius: 5px;
   background: #000000;
 }
 
 .journey-title {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
   font-size: clamp(28px, 3.2vw, 31px);
   font-weight: 400;
@@ -150,7 +146,7 @@ watch(
 .journey-divider {
   width: 100%;
   height: 1px;
-  margin: 26px 0 18px;
+  margin: 16px 0 12px;
   background: rgba(var(--accent-rgb), 0.42);
 }
 
@@ -158,10 +154,10 @@ watch(
   display: flex;
   align-items: center;
   gap: 9px;
-  min-height: 31px;
+  min-height: 24px;
   margin: 0;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -178,7 +174,7 @@ watch(
 
   .journey-panel {
     min-height: 0;
-    padding: 24px 22px;
+    padding: 20px 22px;
   }
 
   .journey-text {
@@ -187,7 +183,7 @@ watch(
   }
 
   .typing-line {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .typing-word {

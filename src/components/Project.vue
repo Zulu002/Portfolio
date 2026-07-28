@@ -161,7 +161,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 
 .project-list {
   display: grid;
-  gap: 10px;
+  gap: 16px;
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;

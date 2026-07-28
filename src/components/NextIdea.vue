@@ -24,10 +24,6 @@ const quotes = {
       author: "J. R. R. Tolkien",
     },
     {
-      quote: "All we have to decide is what to do with the time that is given us.",
-      author: "J. R. R. Tolkien",
-    },
-    {
       quote: "Courage is found in unlikely places.",
       author: "J. R. R. Tolkien",
     },
@@ -36,17 +32,21 @@ const quotes = {
       author: "Albert Einstein",
     },
     {
-      quote: "Evil is evil. Lesser, greater, middling… Makes no difference.",
+      quote: "Mistakes are also important to me. I don't cross them out of my life or memory.",
       author: "Geralt of Rivia",
+    },
+    {
+      quote: "Even the smallest person can change the course of the future.",
+      author: "J. R. R. Tolkien",
+    },
+    {
+      quote: "Eyes up, Guardian.",
+      author: "Ghost, Destiny",
     },
   ],
   ru: [
     {
       quote: "Не каждый, кто странствует, потерян.",
-      author: "Дж. Р. Р. Толкин",
-    },
-    {
-      quote: "Нам остаётся лишь решить, как распорядиться тем временем, которое нам отпущено.",
       author: "Дж. Р. Р. Толкин",
     },
     {
@@ -58,8 +58,16 @@ const quotes = {
       author: "Альберт Эйнштейн",
     },
     {
-      quote: "Зло есть зло. Меньшее, большее, среднее… Разницы нет.",
+      quote: "Ошибки для меня тоже важны. Я не вычёркиваю их из жизни или памяти.",
       author: "Геральт из Ривии",
+    },
+    {
+      quote: "Даже самый маленький человек способен изменить ход будущего.",
+      author: "Дж. Р. Р. Толкин",
+    },
+    {
+      quote: "Выше нос, Страж.",
+      author: "Призрак, Destiny",
     },
   ],
 };
@@ -106,12 +114,12 @@ const text = computed(() => {
 .quote-card {
   display: grid;
   width: 100%;
-  grid-template-columns: clamp(92px, 14vw, 180px) 1fr;
-  gap: clamp(12px, 4vw, 56px);
+  grid-template-columns: clamp(84px, 11vw, 132px) 1fr;
+  gap: clamp(16px, 3vw, 38px);
   align-items: center;
-  min-height: 230px;
+  min-height: 0;
   margin: 0;
-  padding: clamp(26px, 3.5vw, 44px) clamp(30px, 6vw, 72px);
+  padding: 22px 31px;
   overflow: hidden;
   border-radius: 5px;
   background: #000000;
@@ -120,9 +128,10 @@ const text = computed(() => {
 
 .quote-mark {
   align-self: start;
+  transform: translateY(12px);
   color: var(--accent);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(136px, 18vw, 220px);
+  font-size: clamp(112px, 14vw, 164px);
   font-weight: 700;
   line-height: 0.72;
   text-align: center;
@@ -145,7 +154,7 @@ blockquote p {
 
 .quote-author {
   display: block;
-  margin-top: 24px;
+  margin-top: 12px;
   color: rgba(255, 255, 255, 0.55);
   font-family: "OpenSansRegular", sans-serif;
   font-size: 16px;
@@ -155,19 +164,20 @@ blockquote p {
 @media (max-width: 640px) {
   .quote-card {
     grid-template-columns: 1fr;
-    gap: 4px;
+    gap: 2px;
     min-height: 0;
-    padding: 28px 24px 30px;
+    padding: 20px 22px;
   }
 
   .quote-mark {
     justify-self: start;
-    font-size: 112px;
+    font-size: 88px;
     line-height: 0.58;
+    transform: translateY(8px);
   }
 
   .quote-author {
-    margin-top: 18px;
+    margin-top: 10px;
   }
 }
 
