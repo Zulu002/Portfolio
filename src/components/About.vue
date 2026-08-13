@@ -154,7 +154,7 @@ const dots = dotPattern.flatMap((row) =>
   display: grid;
   grid-template-columns: repeat(9, 40px);
   grid-auto-rows: 40px;
-  gap: 4px;
+  gap: 6px;
   align-self: end;
   justify-self: end;
   margin-bottom: 0;
@@ -168,7 +168,7 @@ const dots = dotPattern.flatMap((row) =>
 
 .dot-cell.bright,
 .dot-cell.muted {
-  border-radius: 50%;
+  border-radius: 2px;
   animation: dot-shift 1.6s ease-in-out var(--delay) infinite alternate;
 }
 
@@ -208,7 +208,7 @@ const dots = dotPattern.flatMap((row) =>
     order: -1;
     grid-template-columns: repeat(9, minmax(0, 1fr));
     grid-auto-rows: auto;
-    gap: clamp(3px, 0.8vw, 6px);
+    gap: 6px;
     justify-self: center;
     align-self: auto;
     width: 100%;
@@ -230,6 +230,10 @@ const dots = dotPattern.flatMap((row) =>
   .about-panel {
     min-height: 0;
     padding: 22px;
+  }
+
+  .dot-pattern {
+    gap: 5px;
   }
 
   .about-title {
