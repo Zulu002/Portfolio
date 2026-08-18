@@ -18,20 +18,16 @@ const labels = {
   en: {
     nav: [
       { label: "About", href: "#about", marker: "1" },
-      { label: "Journey", href: "#journey", marker: "2" },
-      { label: "Stack", href: "#stack", marker: "3" },
-      { label: "Illustrations", href: "#graphics", marker: "4" },
-      { label: "Projects", href: "#projects", marker: "5" },
+      { label: "Showcase", href: "#graphics", marker: "2" },
+      { label: "Projects", href: "#projects", marker: "3" },
     ],
     switchLabel: "Switch language",
   },
   ru: {
     nav: [
       { label: "Обо мне", href: "#about", marker: "1" },
-      { label: "Путь", href: "#journey", marker: "2" },
-      { label: "Навыки", href: "#stack", marker: "3" },
-      { label: "Иллюстрации", href: "#graphics", marker: "4" },
-      { label: "Проекты", href: "#projects", marker: "5" },
+      { label: "Витрина", href: "#graphics", marker: "2" },
+      { label: "Проекты", href: "#projects", marker: "3" },
     ],
     switchLabel: "Переключить язык",
   },

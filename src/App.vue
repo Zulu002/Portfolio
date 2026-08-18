@@ -19,7 +19,7 @@ let lenis;
 let animationFrameId;
 let sectionElements = [];
 
-const sectionIds = ["about", "journey", "stack", "graphics", "projects"];
+const sectionIds = ["about", "graphics", "projects"];
 
 const updateActiveSection = () => {
   if (!sectionElements.length) {
@@ -27,21 +27,11 @@ const updateActiveSection = () => {
   }
 
   const viewportCenter = window.innerHeight / 2;
-  const closestSection = sectionElements
-    .map((section) => {
-      const rect = section.getBoundingClientRect();
-      const sectionCenter = rect.top + rect.height / 2;
+  const currentSection = [...sectionElements]
+    .reverse()
+    .find((section) => section.getBoundingClientRect().top <= viewportCenter);
 
-      return {
-        id: section.id,
-        distance: Math.abs(sectionCenter - viewportCenter),
-      };
-    })
-    .sort((first, second) => first.distance - second.distance)[0];
-
-  if (closestSection?.id) {
-    activeSection.value = closestSection.id;
-  }
+  activeSection.value = currentSection?.id ?? sectionElements[0].id;
 };
 
 const scrollToSection = (href) => {
@@ -110,11 +100,13 @@ onBeforeUnmount(() => {
     <Journey :locale="locale" id="journey" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
     <NextIdea :locale="locale" class="section" />
+    <Contacts :locale="locale" id="contacts" class="section" />
     <Graphics :locale="locale" id="graphics" class="section" />
     <Project :locale="locale" id="projects" class="section" />
     <Playground :locale="locale" class="section" />
-    <Contacts :locale="locale" id="contacts" class="section" />
   </main>
+
+  <footer class="site-footer">2026 by ignidra</footer>
 </template>
 
 <style scoped>
@@ -145,6 +137,18 @@ onBeforeUnmount(() => {
   box-sizing: border-box;
 }
 
+.site-footer {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 8px 10px 24px;
+  box-sizing: border-box;
+  color: #777777;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
   .section {
     padding-right: 16px;
@@ -153,6 +157,10 @@ onBeforeUnmount(() => {
 
   .section0 {
     padding: 10px 16px 0;
+  }
+
+  .site-footer {
+    padding: 8px 16px 20px;
   }
 }
 </style>

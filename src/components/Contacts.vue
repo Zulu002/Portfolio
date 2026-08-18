@@ -14,14 +14,12 @@ const content = {
     text:
       "I am open to design work, web projects, game-related visuals, and small creative collaborations.",
     aria: "Contact links",
-    meta: "2026 by ignidra",
   },
   ru: {
     title: "контакты",
     text:
       "Открыт к дизайн-задачам, веб-проектам, визуалу для игр и небольшим творческим коллаборациям.",
     aria: "Контактные ссылки",
-    meta: "2026 by ignidra",
   },
 };
 
@@ -36,7 +34,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 </script>
 
 <template>
-  <footer class="contacts">
+  <section class="contacts">
     <div class="contacts-panel">
       <div class="contacts-copy">
         <h2 class="contacts-title">{{ text.title }}</h2>
@@ -55,10 +53,8 @@ const text = computed(() => content[props.locale] ?? content.en);
           {{ link.label }}
         </a>
       </nav>
-
-      <p class="footer-meta">{{ text.meta }}</p>
     </div>
-  </footer>
+  </section>
 </template>
 
 <style scoped>
@@ -130,13 +126,6 @@ const text = computed(() => content[props.locale] ?? content.en);
 .contact-link:focus-visible {
   text-decoration-color: currentColor;
   transform: translateY(-1px);
-}
-
-.footer-meta {
-  grid-column: 1 / -1;
-  margin: 8px 0 0;
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 13px;
 }
 
 @media (max-width: 720px) {

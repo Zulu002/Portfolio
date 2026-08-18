@@ -14,17 +14,19 @@ const content = {
   en: {
     name: "Zulumkhanov",
     surname: "Gadzhi",
+    alias: "(ignidra)",
     tagline: "I'm getting ready to crush the sun",
   },
   ru: {
-    name: "Zulumkhanov",
-    surname: "Gadzhi",
+    name: "Зулумханов",
+    surname: "Гаджи",
+    alias: "(ignidra)",
     tagline: "Готовлюсь сокрушить солнце",
   },
 };
 
 const text = computed(() => content[props.locale] ?? content.en);
-const contactLabel = computed(() => (props.locale === "ru" ? "Контакты" : "Contacts"));
+const contactLabel = computed(() => (props.locale === "ru" ? "Хочу проект!" : "I want a project!"));
 
 const goToContacts = () => {
   emit("navigate", "#contacts");
@@ -47,7 +49,9 @@ const dots = dotPattern.flatMap((row) =>
   <section class="about" id="about">
     <div class="about-panel">
       <div class="about-copy">
-        <h1 class="about-title">{{ text.name }}<br />{{ text.surname }}</h1>
+        <h1 class="about-title">
+          {{ text.name }}<br />{{ text.surname }}<span class="about-alias">{{ text.alias }}</span>
+        </h1>
         <p class="about-tagline">{{ text.tagline }}</p>
         <button type="button" class="about-contact" @click="goToContacts">
           {{ contactLabel }}
@@ -103,6 +107,15 @@ const dots = dotPattern.flatMap((row) =>
   line-height: 0.88;
   letter-spacing: 0;
   color: #ffffff;
+}
+
+.about-alias {
+  display: inline-block;
+  margin-left: 7px;
+  font-size: 0.5em;
+  line-height: 1;
+  color: var(--accent);
+  vertical-align: baseline;
 }
 
 .about-tagline {
