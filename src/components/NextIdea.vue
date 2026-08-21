@@ -93,6 +93,7 @@ const text = computed(() => {
         <blockquote>
           <p>{{ text.quote }}</p>
         </blockquote>
+        <div class="quote-divider" aria-hidden="true"></div>
         <cite class="quote-author">{{ text.author }}</cite>
       </div>
     </figure>
@@ -114,12 +115,12 @@ const text = computed(() => {
 .quote-card {
   display: grid;
   width: 100%;
-  grid-template-columns: clamp(84px, 11vw, 132px) 1fr;
-  gap: clamp(16px, 3vw, 38px);
+  grid-template-columns: clamp(64px, 8vw, 96px) minmax(0, 1fr);
+  gap: clamp(18px, 2.4vw, 30px);
   align-items: center;
   min-height: 0;
   margin: 0;
-  padding: 22px 31px;
+  padding: 30px 31px;
   overflow: hidden;
   border-radius: 5px;
   background: #000000;
@@ -128,13 +129,13 @@ const text = computed(() => {
 
 .quote-mark {
   align-self: start;
-  transform: translateY(12px);
+  transform: translateY(4px);
   color: var(--accent);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(112px, 14vw, 164px);
+  font-size: clamp(88px, 10vw, 120px);
   font-weight: 700;
-  line-height: 0.72;
-  text-align: center;
+  line-height: 0.68;
+  text-align: left;
   user-select: none;
 }
 
@@ -143,19 +144,26 @@ blockquote {
 }
 
 blockquote p {
-  max-width: 760px;
+  max-width: 1040px;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(26px, 3.6vw, 48px);
+  font-size: clamp(25px, 3vw, 42px);
   font-weight: 400;
   letter-spacing: -0.04em;
-  line-height: 1.02;
+  line-height: 1.08;
+}
+
+.quote-divider {
+  width: 100%;
+  height: 1px;
+  margin: 18px 0 12px;
+  background: rgba(var(--accent-rgb), 0.42);
 }
 
 .quote-author {
   display: block;
-  margin-top: 12px;
-  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  color: var(--accent);
   font-family: "OpenSansRegular", sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -171,13 +179,13 @@ blockquote p {
 
   .quote-mark {
     justify-self: start;
-    font-size: 88px;
+    font-size: 76px;
     line-height: 0.58;
-    transform: translateY(8px);
+    transform: translateY(4px);
   }
 
-  .quote-author {
-    margin-top: 10px;
+  .quote-divider {
+    margin-top: 16px;
   }
 }
 

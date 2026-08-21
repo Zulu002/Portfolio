@@ -15,13 +15,11 @@ const content = {
     name: "Zulumkhanov",
     surname: "Gadzhi",
     alias: "(ignidra)",
-    tagline: "I'm getting ready to crush the sun",
   },
   ru: {
     name: "Зулумханов",
     surname: "Гаджи",
     alias: "(ignidra)",
-    tagline: "Готовлюсь сокрушить солнце",
   },
 };
 
@@ -33,7 +31,6 @@ const goToContacts = () => {
 };
 
 const dotPattern = [
-  "111101111",
   "100000010",
   "101100100",
   "100101000",
@@ -52,7 +49,6 @@ const dots = dotPattern.flatMap((row) =>
         <h1 class="about-title">
           {{ text.name }}<br />{{ text.surname }}<span class="about-alias">{{ text.alias }}</span>
         </h1>
-        <p class="about-tagline">{{ text.tagline }}</p>
         <button type="button" class="about-contact" @click="goToContacts">
           {{ contactLabel }}
         </button>
@@ -95,7 +91,7 @@ const dots = dotPattern.flatMap((row) =>
 .about-copy {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   min-height: 190px;
 }
 
@@ -116,15 +112,6 @@ const dots = dotPattern.flatMap((row) =>
   line-height: 1;
   color: var(--accent);
   vertical-align: baseline;
-}
-
-.about-tagline {
-  margin: 24px 0 0;
-  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-  font-size: 18px;
-  line-height: 1.15;
-  letter-spacing: 0;
-  color: var(--accent);
 }
 
 .about-contact {
@@ -168,7 +155,7 @@ const dots = dotPattern.flatMap((row) =>
   grid-template-columns: repeat(9, 40px);
   grid-auto-rows: 40px;
   gap: 6px;
-  align-self: end;
+  align-self: center;
   justify-self: end;
   margin-bottom: 0;
 }
@@ -251,11 +238,6 @@ const dots = dotPattern.flatMap((row) =>
 
   .about-title {
     font-size: 42px;
-  }
-
-  .about-tagline {
-    margin-top: 18px;
-    font-size: 15px;
   }
 
 }

@@ -12,7 +12,7 @@ const content = {
   en: {
     title: "little about me",
     text:
-      "I've been fascinated with video games since childhood, and this is what eventually led me to want to create my own projects. I enrolled in the Rostov College of Communications and Informatics, majoring in Information Systems. In my third year, I discovered web development and design and began creating small web pages, icons, and logos. I'm currently pursuing a degree in Business Informatics and simultaneously studying indie development, striving to develop at the intersection of design, technology, and digital product creation.",
+      "Technology has been an important part of my life since childhood. Over time, I developed a passion for design and the game industry, and that interest grew into a desire to create projects of my own. I graduated from RKSI as a software developer and am now continuing my studies at university. In the future, I want to combine my knowledge of development and design to create engaging games.",
     words: [
       "I am a developer",
       "I am a designer",
@@ -23,7 +23,7 @@ const content = {
   ru: {
     title: "немного обо мне",
     text:
-      "С детства меня увлекали видеоигры, и со временем это привело меня к желанию создавать собственные проекты. Я поступил в Ростовский колледж связи и информатики на направление информационных систем. На третьем курсе познакомился с веб-разработкой и дизайном, начал делать небольшие страницы, иконки и логотипы. Сейчас я учусь на бизнес-информатике и параллельно изучаю инди-разработку, развиваясь на стыке дизайна, технологий и цифровых продуктов.",
+      "Технологии с детства стали важной частью моей жизни. Со временем я особенно полюбил дизайн и игровую индустрию, а этот интерес перерос в желание создавать собственные проекты. Я окончил РКСИ по профессии программиста и сейчас продолжаю обучение в университете. В будущем хочу объединить знания в разработке и дизайне, чтобы создавать интересные игры.",
     words: [
       "я разработчик",
       "я дизайнер",

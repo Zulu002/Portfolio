@@ -2,19 +2,15 @@
 import logo1 from "../assets/storage/logo1.svg";
 import logo2 from "../assets/storage/logo2.svg";
 import logo3 from "../assets/storage/logo3.svg";
-import logo4 from "../assets/storage/logo4.svg";
 import logo5 from "../assets/storage/logo5.svg";
 import logo6 from "../assets/storage/logo6.svg";
 import logo7 from "../assets/storage/logo7.svg";
-import logo8 from "../assets/storage/logo8.svg";
 import logo9 from "../assets/storage/logo9.svg";
 import logo10 from "../assets/storage/logo10.svg";
 import logo11 from "../assets/storage/logo11.svg";
 import logo12 from "../assets/storage/logo12.svg";
 import logo13 from "../assets/storage/logo13.svg";
-import loopBit from "../assets/storage/LoopBit.svg";
 import head from "../assets/storage/head.svg";
-import tertris from "../assets/storage/tertris.svg";
 
 export default {
   props: {
@@ -31,14 +27,11 @@ export default {
         { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
         { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
         { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
-        { id: 6, link: "https://pin.it/6jYmg8GZU", logo: loopBit, alt: "LoopBit logo" },
         { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
-        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo1 },
-        { id: 9, link: "https://pin.it/6jYmg8GZU", logo: logo4 },
+        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo1, panel: "dark" },
         { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
         { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
         { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
-        { id: 13, link: "https://pin.it/6jYmg8GZU", logo: logo8 },
         { id: 14, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
         {
           id: 15,
@@ -46,13 +39,6 @@ export default {
           logo: head,
           alt: "Geometric head illustration",
           panel: "dark",
-        },
-        {
-          id: 16,
-          link: "https://pin.it/6jYmg8GZU",
-          logo: tertris,
-          alt: "Tetris illustration",
-          panel: "light",
         },
       ],
     };
@@ -91,13 +77,15 @@ export default {
 <template>
   <section class="projects-showcase">
     <div class="showcase-wrapper">
-      <div class="showcase-column showcase-column-dark">
+      <div class="showcase-row showcase-row-dark">
         <div class="showcase-copy">
           <h2 class="showcase-title">{{ text.title }}</h2>
           <p class="showcase-text">
             {{ text.description }}
           </p>
         </div>
+
+        <div class="showcase-divider" aria-hidden="true"></div>
 
         <div class="gallery-grid gallery-grid-light" :aria-label="text.aria">
           <a
@@ -122,14 +110,7 @@ export default {
         </div>
       </div>
 
-      <div class="showcase-column showcase-column-light">
-        <div class="showcase-copy">
-          <h2 class="showcase-title">{{ text.title }}</h2>
-          <p class="showcase-text">
-            {{ text.description }}
-          </p>
-        </div>
-
+      <div class="showcase-row showcase-row-light">
         <div class="gallery-grid gallery-grid-dark" :aria-label="text.aria">
           <a
             v-for="project in darkBackedProjects"
@@ -165,41 +146,31 @@ export default {
 
 .showcase-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 16px;
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
   box-sizing: border-box;
 }
 
-.showcase-column {
+.showcase-row {
   width: 100%;
-  padding: 28px 31px 30px;
+  padding: 24px 31px;
   box-sizing: border-box;
   border-radius: 5px;
-  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
-.showcase-column-light {
+.showcase-row-light {
   border: 4px solid #000000;
   background: transparent;
 }
 
-.showcase-column-light .showcase-title {
-  color: #060606;
-}
-
-.showcase-column-light .showcase-text {
-  color: #060606;
-}
-
-.showcase-column-dark {
+.showcase-row-dark {
   background: #000000;
 }
 
 .showcase-copy {
-  margin-bottom: 24px;
+  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
 
 .showcase-title {
@@ -219,6 +190,13 @@ export default {
   line-height: 1.2;
 }
 
+.showcase-divider {
+  width: 100%;
+  height: 1px;
+  margin: 18px 0 22px;
+  background: rgba(var(--accent-rgb), 0.42);
+}
+
 .gallery-grid {
   display: grid;
   width: 100%;
@@ -228,11 +206,11 @@ export default {
 }
 
 .gallery-grid-dark {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .gallery-grid-light {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .tile {
@@ -278,16 +256,8 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  .showcase-column {
-    padding: 24px 22px;
-  }
-
-  .showcase-column-dark .showcase-text {
-    color: #ffffff;
-  }
-
-  .showcase-column-light .showcase-text {
-    color: #060606;
+  .showcase-row {
+    padding: 22px;
   }
 
   .gallery-grid-dark,

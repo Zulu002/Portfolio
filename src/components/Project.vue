@@ -2,7 +2,6 @@
 import { computed } from "vue";
 import invoicePreview from "../assets/projects/cal-preview.jpg";
 import jamPreview from "../assets/projects/gk-preview.jpg";
-import loopBitPreview from "../assets/projects/loopbit-preview.png";
 import tetraPreview from "../assets/projects/tetra-preview.png";
 
 const props = defineProps({
@@ -26,15 +25,6 @@ const content = {
         tags: ["UX logic", "fast calculations", "minimal UI"],
         link: "https://zulu002.github.io/invoice/",
         preview: invoicePreview,
-      },
-      {
-        title: "LoopBit",
-        description:
-          "A terminal-driven planner where tasks are created and updated through typed commands.",
-        tags: ["terminal UI", "task planner", "command logic"],
-        link: "https://zulu002.github.io/LoopBit/",
-        preview: loopBitPreview,
-        fit: "contain",
       },
       {
         title: "Glorious Knight Jam",
@@ -67,15 +57,6 @@ const content = {
         tags: ["UX-логика", "быстрые расчеты", "минимальный UI"],
         link: "https://zulu002.github.io/invoice/",
         preview: invoicePreview,
-      },
-      {
-        title: "LoopBit",
-        description:
-          "Планировщик в терминальном стиле: задачи создаются и обновляются через команды в строке ввода.",
-        tags: ["terminal UI", "планировщик", "команды"],
-        link: "https://zulu002.github.io/LoopBit/",
-        preview: loopBitPreview,
-        fit: "contain",
       },
       {
         title: "Glorious Knight Jam",
