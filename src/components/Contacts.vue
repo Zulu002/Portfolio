@@ -6,6 +6,10 @@ const props = defineProps({
     type: String,
     default: "en",
   },
+  pulseKey: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const content = {
@@ -43,10 +47,12 @@ const text = computed(() => content[props.locale] ?? content.en);
 
       <nav class="contact-links" :aria-label="text.aria">
         <a
-          v-for="link in links"
-          :key="link.label"
+          v-for="(link, index) in links"
+          :key="`${link.label}-${props.pulseKey}`"
           :href="link.href"
           class="contact-link"
+          :class="{ 'contact-link-pulse': props.pulseKey > 0 }"
+          :style="{ '--pulse-delay': `${index * 130}ms` }"
           :target="link.external ? '_blank' : undefined"
           :rel="link.external ? 'noopener noreferrer' : undefined"
         >
@@ -126,6 +132,45 @@ const text = computed(() => content[props.locale] ?? content.en);
 .contact-link:focus-visible {
   text-decoration-color: currentColor;
   transform: translateY(-1px);
+}
+
+.contact-link-pulse {
+  animation: contact-link-pulse 620ms var(--motion-ease) var(--pulse-delay) both;
+}
+
+@keyframes contact-link-pulse {
+  0%,
+  100% {
+    background: var(--accent);
+    box-shadow: none;
+    transform: translateY(0) scale(1);
+  }
+
+  42% {
+    background: #ffffff;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.72);
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-link-pulse {
+    animation-name: contact-link-flash;
+    animation-duration: 360ms;
+  }
+
+  @keyframes contact-link-flash {
+    0%,
+    100% {
+      background: var(--accent);
+      box-shadow: none;
+    }
+
+    50% {
+      background: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.58);
+    }
+  }
 }
 
 @media (max-width: 720px) {

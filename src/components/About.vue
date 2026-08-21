@@ -27,7 +27,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 const contactLabel = computed(() => (props.locale === "ru" ? "Хочу проект!" : "I want a project!"));
 
 const goToContacts = () => {
-  emit("navigate", "#contacts");
+  emit("navigate", "#contacts", { highlightContacts: true });
 };
 
 const dotPattern = [

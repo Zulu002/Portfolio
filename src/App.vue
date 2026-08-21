@@ -14,9 +14,11 @@ import NextIdea from "./components/NextIdea.vue";
 const savedLocale = window.localStorage.getItem("portfolio-locale");
 const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
 const activeSection = ref("about");
+const contactPulseKey = ref(0);
 
 let lenis;
 let animationFrameId;
+let contactPulseTimer;
 let sectionElements = [];
 
 const sectionIds = ["about", "graphics", "projects"];
@@ -34,7 +36,7 @@ const updateActiveSection = () => {
   activeSection.value = currentSection?.id ?? sectionElements[0].id;
 };
 
-const scrollToSection = (href) => {
+const scrollToSection = (href, options = {}) => {
   const target = document.querySelector(href);
 
   if (!target) {
@@ -45,6 +47,13 @@ const scrollToSection = (href) => {
   const centerOffset = Math.max((window.innerHeight - targetHeight) / 2, 16);
 
   lenis?.scrollTo(target, { offset: -centerOffset });
+
+  if (options.highlightContacts) {
+    window.clearTimeout(contactPulseTimer);
+    contactPulseTimer = window.setTimeout(() => {
+      contactPulseKey.value += 1;
+    }, 650);
+  }
 };
 
 watch(locale, (value) => {
@@ -84,6 +93,7 @@ onBeforeUnmount(() => {
   }
 
   window.removeEventListener("resize", updateActiveSection);
+  window.clearTimeout(contactPulseTimer);
   lenis?.destroy();
 });
 </script>
@@ -99,7 +109,12 @@ onBeforeUnmount(() => {
     <About :locale="locale" class="section0" @navigate="scrollToSection" />
     <Journey :locale="locale" id="journey" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
-    <Contacts :locale="locale" id="contacts" class="section" />
+    <Contacts
+      :locale="locale"
+      :pulse-key="contactPulseKey"
+      id="contacts"
+      class="section"
+    />
     <Graphics :locale="locale" id="graphics" class="section" />
     <NextIdea :locale="locale" class="section" />
     <Project :locale="locale" id="projects" class="section" />

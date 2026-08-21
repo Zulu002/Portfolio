@@ -14,10 +14,9 @@ const content = {
     text:
       "Technology has been an important part of my life since childhood. Over time, I developed a passion for design and the game industry, and that interest grew into a desire to create projects of my own. I graduated from RKSI as a software developer and am now continuing my studies at university. In the future, I want to combine my knowledge of development and design to create engaging games.",
     words: [
-      "I am a developer",
-      "I am a designer",
-      "works on my machine",
-      "404 not found",
+      "404 404 404 404 404",
+      "I'm a designer, gamer, developer (maybe)",
+      "I want an interesting job",
     ],
   },
   ru: {
@@ -25,10 +24,9 @@ const content = {
     text:
       "Технологии с детства стали важной частью моей жизни. Со временем я особенно полюбил дизайн и игровую индустрию, а этот интерес перерос в желание создавать собственные проекты. Я окончил РКСИ по профессии программиста и сейчас продолжаю обучение в университете. В будущем хочу объединить знания в разработке и дизайне, чтобы создавать интересные игры.",
     words: [
-      "я разработчик",
-      "я дизайнер",
-      "works on my machine",
-      "404 not found",
+      "404 404 404 404 404",
+      "Я дизайнер, геймер, разработчик (может быть)",
+      "Хочу интересную работу",
     ],
   },
 };
