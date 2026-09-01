@@ -13,6 +13,7 @@ import html from "../assets/icons/html5.svg";
 import js from "../assets/icons/JavaScript.svg";
 import vue from "../assets/icons/vue.svg";
 import unity from "../assets/icons/unity.svg";
+import godot from "../assets/icons/Godot.svg";
 import python from "../assets/icons/python.svg";
 import git from "../assets/icons/git.svg";
 
@@ -28,7 +29,6 @@ let intervalId;
 
 const toolGroups = {
   en: {
-    title: "stack",
     groups: [
       {
         title: "design",
@@ -51,6 +51,7 @@ const toolGroups = {
           { name: "JavaScript", icon: js },
           { name: "Vue", icon: vue },
           { name: "Unity", icon: unity },
+          { name: "Godot", icon: godot },
           { name: "Python", icon: python },
           { name: "Git", icon: git },
         ],
@@ -69,7 +70,6 @@ const toolGroups = {
     ],
   },
   ru: {
-    title: "навыки",
     groups: [
       {
         title: "дизайн",
@@ -92,6 +92,7 @@ const toolGroups = {
           { name: "JavaScript", icon: js },
           { name: "Vue", icon: vue },
           { name: "Unity", icon: unity },
+          { name: "Godot", icon: godot },
           { name: "Python", icon: python },
           { name: "Git", icon: git },
         ],

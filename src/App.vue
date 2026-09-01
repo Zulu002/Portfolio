@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import Lenis from "lenis";
 import Header from "./components/Header.vue";
 import About from "./components/About.vue";
@@ -11,8 +11,19 @@ import Journey from "./components/Journey.vue";
 import Playground from "./components/Playground.vue";
 import NextIdea from "./components/NextIdea.vue";
 
-const savedLocale = window.localStorage.getItem("portfolio-locale");
-const locale = ref(["en", "ru"].includes(savedLocale) ? savedLocale : "en");
+const getBrowserLocale = () => {
+  const browserLanguages = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language];
+
+  return browserLanguages.some((language) =>
+    language?.toLowerCase().startsWith("ru")
+  )
+    ? "ru"
+    : "en";
+};
+
+const locale = ref(getBrowserLocale());
 const activeSection = ref("about");
 const contactPulseKey = ref(0);
 
@@ -55,10 +66,6 @@ const scrollToSection = (href, options = {}) => {
     }, 650);
   }
 };
-
-watch(locale, (value) => {
-  window.localStorage.setItem("portfolio-locale", value);
-});
 
 onMounted(async () => {
   await nextTick();
