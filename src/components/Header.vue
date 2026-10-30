@@ -6,63 +6,29 @@ const props = defineProps({
     type: String,
     default: "en",
   },
-  activeSection: {
-    type: String,
-    default: "about",
-  },
 });
 
-const emit = defineEmits(["update:locale", "navigate"]);
+const emit = defineEmits(["update:locale"]);
 
 const labels = {
   en: {
-    nav: [
-      { label: "About", href: "#about", marker: "1" },
-      { label: "Showcase", href: "#graphics", marker: "2" },
-      { label: "Projects", href: "#projects", marker: "3" },
-    ],
     switchLabel: "Switch language",
   },
   ru: {
-    nav: [
-      { label: "Обо мне", href: "#about", marker: "1" },
-      { label: "Витрина", href: "#graphics", marker: "2" },
-      { label: "Проекты", href: "#projects", marker: "3" },
-    ],
     switchLabel: "Переключить язык",
   },
 };
 
 const text = computed(() => labels[props.locale] ?? labels.en);
-const sectionFromHref = (href) => href.replace("#", "");
 
 const setLocale = (value) => {
   emit("update:locale", value);
-};
-
-const navigate = (href) => {
-  emit("navigate", href);
 };
 </script>
 
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <nav class="main-nav" aria-label="Main navigation">
-        <a
-          v-for="link in text.nav"
-          :key="link.href"
-          class="nav-link"
-          :class="{ active: activeSection === sectionFromHref(link.href) }"
-          :href="link.href"
-          :aria-label="link.label"
-          :title="link.label"
-          @click.prevent="navigate(link.href)"
-        >
-          {{ link.marker }}
-        </a>
-      </nav>
-
       <div class="language-switch" :aria-label="text.switchLabel">
         <button
           type="button"
@@ -89,7 +55,7 @@ const navigate = (href) => {
 .site-header {
   position: fixed;
   top: 10px;
-  right: 17px;
+  right: 10px;
   z-index: 10;
   width: 33px;
   box-sizing: border-box;
@@ -107,7 +73,6 @@ const navigate = (href) => {
   box-sizing: border-box;
 }
 
-.main-nav,
 .language-switch {
   display: flex;
   flex-direction: column;
@@ -115,7 +80,6 @@ const navigate = (href) => {
   gap: 2px;
 }
 
-.nav-link,
 .language-option {
   display: inline-flex;
   align-items: center;
@@ -134,9 +98,6 @@ const navigate = (href) => {
     transform var(--motion-duration) var(--motion-ease);
 }
 
-.nav-link {
-  text-decoration: none;
-}
 
 .language-option {
   height: 25px;
@@ -145,8 +106,6 @@ const navigate = (href) => {
   font-size: 13px;
 }
 
-.nav-link:hover,
-.nav-link.active,
 .language-option:hover,
 .language-option.active,
 .language-option:focus-visible {
@@ -154,12 +113,7 @@ const navigate = (href) => {
   color: #ffffff;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  transform: translateY(-1px);
-}
 
-.nav-link:focus-visible,
 .language-option:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
@@ -168,7 +122,7 @@ const navigate = (href) => {
 @media (max-width: 900px) {
   .site-header {
     top: 10px;
-    right: 10px;
+    right: 6px;
     width: 31px;
   }
 
@@ -176,16 +130,11 @@ const navigate = (href) => {
     padding: 4px;
   }
 
-  .nav-link,
   .language-option {
     width: 23px;
     border-radius: 4px;
   }
 
-  .nav-link {
-    height: 23px;
-    font-size: 18px;
-  }
 
   .language-option {
     height: 23px;

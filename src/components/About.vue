@@ -24,22 +24,12 @@ const content = {
 };
 
 const text = computed(() => content[props.locale] ?? content.en);
-const contactLabel = computed(() => (props.locale === "ru" ? "Хочу проект!" : "I want a project!"));
+const contactLabel = computed(() => (props.locale === "ru" ? "Написать мне" : "Contact me"));
 
 const goToContacts = () => {
   emit("navigate", "#contacts", { highlightContacts: true });
 };
 
-const dotPattern = [
-  "100000010",
-  "101100100",
-  "100101000",
-  "111101111",
-];
-
-const dots = dotPattern.flatMap((row) =>
-  [...row].map((cell) => (cell === "1" ? "bright" : "muted")),
-);
 </script>
 
 <template>
@@ -54,15 +44,6 @@ const dots = dotPattern.flatMap((row) =>
         </button>
       </div>
 
-      <div class="dot-pattern" aria-hidden="true">
-        <span
-          v-for="(dot, index) in dots"
-          :key="index"
-          class="dot-cell"
-          :class="dot"
-          :style="{ '--delay': `${index * -0.23}s` }"
-        ></span>
-      </div>
     </div>
   </section>
 </template>
@@ -75,8 +56,11 @@ const dots = dotPattern.flatMap((row) =>
 }
 
 .about-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  overflow: hidden;
+  display: flex;
   align-items: center;
   width: 100%;
   max-width: var(--content-width);
@@ -88,7 +72,22 @@ const dots = dotPattern.flatMap((row) =>
   border-radius: 5px;
 }
 
+.about-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+}
+
 .about-copy {
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +97,7 @@ const dots = dotPattern.flatMap((row) =>
 .about-title {
   margin: 0;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-  font-size: clamp(42px, 5vw, 58px);
+  font-size: clamp(32px, 5cqw, 58px);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: 0;
@@ -150,78 +149,6 @@ const dots = dotPattern.flatMap((row) =>
   outline-offset: 3px;
 }
 
-.dot-pattern {
-  display: grid;
-  grid-template-columns: repeat(9, 40px);
-  grid-auto-rows: 40px;
-  gap: 6px;
-  align-self: center;
-  justify-self: end;
-  margin-bottom: 0;
-}
-
-.dot-cell {
-  display: block;
-  width: 40px;
-  height: 40px;
-}
-
-.dot-cell.bright,
-.dot-cell.muted {
-  border-radius: 2px;
-  animation: dot-shift 1.6s ease-in-out var(--delay) infinite alternate;
-}
-
-.dot-cell.bright {
-  --dot-from: var(--accent);
-  --dot-to: var(--accent-muted);
-}
-
-.dot-cell.muted {
-  --dot-from: var(--accent-muted);
-  --dot-to: var(--accent);
-}
-
-@keyframes dot-shift {
-  0%,
-  28% {
-    background: var(--dot-from);
-  }
-
-  100% {
-    background: var(--dot-to);
-  }
-}
-
-@media (max-width: 980px) {
-  .about-panel {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    align-items: start;
-  }
-
-  .about-copy {
-    min-height: 0;
-  }
-
-  .dot-pattern {
-    order: -1;
-    grid-template-columns: repeat(9, minmax(0, 1fr));
-    grid-auto-rows: auto;
-    gap: 6px;
-    justify-self: center;
-    align-self: auto;
-    width: 100%;
-    max-width: 440px;
-  }
-
-  .dot-cell {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-  }
-}
-
 @media (max-width: 520px) {
   .about {
     padding: 12px 16px 8px;
@@ -232,12 +159,14 @@ const dots = dotPattern.flatMap((row) =>
     padding: 22px;
   }
 
-  .dot-pattern {
-    gap: 5px;
+  .about-alias {
+    display: block;
+    margin: 8px 0 0;
   }
 
-  .about-title {
-    font-size: 42px;
+  .about-contact {
+    padding: 0 12px;
+    font-size: 15px;
   }
 
 }

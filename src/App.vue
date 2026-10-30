@@ -8,8 +8,6 @@ import Graphics from "./components/Graphics.vue";
 import Contacts from "./components/Contacts.vue";
 import Stack from "./components/Stack.vue";
 import Journey from "./components/Journey.vue";
-import Playground from "./components/Playground.vue";
-import NextIdea from "./components/NextIdea.vue";
 
 const getBrowserLocale = () => {
   const browserLanguages = navigator.languages?.length
@@ -24,29 +22,10 @@ const getBrowserLocale = () => {
 };
 
 const locale = ref(getBrowserLocale());
-const activeSection = ref("about");
 const contactPulseKey = ref(0);
 
 let lenis;
-let animationFrameId;
 let contactPulseTimer;
-let sectionElements = [];
-
-const sectionIds = ["about", "graphics", "projects"];
-
-const updateActiveSection = () => {
-  if (!sectionElements.length) {
-    return;
-  }
-
-  const viewportCenter = window.innerHeight / 2;
-  const currentSection = [...sectionElements]
-    .reverse()
-    .find((section) => section.getBoundingClientRect().top <= viewportCenter);
-
-  activeSection.value = currentSection?.id ?? sectionElements[0].id;
-};
-
 const scrollToSection = (href, options = {}) => {
   const target = document.querySelector(href);
 
@@ -73,62 +52,37 @@ onMounted(async () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   lenis = new Lenis({
-    duration: reduceMotion ? 0 : 1.05,
+    autoRaf: true,
+    duration: reduceMotion ? 0 : 1.2,
     smoothWheel: !reduceMotion,
     wheelMultiplier: 0.85,
   });
 
-  const raf = (time) => {
-    lenis.raf(time);
-    updateActiveSection();
-    animationFrameId = window.requestAnimationFrame(raf);
-  };
-
-  animationFrameId = window.requestAnimationFrame(raf);
-
-  sectionElements = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
-
-  updateActiveSection();
-  window.addEventListener("resize", updateActiveSection);
 });
 
 onBeforeUnmount(() => {
-  if (animationFrameId) {
-    window.cancelAnimationFrame(animationFrameId);
-  }
-
-  window.removeEventListener("resize", updateActiveSection);
   window.clearTimeout(contactPulseTimer);
   lenis?.destroy();
 });
 </script>
 
 <template>
-  <Header
-    v-model:locale="locale"
-    :active-section="activeSection"
-    @navigate="scrollToSection"
-  />
+  <Header v-model:locale="locale" />
 
   <main class="container">
     <About :locale="locale" class="section0" @navigate="scrollToSection" />
     <Journey :locale="locale" id="journey" class="section" />
     <Stack :locale="locale" id="stack" class="section" />
+    <Graphics :locale="locale" id="graphics" class="section" />
+    <Project :locale="locale" id="projects" class="section" />
     <Contacts
       :locale="locale"
       :pulse-key="contactPulseKey"
       id="contacts"
       class="section"
     />
-    <Graphics :locale="locale" id="graphics" class="section" />
-    <NextIdea :locale="locale" class="section" />
-    <Project :locale="locale" id="projects" class="section" />
-    <Playground :locale="locale" class="section" />
   </main>
 
-  <footer class="site-footer">2026 by ignidra</footer>
 </template>
 
 <style scoped>
@@ -138,6 +92,7 @@ onBeforeUnmount(() => {
   gap: 16px;
   min-height: 100%;
   padding-top: 0;
+  padding-bottom: 48px;
   box-sizing: border-box;
 }
 
@@ -159,19 +114,11 @@ onBeforeUnmount(() => {
   box-sizing: border-box;
 }
 
-.site-footer {
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 8px 10px 24px;
-  box-sizing: border-box;
-  color: #777777;
-  font-family: "Hammersmith One", "OpenSansBold", sans-serif;
-  font-size: 13px;
-  line-height: 1;
-}
-
 @media (max-width: 768px) {
+  .container {
+    padding-bottom: 32px;
+  }
+
   .section {
     padding-right: 16px;
     padding-left: 16px;
@@ -181,8 +128,5 @@ onBeforeUnmount(() => {
     padding: 10px 16px 0;
   }
 
-  .site-footer {
-    padding: 8px 16px 20px;
-  }
 }
 </style>

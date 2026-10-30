@@ -22,20 +22,19 @@ export default {
   data() {
     return {
       projects: [
-        { id: 1, link: "https://pin.it/6jYmg8GZU", logo: logo7 },
-        { id: 2, link: "https://pin.it/6jYmg8GZU", logo: logo3 },
-        { id: 3, link: "https://pin.it/6jYmg8GZU", logo: logo12 },
-        { id: 4, link: "https://pin.it/6jYmg8GZU", logo: logo2 },
-        { id: 5, link: "https://pin.it/6jYmg8GZU", logo: logo5 },
-        { id: 7, link: "https://pin.it/6jYmg8GZU", logo: logo6 },
-        { id: 8, link: "https://pin.it/6jYmg8GZU", logo: logo1, panel: "dark" },
-        { id: 10, link: "https://pin.it/6jYmg8GZU", logo: logo9 },
-        { id: 11, link: "https://pin.it/6jYmg8GZU", logo: logo10 },
-        { id: 12, link: "https://pin.it/6jYmg8GZU", logo: logo11 },
-        { id: 14, link: "https://pin.it/6jYmg8GZU", logo: logo13 },
+        { id: 1, logo: logo7 },
+        { id: 2, logo: logo3 },
+        { id: 3, logo: logo12 },
+        { id: 4, logo: logo2 },
+        { id: 5, logo: logo5 },
+        { id: 7, logo: logo6 },
+        { id: 8, logo: logo1, panel: "dark" },
+        { id: 10, logo: logo9 },
+        { id: 11, logo: logo10 },
+        { id: 12, logo: logo11 },
+        { id: 14, logo: logo13 },
         {
           id: 15,
-          link: "https://pin.it/6jYmg8GZU",
           logo: head,
           alt: "Geometric head illustration",
           panel: "dark",
@@ -88,13 +87,10 @@ export default {
         <div class="showcase-divider" aria-hidden="true"></div>
 
         <div class="gallery-grid gallery-grid-light" :aria-label="text.aria">
-          <a
+          <div
             v-for="project in lightBackedProjects"
             :key="project.id"
-            :href="project.link"
             class="tile"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <img
               :src="project.logo"
@@ -106,19 +102,16 @@ export default {
               decoding="async"
               draggable="false"
             />
-          </a>
+          </div>
         </div>
       </div>
 
       <div class="showcase-row showcase-row-light">
         <div class="gallery-grid gallery-grid-dark" :aria-label="text.aria">
-          <a
+          <div
             v-for="project in darkBackedProjects"
             :key="project.id"
-            :href="project.link"
             class="tile"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <img
               :src="project.logo"
@@ -130,7 +123,7 @@ export default {
               decoding="async"
               draggable="false"
             />
-          </a>
+          </div>
         </div>
       </div>
     </div>

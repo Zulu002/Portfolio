@@ -1,5 +1,5 @@
 ﻿<script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import invoicePreview from "../assets/projects/cal-preview.jpg";
 import jamPreview from "../assets/projects/gk-preview.jpg";
 import tetraPreview from "../assets/projects/tetra-preview.png";
@@ -14,7 +14,7 @@ const props = defineProps({
 const content = {
   en: {
     title: "projects",
-    open: "open",
+    open: "Open",
     tagsLabel: "Project tags",
     openLabel: "Open",
     projects: [
@@ -46,7 +46,7 @@ const content = {
   },
   ru: {
     title: "проекты",
-    open: "открыть",
+    open: "Открыть",
     tagsLabel: "Теги проекта",
     openLabel: "Открыть",
     projects: [
@@ -79,19 +79,95 @@ const content = {
 };
 
 const text = computed(() => content[props.locale] ?? content.en);
+// Extra slides at either end keep both wrap directions moving one card at a time.
+const slides = computed(() => {
+  const projects = text.value.projects;
+  return [projects[projects.length - 1], ...projects, projects[0]];
+});
+const position = ref(1);
+const activeIndex = computed(() => (position.value - 1 + text.value.projects.length) % text.value.projects.length);
+const animate = ref(true);
+let moving = false;
+let timer;
+let transitionTimer;
+let frame;
+let touchStart;
+const labels = computed(() => props.locale === "ru"
+  ? { previous: "Предыдущий проект", next: "Следующий проект" }
+  : { previous: "Previous project", next: "Next project" });
+
+const finishTransition = () => {
+  if (!moving) return;
+  window.clearTimeout(transitionTimer);
+  const count = text.value.projects.length;
+  if (position.value === 0 || position.value === count + 1) {
+    animate.value = false;
+    position.value = position.value === 0 ? count : 1;
+    frame = window.requestAnimationFrame(() => {
+      frame = window.requestAnimationFrame(() => {
+        animate.value = true;
+        moving = false;
+      });
+    });
+  } else {
+    moving = false;
+  }
+};
+const stopTimer = () => window.clearInterval(timer);
+const startTimer = () => {
+  window.clearInterval(timer);
+  timer = window.setInterval(() => {
+    if (!document.hidden) move(1);
+  }, 10000);
+};
+const move = (direction) => {
+  if (moving) return;
+  moving = true;
+  position.value += direction;
+  // Also settle when reduced motion suppresses transitionend.
+  transitionTimer = window.setTimeout(finishTransition, 500);
+  startTimer();
+};
+const onTouchEnd = (event) => {
+  if (!touchStart) return;
+  const dx = event.changedTouches[0].clientX - touchStart.x;
+  const dy = event.changedTouches[0].clientY - touchStart.y;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+  touchStart = null;
+};
+onMounted(startTimer);
+onBeforeUnmount(() => {
+  window.clearInterval(timer);
+  window.clearTimeout(transitionTimer);
+  window.cancelAnimationFrame(frame);
+});
 </script>
 
 <template>
-  <section class="projects">
-    <div class="project-list">
+  <section class="projects" :aria-label="text.title" aria-roledescription="carousel">
+    <div class="project-carousel"
+      @keydown.left.prevent="move(-1)"
+      @keydown.right.prevent="move(1)"
+    >
+    <div class="project-viewport"
+      @touchstart.passive="touchStart = { x: $event.touches[0].clientX, y: $event.touches[0].clientY }"
+      @touchend.passive="onTouchEnd"
+      @touchcancel="touchStart = null"
+      @focusin="stopTimer"
+      @focusout="startTimer"
+    >
+    <div class="project-list" :class="{ 'without-transition': !animate }"
+      :style="{ transform: `translateX(-${position * 100}%)` }"
+      @transitionend.self="finishTransition">
       <article
-        v-for="(project, index) in text.projects"
-        :key="project.title"
+        v-for="(project, index) in slides"
+        :key="`${index}-${project.title}`"
         class="project-item"
-        :class="{ reversed: index % 2 === 1 }"
+        :inert="index !== activeIndex + 1"
+        :aria-hidden="index !== activeIndex + 1"
       >
         <div class="project-copy">
-          <span class="project-number">{{ String(index + 1).padStart(2, "0") }}</span>
+          <span class="project-number">{{ String((index - 1 + text.projects.length) % text.projects.length + 1).padStart(2, "0") }}</span>
           <h3 class="project-title">{{ project.title }}</h3>
           <p class="project-description">{{ project.description }}</p>
 
@@ -130,6 +206,10 @@ const text = computed(() => content[props.locale] ?? content.en);
         </div>
       </article>
     </div>
+    </div>
+    <button type="button" class="slider-arrow slider-arrow-prev" :aria-label="labels.previous" @click="move(-1)">‹</button>
+    <button type="button" class="slider-arrow slider-arrow-next" :aria-label="labels.next" @click="move(1)">›</button>
+    </div>
   </section>
 </template>
 
@@ -140,14 +220,41 @@ const text = computed(() => content[props.locale] ?? content.en);
   box-sizing: border-box;
 }
 
-.project-list {
-  display: grid;
-  gap: 16px;
+.project-carousel {
+  position: relative;
+  min-width: 0;
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
   font-family: "Hammersmith One", "OpenSansBold", sans-serif;
 }
+
+.project-viewport { overflow: hidden; border-radius: 5px; }
+.project-list { display: flex; transition: transform 450ms ease; }
+.project-list > .project-item { flex: 0 0 100%; }
+.project-list.without-transition { transition: none; }
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 38px;
+  line-height: 1;
+}
+.slider-arrow-prev { left: 4px; }
+.slider-arrow-next { right: 4px; }
+.slider-arrow:hover { background: rgba(var(--accent-rgb), .12); }
+.slider-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { .project-list { transition: none; } }
 
 .project-item {
   display: grid;
@@ -156,23 +263,12 @@ const text = computed(() => content[props.locale] ?? content.en);
   align-items: center;
   min-width: 0;
   min-height: 330px;
-  padding: 28px 31px 30px;
+  padding: 28px 48px 30px;
   border-radius: 5px;
   background: #000000;
   box-sizing: border-box;
 }
 
-.project-item.reversed {
-  grid-template-columns: minmax(0, 0.54fr) minmax(0, 0.46fr);
-}
-
-.project-item.reversed .project-copy {
-  order: 2;
-}
-
-.project-item.reversed .project-preview {
-  order: 1;
-}
 
 .project-copy {
   min-width: 0;
@@ -243,14 +339,18 @@ const text = computed(() => content[props.locale] ?? content.en);
   color: #060606;
   font-size: 15px;
   line-height: 1;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
   transition: background-color var(--motion-duration) var(--motion-ease),
+    text-decoration-color var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
 }
 
 .project-open:hover,
 .project-open:focus-visible {
-  background: #ffffff;
+  text-decoration-color: currentColor;
   transform: translateY(-1px);
 }
 
@@ -281,17 +381,12 @@ const text = computed(() => content[props.locale] ?? content.en);
 }
 
 @media (max-width: 760px) {
-  .project-item,
-  .project-item.reversed {
+  .project-item {
     grid-template-columns: 1fr;
     gap: 18px;
     min-height: 0;
   }
 
-  .project-item.reversed .project-copy,
-  .project-item.reversed .project-preview {
-    order: initial;
-  }
 }
 
 @media (max-width: 640px) {
@@ -300,7 +395,7 @@ const text = computed(() => content[props.locale] ?? content.en);
   }
 
   .project-item {
-    padding: 24px 22px;
+    padding: 24px 44px;
   }
 
   .project-number {
