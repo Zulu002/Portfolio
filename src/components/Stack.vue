@@ -4,10 +4,6 @@ import photoshop from "../assets/icons/photoshop.svg";
 import illustrator from "../assets/icons/illustrator.svg";
 import figma from "../assets/icons/figma.svg";
 import aseprite from "../assets/icons/aseprite.svg";
-import miro from "../assets/icons/miro.svg";
-import trello from "../assets/icons/trello.svg";
-import pinterest from "../assets/icons/pinterest.svg";
-import chatgpt from "../assets/icons/ChatGPT.svg";
 import css from "../assets/icons/CSS3.svg";
 import html from "../assets/icons/html5.svg";
 import js from "../assets/icons/JavaScript.svg";
@@ -61,10 +57,10 @@ const toolGroups = {
         description:
           "I use planning, references, and AI tools to move faster from rough ideas to polished results.",
         tools: [
-          { name: "Pinterest", icon: pinterest },
-          { name: "ChatGPT", icon: chatgpt },
-          { name: "Trello", icon: trello },
-          { name: "Miro", icon: miro },
+          { name: "Working with references" },
+          { name: "Working with AI" },
+          { name: "Task planning" },
+          { name: "Visualizing ideas" },
         ],
       },
     ],
@@ -102,10 +98,10 @@ const toolGroups = {
         description:
           "Использую планирование, референсы и AI-инструменты, чтобы быстрее доводить идеи до результата.",
         tools: [
-          { name: "Pinterest", icon: pinterest },
-          { name: "ChatGPT", icon: chatgpt },
-          { name: "Trello", icon: trello },
-          { name: "Miro", icon: miro },
+          { name: "Работа с референсами" },
+          { name: "Работа с ИИ" },
+          { name: "Планирование задач" },
+          { name: "Визуализация идей" },
         ],
       },
     ],
@@ -139,6 +135,7 @@ onBeforeUnmount(() => {
               class="roller-item"
             >
               <img
+                v-if="activeTool(group.tools).icon"
                 :src="activeTool(group.tools).icon"
                 :alt="activeTool(group.tools).name"
                 width="24"
@@ -176,28 +173,12 @@ onBeforeUnmount(() => {
 }
 
 .stack-group {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   min-width: 0;
   min-height: 218px;
   padding: 28px 31px 30px;
   border-radius: 5px;
   background: #000000;
   box-sizing: border-box;
-}
-
-.stack-group::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: center;
 }
 
 .group-title {
