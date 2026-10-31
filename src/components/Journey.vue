@@ -10,12 +10,12 @@ const props = defineProps({
 
 const content = {
   en: {
-    title: "Little about me",
+    title: "Little about me ",
     text:
       "I’ve been into computers and games since I was a kid. Later, I got interested in design and started trying to make things of my own. I graduated from RKSI with a qualification in programming, and I’m now studying at university. I want to keep learning about design and development and eventually make my own game.",
   },
   ru: {
-    title: "Немного обо мне",
+    title: "Немного обо мне ",
     text:
       "С детства увлекаюсь компьютерами и играми. Позже заинтересовался дизайном и начал пробовать делать что-то своё. Окончил РКСИ по специальности «Программирование», сейчас учусь в университете. Хочу дальше развиваться в дизайне и разработке и со временем сделать свою игру.",
   },
