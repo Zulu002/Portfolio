@@ -154,8 +154,7 @@ export default {
 }
 
 .showcase-row-light {
-  border: 4px solid #000000;
-  background: #d4d4d4;
+  background: #eae9e9;
 }
 
 .showcase-row-dark {

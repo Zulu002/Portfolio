@@ -46,7 +46,9 @@ const text = computed(() => content[props.locale] ?? content.en);
   max-width: var(--content-width);
   min-height: 0;
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 24px 31px;
+  background: #eae9e9;
+  border-radius: 5px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
@@ -83,7 +85,7 @@ const text = computed(() => content[props.locale] ?? content.en);
 
   .journey-panel {
     min-height: 0;
-    padding: 20px 0;
+    padding: 20px 22px;
   }
 
   .journey-text {
