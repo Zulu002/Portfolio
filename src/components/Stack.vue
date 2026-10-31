@@ -176,12 +176,28 @@ onBeforeUnmount(() => {
 }
 
 .stack-group {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-width: 0;
   min-height: 218px;
   padding: 28px 31px 30px;
   border-radius: 5px;
   background: #000000;
   box-sizing: border-box;
+}
+
+.stack-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
 }
 
 .group-title {
