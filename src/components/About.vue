@@ -58,8 +58,8 @@ const goToContacts = () => {
 .about-panel {
   position: relative;
   isolation: isolate;
-  container-type: inline-size;
   overflow: hidden;
+  container-type: inline-size;
   display: flex;
   align-items: center;
   width: 100%;
@@ -67,9 +67,9 @@ const goToContacts = () => {
   min-height: 238px;
   margin: 0 auto;
   padding: 24px 31px;
-  box-sizing: border-box;
   background: #000000;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .about-panel::before {
