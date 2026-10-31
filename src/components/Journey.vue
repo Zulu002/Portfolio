@@ -12,12 +12,12 @@ const content = {
   en: {
     title: "Little about me",
     text:
-      "Technology has been an important part of my life since childhood. Over time, I developed a passion for design and the game industry, and that interest grew into a desire to create projects of my own. I graduated from RKSI as a software developer and am now continuing my studies at university. In the future, I want to combine my knowledge of development and design to create engaging games.",
+      "I’ve been into computers and games since I was a kid. Later, I got interested in design and started trying to make things of my own. I graduated from RKSI with a qualification in programming, and I’m now studying at university. I want to keep learning about design and development and eventually make my own game.",
   },
   ru: {
     title: "Немного обо мне",
     text:
-      "Технологии с детства стали важной частью моей жизни. Со временем я особенно полюбил дизайн и игровую индустрию, а этот интерес перерос в желание создавать собственные проекты. Я окончил РКСИ по профессии программиста и сейчас продолжаю обучение в университете. В будущем хочу объединить знания в разработке и дизайне, чтобы создавать интересные игры.",
+      "С детства увлекаюсь компьютерами и играми. Позже заинтересовался дизайном и начал пробовать делать что-то своё. Окончил РКСИ по специальности «Программирование», сейчас учусь в университете. Хочу дальше развиваться в дизайне и разработке и со временем сделать свою игру.",
   },
 };
 
