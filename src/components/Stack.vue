@@ -54,6 +54,7 @@ const toolGroups = {
       },
       {
         title: "workflow",
+        grid: true,
         description:
           "I use planning, references, and AI tools to move faster from rough ideas to polished results.",
         tools: [
@@ -95,6 +96,7 @@ const toolGroups = {
       },
       {
         title: "процесс",
+        grid: true,
         description:
           "Использую планирование, референсы и AI-инструменты, чтобы быстрее доводить идеи до результата.",
         tools: [
@@ -125,7 +127,7 @@ onBeforeUnmount(() => {
 <template>
   <section class="stack-section">
     <div class="stack-grid">
-      <section v-for="group in text.groups" :key="group.title" class="stack-group">
+      <section v-for="group in text.groups" :key="group.title" class="stack-group" :class="{ 'stack-group-grid': group.grid }">
         <h3 class="group-title">{{ group.title }}</h3>
 
         <div class="tool-roller" aria-hidden="true">
@@ -179,6 +181,14 @@ onBeforeUnmount(() => {
   border-radius: 5px;
   background: #000000;
   box-sizing: border-box;
+}
+
+.stack-group-grid {
+  background-image:
+    linear-gradient(to right, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--accent-rgb), 0.24) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
 }
 
 .group-title {

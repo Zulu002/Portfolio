@@ -43,7 +43,6 @@ const goToContacts = () => {
           {{ contactLabel }}
         </button>
       </div>
-
     </div>
   </section>
 </template>
